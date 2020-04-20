@@ -1,0 +1,35 @@
+server:
+  port: 10012
+spring:
+  application:
+    name: user-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #LocalDateTimeFormatConfig类中定义的，只是解决pojo类与数据库的时间类型映射，这里配置的是response返回时的映射，两个都需要存在
+#    default-property-inclusion: non_null #设置在序列化的时候，去掉返回为null的字段，那么有时候就会返回少字段了，注意与下面的mybatis plus中的call-setters-on-nulls: true的区别
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/baba?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      idle-timeout: 60000
+      maximum-pool-size: 30
+      minimum-idle: 10
+#    druid: #采用上面默认的连接池
+#      initial-size: 5
+#      min-idle: 5
+#      max-active: 20
+#      max-wait: 1000
+#      test-on-borrow: true
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml # 扫描自定义xml文件路径
+  configuration:
+    #map-underscore-to-camel-case: true #配置驼峰命名规则，暂时未用到
+    call-setters-on-nulls: true #解决自定义sql返回Map结果，Mybatis plus自动过滤null值属性的问题，就是在mapper.xml文件中自定义sql，如果返回HashMap类型的结果集，会把null属性去掉的问题
+  global-config:
+    db-config:
+      logic-delete-field: deleted  #全局逻辑删除字段值 3.3.0开始支持
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      #field-strategy: not-null #我暂时没遇到空值更新的问题，等遇到了，再放开
+

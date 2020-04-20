@@ -1,0 +1,353 @@
+
+相当不错的文章：
+https://blog.csdn.net/vbirdbest/article/details/84871336
+
+
+vscode软件设置：
+	修改左边资源管理器字体大小
+	https://blog.csdn.net/weixin_42554311/article/details/88528367
+	
+	解决vs Code打开新的文件会覆盖窗口中的原文件（其实就是双击打开文件与单击打开文件）
+	https://blog.csdn.net/danieljackz/article/details/95096304
+	
+	vscode 左侧文件栏缩进，默认的，全挤在一堆，不好区分
+	https://www.cnblogs.com/liuqd001/p/11940121.html
+	
+	vscode必备插件：
+		Vetur —— 语法高亮、智能感知、Emmet等
+		包含格式化功能， Alt+Shift+F （格式化全文），Ctrl+K Ctrl+F（格式化选中代码，两个Ctrl需要同时按着）
+		
+		vscode-element-helper
+		写element代码自动补全的插件
+
+
+我们知道javascript代码只能在浏览器上运行，只有浏览器能够解析js代码，如果想要javascript代码能够在服务器端运行就必须提供一个Javascript的运行环境(runtime environment)，这就是node.js。
+node.js是对Chrome V8引擎进行了封装，是一个能让JavaScript运行在服务端的开发平台，它让JavaScript成为与PHP、Python、Perl、Ruby等服务端语言平起平坐的脚本语言。
+
+
+
+webstorm工具需要破解，也可以用来开发vue,杨波喜欢用这个工具（占内存些）
+Visual Studio Code也可以用来开发vue，轻量一些
+
+1.将.cnpmrc    .npmrc两个文件，放至当前账号的目录下，如：
+C:\Users\xiech
+
+
+2. 安装node-v10.15.0-x64软件
+
+3.打开node.js command prompt命令行工具，输入
+node -v
+
+npm -v  
+检查是否安装成功
+
+
+
+
+
+4. 打开操作系统控制台， cmd界面
+输入  npm install -g cnpm --registry=https://registry.npm.taobao.org  使用淘宝镜像
+
+5. 安装脚手架
+输入：cnpm install -g @vue/cli 因为前面已经安装了淘宝镜像，前面加了一个c应该是china中国的意思
+npm install -g @vue/cli   这个命令会卡住，因为这个是国外的服务
+
+
+
+
+6.安装 Visual Studio Code软件
+
+
+7. 重启电脑     
+       输入 vue -V 检查脚手架版本    我目前查看到的是3.8.4这个说明，我的脚手架是3.8.4，查看这个命令需要重启电脑，因为vue是刚装的嘛
+
+
+8.  新建一个vue_project文件夹
+按住shift + 鼠标右键  ，则出现  在此处打开Powershell窗口  
+
+
+输入: vue create hello-world 则会创建一个hello-world工程
+创建完成后，会有两条提示信息：
+cd hello-world
+npm run serve   这一条即为运行这个vue工程的命令
+
+9. 执行 cnpm install, 下载和安装项目相关依赖包。
+
+10. chrome翻墙安装 vue使用的组件列表
+https://chrome.google.com/webstore/detail/nhdogjmejiglipccpnnnanhbledajbpd
+
+11. 将一个vue工程从电脑上的一个目录拷贝至另一个目录，需要将这个vue工程下面的node_modules文件夹删除，因为依赖的包，需要运行cnpm install重新下，这肯定是绝对路径依赖才会这样
+
+12.
+
+
+
+
+
+下面三个是在 package.json文件中的
+"serve": "vue-cli-service serve",
+   启动命令
+"build": "vue-cli-service build",
+     编译命令
+"lint": "vue-cli-service lint"  检测命令
+
+npm  lib  打包命令
+
+
+main.js文件里面可以引入组件库，比如：elementUI组件，目前我们公司用得最多的组件
+
+
+运行命令： npm run serve后，会有显示信息：
+- Local:  http://localhost:8080   本地运行地址
+- network: http://192.168.1.121:8080 远程访问运行地址
+
+
+
+
+
+
+
+
+初始没有安装过node.js
+npm --registry=https://registry.npm.taobao.org
+
+初始项目 
+npm install
+运行项目
+npm run dev
+3.0
+npm run serve   这个是cli 3.x版本的启动命令，如果cli是2.x的版本那么启动命令有点不一样，可以去package.json文件里面看得到
+
+
+
+
+
+--  运行杨波发过来的新的工程，比如：vueAdmin-template-master（PC端的）  就需要下载依赖包
+cnpm install   下载完后，即可启动                前面加一个c，是使用淘宝的镜像下载
+npm run dev  启动   这个工程为cli 2.x的，所以启动命令是这个，
+
+vueAdmin-template-master  这个工程我已经删除，以后不要再用这个工程了，有问题
+
+vueAdmin-template-master（PC端的）  2.x的版本
+vue-element-admin-master （PC端的） 3.x的版本
+启动命令  npm run dev  这个为什么也是dev呢，这个启动命令可以改的
+在package.json文件中
+"scripts": {
+   
+ "dev": "vue-cli-service serve",
+     将“dev”改为serve即可，那么下面的那些也是启动命令
+ "build:prod": "vue-cli-service build",
+  
+  "build:stage": "vue-cli-service build --mode staging",
+  
+  "preview": "node build/index.js --preview",
+   
+ "lint": "eslint --ext .js,.vue src",
+   
+ "test:unit": "jest --clearCache && vue-cli-service test:unit",
+   
+ "test:ci": "npm run lint && npm run test:unit",
+   
+ "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml",
+  
+  "new": "plop"
+  },
+
+
+
+
+v-once: 只绑定一次
+
+v-bind: 绑定数据
+
+v-model: 绑定模型
+
+v-on: 绑定事件
+
+v-if v-show: 条件渲染
+
+
+v-bind 缩写
+Vue.js 为两个最为常用的指令提供了特别的缩写：
+
+<!-- 完整语法 -->
+<a v-bind:href="url"></a>
+<!-- 缩写 -->
+<a  :href="url"></a>
+
+
+
+v-on 缩写
+<!-- 完整语法 -->
+<a v-on:click="doSomething"></a>
+<!-- 缩写 -->
+<a @click="doSomething"></a>
+
+
+
+           ---------注意下面三种写法
+import store from './store'    导入组件
+import ElementUi from 'element-ui'     导入第三方插件
+import 'element-ui/lib/theme-chalk/index.css'    导入css文件
+import config from '@/config'     @等价于 /src 这个目录，即去根目录下找  config.js文件      
+
+
+
+***************
+let     命令     声明局部变量
+const  命令       声明常量
+
+es6新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。
+let不允许在相同作用域内，重复声明同一个变量。
+ES5 只有全局作用域和函数作用域，没有块级作用域，这带来很多不合理的场景。
+
+ 第一种场景，内层变量可能会覆盖外层变量。
+var tmp = new Date();
+ 
+function f() {
+  console.log(tmp);
+  if (false) {
+    var tmp = 'hello world';
+  }
+}
+ 
+f(); // undefined
+
+上面代码的原意是，if代码块的外部使用外层的tmp变量，内部使用内层的tmp变量。但是，函数f执行后，输出结果为undefined，原因在于变量提升，导致内层的tmp变量覆盖了外层的tmp变量。
+
+第二种场景，用来计数的循环变量泄露为全局变量。
+
+1
+2
+3
+4
+5
+6
+7
+var s = 'hello';
+ 
+for (var i = 0; i < s.length; i++) {
+  console.log(s[i]);
+}
+ 
+console.log(i); // 5
+上面代码中，变量i只用来控制循环，但是循环结束后，它并没有消失，泄露成了全局变量。
+
+
+
+const声明一个只读的常量。一旦声明，常量的值就不能改变。
+
+1
+2
+3
+4
+5
+const PI = 3.1415;
+PI // 3.1415
+ 
+PI = 3;
+// TypeError: Assignment to constant variable.
+上面代码表明改变常量的值会报错
+
+
+const的作用域与let命令相同：只在声明所在的块级作用域内有效。
+
+1
+2
+3
+4
+5
+if (true) {
+  const MAX = 5;
+}
+ 
+MAX // Uncaught ReferenceError: MAX is not defined
+
+
+
+export 和export default 的区别在于：export 可以导出多个命名模块，例如：
+//demo1.js
+export const str = 'hello world'
+
+export function f(a){
+    return a+1
+}
+　　对应的引入方式：
+
+//demo2.js
+import { str, f } from 'demo1'
+　　export default 只能导出一个默认模块，这个模块可以匿名，例如：
+
+//demo1.js
+export default {
+    a: 'hello',
+    b: 'world'      
+}
+　　对应的引入方式：
+
+//demo2.js
+import obj from 'demo1'
+　　引入的时候可以给这个模块取任意名字，例如 "obj"，且不需要用大括号括起来。
+
+
+
+vue中created、mounted、 computed，watch，method 等方法整理
+created:html加载完成之前，执行。执行顺序：父组件-子组件
+mounted:html加载完成后执行。执行顺序：子组件-父组件
+methods：事件方法执行
+watch：watch是去监听一个值的变化，然后执行相对应的函数。
+computed：computed是计算属性，也就是依赖其它的属性计算所得出最后的值
+activated：在vue对象存活的情况下，进入当前存在activated()函数的页面时，一进入页面就触发；可用于初始化页面数据等
+
+
+
+*************************
+使用 asyns/await 将 axios 异步请求同步化：
+
+
+
+如果你之前使用过vue.js，你一定知道在vue中各个组件之间传值的痛苦，在vue中我们可以使用vuex来保存我们需要管理的状态值，值一旦被修改，所有引用该值的地方就会自动更新，那么接下来我们就来学习一下vuex是如何修改状态值的：
+
+
+
+
+*************************下面的话说明，很多的第三方，估计只要你导入，应该也是给Vue.prototype添加 了全局的方法
+如果你完整引入了 Element，它会为 Vue.prototype 添加如下全局方法：$msgbox, $alert, $confirm 和 $prompt。因此在 Vue instance 中可以采用本页面中的方式调用 MessageBox。调用参数为：
+
+$msgbox(options)
+$alert(message, title, options) 或 $alert(message, options)
+$confirm(message, title, options) 或 $confirm(message, options)
+$prompt(message, title, options) 或 $prompt(message, options)
+
+<template>
+  <el-button type="text" @click="open">点击打开 Message Box</el-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      open() {
+        this.$alert('这是一段内容', '标题名称', {        //看到没，这里是直接使用了
+          confirmButtonText: '确定',
+          callback: action => {
+            this.$message({
+              type: 'info',
+              message: `action: ${ action }`
+            });
+          }
+        });
+      }
+    }
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+

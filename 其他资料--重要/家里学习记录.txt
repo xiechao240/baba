@@ -1,0 +1,668 @@
+下面的都为mysql的官方保留字，数据库命名时，都不可以使用
+account  key  desc  client  create
+enum  global  full  fetch group  port  user 
+
+
+
+@EnableFeignClients 
+在启动器上面打开这个组件
+
+就不需要再使用
+
+
+RestTemplate这个去拼url路径，拼参数了
+@Bean
+@LoadBalanced
+public RestTemplate restTemplate(){
+return new RestTemplate();
+}
+
+ 
+在consumer工程中定义一个Feign的客户端如
+UserClient接口
+
+@FeignClient("service-provider")
+//不要在这里使用 @RequestMapping("/user") 这是一个坑，官网也没说不要在这使用
+但在这使用全局的路径，有时候报错，有时候又不报错
+public interface UserClient{
+
+@GetMapping("user/{id}")
+public User queryUserById(@PathVariable("id")Long id);
+
+}
+
+毕竟是新技术嘛，会有bug的
+
+
+
+feign里面虽然集成了hystrix，但是hystrix默认是关闭的，
+你要熔断哪个方法，就去实现feign客户端的哪个方法
+
+
+
+
+vue项目地址栏中的#代表一个页面，#号后面的路径其实就是路径的路由
+
+params.cids如果这个对象存在cids这个属性，那么就相当于cids这个属性重新赋值，如果不存在这个属性，那么就相当于创建一个新的属性，这就是js的灵活之处
+
+
+controller类中定义的接口
+如果这个接口接收的参数为json的话，那么这个参数是要加上@RequestBody的，
+作为普通参数你使用一个对象去接收是不需要加任何注解的，这个在前端可以使用qs工具对请求参数进行转化，可以json转请求参数，也可以请求参数转Json
+
+
+
+
+
+实体类
+@Column(name = "'numeric'")
+private Boolean numeric;
+我的列名跟数据库的列名是一样的，为什么还要这样声明呢？
+就是因为numeric是mysql的关键字
+
+数据库声明为tinyint(1) 则对应java pojo类中的属性boolean
+感觉这个类型还是少用，因为你硬编码写java代码可以set这个属性的时候为true或者
+false,但是你写sql的时候，还是xxx=1 或者xxx=0,因为tinyint上面就是存0或者1
+，所以还是声明为int比较好，
+我觉得还是采用char(1)比较好吧，就定义为	Y,N是的话，就是Y,否就是N
+
+
+设计了一个spu_detail表，里面的字段，全是商品描述，商品详情等大字段，当我只需要查看比如购物车商品时，这些大字段，就不需要查出来了，影响效率
+
+
+所有的关系型数据库，对写的操作效率都不高，因为什么？  因为有锁的机制，所以我们的库存表，单独设计一个tb_stock，
+这个表的主键就是sku_id，其实他的属性是不是应该属于sku表呢，确实是这样的，就是为了优化效率，单独设计这一张表出来
+
+
+
+ResponseEntity ：标识整个http相应：状态码、头部信息、响应体内容(spring)
+@ResponseBody：加在请求处理方法上，能够处理方法结果值作为http响应体（springmvc）
+@ResponseStatus：加在方法上、返回自定义http状态码(spring)
+
+使用ResponseEntity 那么我们的controller类上面就只声明为@Controller就行了，不用再声明为@RestController了
+
+还是应该使用rest风格编写代码，这样不会对外暴露方法名
+
+我们应该增加一个BO层，这个层里面的pojo类应该是继承pojo包下面类进行扩展，你不能因为前端页面上增加的参数就直接给改了跟数据库映射的表即pojo包中的类
+
+
+我们查询，他是使用mybatis的通用mapper查询，比如我们查询出来的结果集是
+List<Spu> spuList = mapper.selectList();
+但是我们返回的结果集，不仅仅是spu结果集啊，spu没法直接满足我们的要求啊，我们前端是不是需要在spu上增加一个cname,bname属性啊，我现在的代码写法，真的是很臃肿，这个时候我们应该想到stream表达式啊
+
+
+这个stram表达式，作用就是，把这个集合进行处理，然后返回一个新的集合里面去，那么新的集合是什么集合呢，通过后面的.collect(Collectors.toList())来指定
+
+也可以Collectors.toSet   toMap，随你指定
+
+spuList.stream().map(spu ->{
+ SpuBo supBo = new SpuBo();
+ BeanUtils.copyProperties(spu, spuBo); //从一个对象copy属性值给新的对象
+ 
+Brand brand  = this.brandMapper.selectByPrimaryId();
+supBo.setBname(brand.getName());
+
+ spuBo.setCname();
+return spuBo;
+
+}).collect(Collectors.toList());
+
+
+再看一下下面的steam（）的写法：
+
+public List<String> queryNamesByIds(List<Long> ids){
+	List<category> categories = this.categoryMapper.selectByIdList(ids);
+我们的mybatis plus也是默认返回一个实体的集合啊，此时我们需要只返回一个ids的集合，集合的转换，这个时候，我们是不是又想到了stream啊
+
+处理一个旧的集合，返回一个新的集合
+,注意现在这个stram写法，里面只有一行代码，即category -> category.getName()就可以省略return语句，你{}也省略了啊，是的，可以这么干
+return categories.stream().map(category -> category.getName()).collect(Collectors.toList());
+
+}
+
+在es6语法里面也有这种箭头函数，还记得不
+let persons=[{name："zhangsan",age:20},{name："lisi",age:20}]
+persons.map(p=>p.name)
+
+直接就输出了["zhangsan","lisi"]
+
+
+List<String> names = this.categoryService.queryNamesByIds(Arrays.asList(spu.getCid1(),spu.getCid2(),spu.getCid3()));
+像上面这个代码需要传入一个ids的集合来查询，我们原来是不是可以
+List list = new ArrayList();
+list.add(spu.getCid1());
+list.add(spu.getCid2());
+list.add(spu.getCid3());
+List<String> names = this.categoryService.queryNamesByIds(list); 这样写是不是很low啊
+
+现在我们要把这个names集合转成一个string，并带有分隔的，我们原来是怎么写的啊，是不是也很Low啊，现在采用下面这样写
+spuBo.setCname(StringUtils.join(names, "-"));
+
+
+public List<SpecParam> queryParams(Long gid, Long cid, Boolean generic, Boolean searching){
+	SpecParam record = new SpecParam();
+	record.setGroupId(gid);
+	record.setCid(cid);
+	record.setGenerice(generice);
+	record.setSearching(searching);
+	
+	return this.paramMap.select(record);
+}
+mabatis plus应该也有这样的方法，这样就不用去自己判空了，你这个属性有值，我就查，没有就不查
+
+
+chrome的一个插件，也可以发起rest请求，但是这个插件发起的请求是ajax请求，会有跨域请求，所以我们还是使用swagger或者更专业的Postman工具
+
+x-www-form-urlencoded  form-data 请求方式还有好几种
+https://www.cnblogs.com/WUXIAOCHANG/p/11024351.html
+
+现在再来看一下箭头函数，forEach
+注意：spuBo.getSkus()这个是一个集合
+spuBo.getSkus().forEach(sku ->{
+	sku.setId(null); //新增记录的时候自己设置为null可以防止注入的风险，mybatis plus可以不用管这个，这个是mybatis的写法
+
+	sku.setSpuId(supBo.getId());
+	this.skuMapper.insertSelective(sku);
+}
+
+
+
+？？？？？？？？？？？？？？？？？没搞懂
+async editGoods(oldGoods){
+
+oldGoods.spuDetail = await this.$http.loadData("/item/spu/detail/"+oldGoods.id);
+结合上面那个async 加这个await即是异步转同步
+？？？？？？？？？？？？？？？？？  没搞懂
+
+
+删除数据：我们一般是先删除子表数据，再删除主表数据
+新增数据：我们一般是先增加主表数据，获取到主表id，然后再增加子表数据
+
+webpack部署，适合单页应用使用，比如vue，而我们的门户leyou-portal由于需要做搜索引擎优化，所以是多页应用，这个时候，我们使用另一种热部署方式：live-server
+
+通常配置nginx，我们把www.leyou.com的映射配置到第1条，因为我们的nginx配置文件里面不是配置了多个ip的映射吗？，把
+www.leyou.com配置到第一条，那么默认优先匹配到的就是这个门户，访问的人越多越好啊
+
+
+电商系统产品价格，数据库里面是以分为单位（防止出现精度问题），我们页面上展现要以元为单位，然后前端发送请求到后端时，又要以分为单位发送至后端，这个在前端写一个方法
+ly.formatPrice(9999) 数字转换成元 
+ ly.formatPrice("99.99") 元转化为分
+ly=leyou   .formatPrice 这些都是在common.js里面定义的
+
+
+
+yum 安装程序，原来是在线安装的啊
+rpm安装，则为离线安装
+
+
+rabbitMQ数据持久化到硬盘上，性能会有明显的下降，这个时候就需要我们在数据安全与性能之间做选择了，根据你的业务需求来做选择
+
+使用spring amqp
+通常我们都是使用spring模板去发送消息，很少去接收消息，是通过监听者容器去接收消息
+
+我们在pom里面引入了spring-start-amqp这样的一个启动器，就自动引入了rabbitMQ的依赖了，可以说明rabbitmq作为spring的默认amqp实现框架，rabbitmq的地位不小吧
+
+spring-amqp是amqp协议的实现spring-rabbitmq是对rabbitmq的封装
+
+
+
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class)
+public class MqDemo {
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
+    @Test
+    public void testSend() throws InterruptedException {
+        String msg = "hello, Spring boot amqp";
+        this.amqpTemplate.convertAndSend("spring.test.exchange","a.b", msg);
+        // 等待10秒后再结束
+        Thread.sleep(10000);
+    }
+}
+
+这样的一个测试类，我指定了工程里面的@SpringBootTest(classes = Application.class)这个引导类，那么他就会去找这个工程里面声明的引导类，然后引导类启动的时候，就会加载到
+@Component
+public class Listener {
+
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(value = "spring.test.queue", durable = "true"),
+            exchange = @Exchange(
+                    value = "spring.test.exchange",
+                    ignoreDeclarationExceptions = "true",
+                    type = ExchangeTypes.TOPIC
+            ),
+            key = {"#.#"}))
+    public void listen(String msg){
+        System.out.println("接收到消息：" + msg);
+    }
+}
+加载到我们定义的这么一个监听器，那么我们在测试用例里面发送一条消息，控制台上也打印了接收到消息
+
+
+就是说你启动了测试用例，就相当于启动了spring容器，启动了spring容器，就会去加载到这个监听器
+
+
+
+我们配置rabbitmq的连接信息时，比如在yml配置文件中配置，端口可以不指定，因为你默认的端口就是15672啊，你没改的情况下，我就可以不指定了
+
+你在配置文件里面配置一个默认的交换机，那么使用spring的api去发送消息的时候，就不用指定交换机名称了
+template:
+	exchange: leyou.item.exchange
+
+
+
+你商品新增成功，修改成功，删除成功，都需要向elatisearch,商品静态化这些发送消息，那么我不能在controller层去写这个发送消息，
+因为比如新增商品的方法可能被多个controll方法调用，那你就要写多次发送消息的代码，而mapper层肯定也不适合，这一层只是一个接口层
+，那么就只有service的实现层是最合适的，不管你哪些地方调我，我都发送消息 ，代码只写一次就可以了
+
+
+
+public void saveGoods(){
+
+ this.save();
+
+	try{
+	this.amqpTemplate.convertAndSend("item.insert", spuBo.getId());
+	}catch(AmqpException e){
+	//其实消息异常，可以在这里存到数据库里面记录下来，采用定时任务，再去调用消息发送，同步至后端系统
+	e.perintStackTrace();
+	}
+我们在这里使用单独的捕捉，消息发送异常，我们的业务不应该回滚，那这种同步怎么办呢？貌似后面一直没说啊
+
+}
+
+
+现在在写spring的消息发送的相关的方法体里面，有异常的，都统一往上抛，即使抛到监听的方法里面，也还是往上抛
+其实spring默认的，只要你的代码没有异常，他就是自动的ack，如果你执行有异常了，那么就是手动的ack了
+通过spring的aop来实现的
+
+
+
+现在来看购物车：
+我们早期有没登录状态，添加购物车里面去，是添加在cookie中的
+现在都添加在localStroage,最早期购物车放在cookie中，跟我们的jwt一样，保存在cookie中、
+但是cookie有一个缺陷，长度有限，不能超过2000个字节左右，有些人变态，加了10几页的购物车、
+没事就去看看，那你cookie就存不了啊
+
+另外cookie每次请求，还要携带去请求，但我们不是每次请求都需要携带啊，
+综合上面2点，购物车是不适合放在cookie里面的
+可以放在
+Local Storage
+IndexDb  这个也是浏览器对象
+WebSQL这个也是浏览器对象
+我们采用local storage,另外两个去操作比较麻烦，要去写sql
+
+
+用户在登录状态下将商品添加至购物车，放入数据库，其实放到mongodb是最好的，
+因为redis也是保存大内存中的，那么保存的数据就是有限的了，你在几亿用户下，每一个用户都有
+购物车的情况下，那数据量也是非常庞大的，非常耗内存，按道理你应该放在mongodb中，他是一个
+文件型 的数据库，性能也比较高，但是不是放在内存中的，是放在硬盘上的，
+你面试的时候，别人问你购物车放在哪里，你要说放在mongodb中的，不要说放在redis中的
+
+因为mongodb没讲，我们退而求其次选用redis，其实操作都差不多，都是非关系型数据库
+都不用写sql语句，都一个方法，就放进去了
+
+为什么不放关系型数据库呢，因为关系型数据库对写的支持不那么好，效率不太高，而购物车、
+经常会被用户修改，加入，删除，修改数量，操作频繁很高，最好 不放在数据库里面
+
+
+百度搜web存储，下面是H5出来后的技术
+原来localStorage用于长久保存整个网站的数据
+sessionStorage用于临时保存同一窗口或标签页的数据，，窗口关闭后，将会删除这些数据
+所以这个肯定不能用来做购物车，原来在安证通的时候，就接触到这个，不过他们都搞不清这些区别
+
+
+<a href="javascript:void(0);" target="_blank" @click="addCart()">加入购物车</a>
+javascript:void(0);这个是声明这个按钮啥都不干的意思
+@click="addCart()"这个是加入一个点击事件
+
+由于使用了页面静态化技术，页面详情都是已经生成好的，现在在里面加入了加入购物车的js方法，不生效了
+这是由于nginx直接使用他自己的html目录下的静态页面的原因，这个时候我们可以把nginx里面配置的
+不加载本地，等你购物车做好后，再开放就可以了，这种方式比较好，或者你把这个商品的页面删除，再去开发
+但太麻烦了
+
+
+let carts = ly.store.get("LY_CART") || [];
+这种写法其实是js的一个写法，如果ly.store.get("LY_CART") 为空，则返回一个空的数组[]给carts
+还有这种写法，真不知道
+
+如果ly.store.get("LY_CART") 这个数组存在，那么我们怎么知道当前这个商品详情页点击加入购物车的这个商品
+在购物车里面是否存在？
+原来是不是学过一个集合元素的查找啊
+let persons=[{name:"zhangsan",age:20},{name:"lisi",age:21}];
+persons.find(p=>p.age==21)  这样就查出来了
+
+我们就是要判断，如果这个商品在购物车里面存在，我们就更新数量，没有的话，就加入购物车
+
+
+carts为购物车对象了
+let carts = ly.store.get("LY_CART") || [];
+let cart = carts.find(cart => cart.skuId == this.sku.id); 
+if(cart){//如果cart不为空，即这个商品存在
+cart.num += this.num; 更新数量
+}else{
+ carts.push({ //如果为空，那么我们就push，构建一个对象进去
+	skuId: this.sku.id;
+	image: this.images[0],
+	title: this.sku.title,
+	ownSpec: this.sku.ownSpec,
+	price: this.sku.price,
+	num: this.num
+	})
+}
+
+
+
+转到cart.html购物车页面的时候，需要使用勾子函数
+这个时候，使用create()勾子，不使用mount()勾子
+因为商品已经添加在localStorge里面，肯定不需要页面渲染完，就要从
+localStorge里面把商品渲染到数据模型上去，供页面去渲染，然后把购物车里面的
+商品列表展现出来
+
+原来不同的勾子函数，可以这么使用
+
+
+因为很多地方都有判断登录，所以把ly.http.get("/auth/verify")抽取到common.js文件中
+ly.http.get("/auth/verify").then(res=>{
+//登录
+}).catch(()=>{
+//出异常，即为后台接口返回异常，403，出异常就是没登录
+
+
+抽取后代码写法如下：
+ly.verify().then(res=>{}
+
+
+
+老师是这么写的，先写好下面的代码
+created(){
+	ly.verify().then().catch()
+}
+
+再往then()  catch()中去添加
+created(){
+	ly.verify().then(res=>{
+	
+	}).catch(()=>{
+	（）空的括号，应该是不去接收异常信息
+	})
+}
+
+vue v-for不仅可以遍历集合，还可以遍历一个对象的属性
+<span v-for="(val,key,index) in JSON.parse(cart.ownSpaec)">{{val}}&emsp;</span>    &emsp;一个中文空格
+
+JSON.parse(cart.ownSpaec)将json字符串转成一个对象，然后给v-for去遍历这个对象里面的特殊规格参数的各个属性
+
+
+我们的购物车页面，点商品的++ --,其实如果是登录状态，应该把redis中的数量进行++ --，如果没登录应该去更新
+localStorge里面的数量，
+
+这个redis中存的数据不是有时间限制吗？ 难道是设置不过期？  所以这个老师说要留知道到项目二讲，为了学员，没使用
+mongdb还是不合理
+
+
+redis应该只适用于解决高频，短期的数据进行处理，而mongdb用于解决高频，长期需要存储的数据
+
+
+<input type="checkbox" name="" :value="cart" v-model="selected"/>
+这个购物车里面的商品，选中与未选中，我们通过值与模型进行绑定
+如果这个复选框的值cart，在selected中，那么就是选中，如果不在，那么就是不选中
+selected绑定的就是carts
+
+
+做全选的点击全选，与点击全不选
+定义一个数据模型
+check
+再加一个监听事件即可
+
+watch: {
+	check(newVal){
+		if(newVal) {
+		 this.selected = this.carts;
+	}else{
+		this.selected = []; //全不选，等于一个空的数组即可
+	}
+}
+
+
+
+接下来做购物车里面价格的总合
+let persons=[{name:"zhangsan",age:20},{name:"lisi",age:21},{name:"wangwu",age:22];
+比如上面这一样的一个集合，怎么计算里面年龄的总和？
+
+
+a代表上次运算的结果，有同学说我第一次运算的时候没结果，是一个对象啊，第二次运算的时候才有值啊，这个时候我们给个
+初始值不就行了，0，
+persons.reduce(a,b)=>, a + b.age, 0);
+
+上面这句代码解释一下：
+第一次运算的时候，a是0，因为后面初始了一个值0，第二次运算的时候a是20，b是21
+如果不使用初始值为0的话，那么第一次运算的时候，a是一个对象，怎么跟b.age去相加呢，肯定不行啊
+第三次运算的时候，a是41，b是22，
+
+let arr=[10,20,30];
+arr.reduce((a,b)=> a+b);     arr.reduce((a,b)=> a+b, 100);这里也可以搞一个初始值100
+
+
+
+从购物车里面删除一个商品，其实就是从一个js数组里面删除一个元素了
+
+
+
+因为购物车里面，经常要判断是否是登录状态与未登录状态，所以我们在购物车模块新建一个拦截器专门来完成这件事
+
+public class LoginInterceptor implements HandlerInterceptor{}
+
+我们这个拦截器，其实只需要preHandle前置拦截即可，如果你实现这个接口的话，里面的三个方法都必需要需要去实现，
+但是我只需要一个方法，那我就不去实现这个接口了
+
+public class LoginInterceptor extends HandlerInterceptorAdapter{
+}
+HandlerInterceptorAdapter这个抽象类已经抽象实现了 HandlerInterceptor这个接口中定义的三个方法，你现在继承这个抽象类
+然后只重写他里面的preHandle方法即可，不需要去重写他里面的每一个方法，你需要哪个方法就重写哪个方法就可以了
+
+
+
+ThreadLocal是线程的一个变量，而不是多线程
+现在写的这个拦截器，把用户信息往控制层传，可以使用request对象，然后在控制层的方法中调service层的时request对象，就往下传了，还可以往mapper层传，这种是没有问题，但是代码不够优雅，所以我们还有一种方式，就是引入ThreadLocal
+
+为什么ThreadLocal可以解决呢？ 其实一个请求进来，tomcat就分配一个线程去处理，不管是先经过拦截器，过滤器，controller等，都是一个线程，直到整个请求结束，即线程的生命周期结束，放在ThreadLocal中的内容即消失
+
+每一个线程会分配不同的ThreadLocal
+
+注意放在ThreadLocal中的变量，虽然当线程结束后，垃圾回收器会回收，百度百科上也说了，jdk1.5以后,垃圾回收器会自动回收，但是我们使用的是tomcat线程池，
+比如你初始化启动是200个线程池，你也可以设置为800个，这种线程他不会结束，，他只会处理完了，就又回到线程池，所以我们一定要自己去清理掉已经不使用的ThreadLocal变量
+
+
+
+在这个拦截器的完成后方法
+afterCompletion方法中去释放ThreadLocal的局部变量
+
+
+这个拦截器写好了，但是还没有注入到spring容器啊，以前我们是在xml文件中去配置自己写的拦截器，现在springboot是怎么注入的呢？
+
+新建一个配置类，去实现一个接口,外加一个注解
+
+@Configuration
+public class LeyouWebMvcConfiguration implaments WebMvcConfigurer{
+
+	@AutoWrite
+	private LoginInterceptor loginInterceptor;
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry){
+		registry.addInterceptor(loginInterceptor).addPathPatterns("/**");
+	}
+
+}
+
+
+现在来看一下这个购物车数据存储到redis使用哪种数据结构存储进去？ reids五种数据结构，
+貌似list这个集合可以啊，我们的购物车就是一个集合啊
+但是你要更新list就很麻烦了，删除商品，你得遍历，修改你也要遍历，更新一个商品的数量，你是不是
+也得遍历呢，相当麻烦
+String, List<Cart> 
+上面这种数据结构，肯定不行，效率太低了，我们要使用Map型的
+
+Map<String, List<Cart>>
+
+Map<String, Map<String, String>> 我们应该使用这种
+map集合不要遍历，直接get就行了
+Map<userId, Map<skuId, String>>  通过skuId就可以快速拿到数据集合，这种就是双层map数据结构，
+面试的时候你不要说你使用的是双层map结构，你应该说使用的是redis中的hash结构
+这种其实就是redis的hash结构，只是类似于java中的双层map结构
+
+
+Map<userId, Map<skuId, cart>>  通过userId快速找到用户的购物车，找到购物车，然后就得到了所有的skuId，然后你就可以去更新任何一个skuId商品了
+
+Map<userId, Map<skuId, cart>> 
+{
+	userId 注意这个cart对象，我们还需要去冗余一个userId，因为将来可能会有管理员会有后台进行管理，我们直接遍历这个Map中的values就可以拿到所有用户的购物车了
+	skuId
+	image
+	sku.title
+	ownSpec
+	price
+	num
+}
+
+
+redis五种数据结构，我们常使用下面3种
+Map<String, String>
+Map<String, List<Cart>>
+Map<userId, Map<skuId, cart>> 
+
+
+
+BoundHashOperations<String, Object, Object> hashOperations = this.stringRedisTemplate.boundHashOps(KEY_PREFIX + userInfo.getId());
+
+<String, Object, Object> 你别看这个泛型有3个参数，其实他是一个map结构，这个其实就是
+redi中的hash结构，
+
+注意，泛型，不只可以定义一个参数，还可以定义多个，这个我以前都不知道，以前只知道是一个参数
+
+<String, Object, Object> 你别看后面2个是object类型的，其实本质上都是String
+
+
+解构表达式，还记得不
+created(){
+	ly.verify().then(res=>{
+		ly.http.get("/cart").then(res=>{
+			console.log(res);
+
+
+下面是直接使用解构表达式解构出res中的data
+created(){
+	ly.verify().then(res=>{
+		ly.http.get("/cart").then(({data}) =>{
+			this.carts = data;
+
+
+这个老师定义的更新方法都是返回void,而且返回为void的方法，是直接return ;就可以了
+
+public void updateNum(Cart cart){
+
+
+
+接下来讲最后一天的课程：订单
+引入已经写好的订单模块，看一下配置文件
+
+datasource:
+	url:jdbc:mysql://127.0.0.1:3306/hm49?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&allowMultiQueries=true
+
+autoReconnect=true这个是设置自动重连的意思
+
+allowMultiQueries=true这个mysql默认是false的，这个就是配置mybatis里面
+<select>
+//在这里可以写多条查询sql语句
+</select>
+
+
+swagger不仅可以在后台生成api文档供前端人员使用，也可以在前台生成api文档供后端人员来使用，牛逼啊
+swagger其实是一个系列的工具集，类似于spring cloud一样
+
+
+@ApiOperation(value = "接口说明", notes = "接口详细说明")
+
+1074571308106387500  js Long
+1074571308106387456  java Long
+数据库里面的order_id是1074571308106387456，而前端页面上显示1074571308106387500，这是因为
+js中的long类型没有java中的长，精度损失了，在十位上进行四舍五入了
+
+是js接收不了后台传过来的这么长的long类型的值的，我们后面再解决这个问题
+
+
+我们的订单编号是1开头的，定长的，怎么不是从数字1开头的呢，你去看一下订单表的表结构
+没有设置自增长，只是设置为主键类型，类型为bigint
+
+这个是根据一个算法来生成订单号，使用UUID的话，可行，但是UUID可读性太差了，不能使用，那么应该使用哪种呢
+我们自己写，应该怎么写
+
+根据时间？  同一秒可能几十万并发量，可能也会生成重复的ID
+
+可以根据用户ID加一个毫秒的时间戳，同一个用户，不可能在同一个毫秒下两个单
+但是用户ID长度可能不一样，可以根据手机号+时间戳，手机号长度是确定的啊
+
+手机号加时间戳，基本上不太可能重复了
+
+我们本项目采用：雪花算法
+需求：长度一致，可读性高，唯一
+
+经测试，雪花算法，每秒可产生26万个唯一ID，天猫不能使用这个算法了，京东都不能使用了
+但我们乐优可以用，哈哈哈
+
+
+使用分布式技术来开发，并集成swagger后，他也是这么访问swagger首页的
+http://localhost:8089/swagger-ui.html  不是访问http://www.leyou.com/swagger-ui.html
+但是这个服务没有检测到你登录啊，直接新建了一个cookie在这个地址栏下面
+
+
+订单表，订单明细表，订单状态表，这三个其实是一张表里面的属性，我们为什么要拆成3个呢？
+比如订单状态表
+  `order_id` bigint(20) NOT NULL COMMENT '订单id',
+  `status` int(1) NULL DEFAULT NULL COMMENT '状态：1、未付款 2、已付款,未发货 3、已发货,未确认 4、交易成功 5、交易关闭 6、已评价',
+  `create_time` datetime(0) NULL DEFAULT NULL COMMENT '订单创建时间',
+  `payment_time` datetime(0) NULL DEFAULT NULL COMMENT '付款时间',
+  `consign_time` datetime(0) NULL DEFAULT NULL COMMENT '发货时间',
+  `end_time` datetime(0) NULL DEFAULT NULL COMMENT '交易完成时间',
+  `close_time` datetime(0) NULL DEFAULT NULL COMMENT '交易关闭时间',
+  `comment_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '评价时间',
+
+因为这些字段，数据写的频率太高了，我们单独成一张表，将来去做优化就相当方便
+
+像这个订单的状态，一定是先付款，发货，交易成功，交易关闭，按顺序进行的，不能跳着进行，所以代码里面要加判断
+
+
+
+微信的支付接口生成的是一个地址，
+weixin://wxpay/bizpayurl?pr=ZZDw3nD  通过qrcodejs这个工具，的index.html页面把这个地址输入进去
+就可以生成一个二维码了
+
+腾讯的微信支付，金钱的单位也是以分为单位的，防止浮点数失真，我们的系统也是这么设计的，1元，存在数据库里面就是100
+
+Object.assign() 这个是浅拷贝
+
+
+
+ly.http.post("/order/order", this.order).then(({data})=>{
+	window.location = "http://www.leyou.com/pay.html?orderId=" + data;
+
+注意上面这个代码，从后台返回的orderId这个，js默认给转化了，精度给损失了，我们应该如下处理：
+
+ly.http.post("/order/order", this.order,{
+	transformResponse:[
+		function(data){
+			return data;
+		}
+	]
+	).then(({data})=>{
+	window.location = "http://www.leyou.com/pay.html?orderId=" + data;
+
+function(data){通过这个函数，来接收后台返回的数据，然后直接return返回回去，你如果不定义一个这样的函数，js默认就给你进行转化了
+
+
+页面上通过js写一个循环，每隔3秒调用一下订单的状态查询接口，看是否用户支付成功，支付成功，则跳转到支付成功的页面
+

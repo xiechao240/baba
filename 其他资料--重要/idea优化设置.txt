@@ -1,0 +1,154 @@
+
+各种历史版本及最新版本列表
+https://www.jetbrains.com/idea/download/other.html
+
+2020.1问题列表：
+	1.  2020.1 版本修改pom,新增，或删除一些依赖后，不会自动更新依赖，界面上会弹出Load Maven Changes,不知道这种设计的意图，原来的2018，2019版本都有
+	
+	2.  在pom里面写依赖，提示没有2018版本那样很模糊都匹配出来，让你选，这里需要写得很精确，才提示得完整
+	
+****修改pom文件需要手动点导入
+老哥 20.1的我依赖不会自动引入了，你是这样的嘛？我从19.3升上来的，以前写完dependence就帮我自动引入了，现在等半天都不行，得我自己手动reimport了
+
+
+***所以还是使用2019.1.4版本吧
+2019.3.3依然很卡！添加依赖不能自动提示，如果需要提示经常需要输入几次，甚至等待5-10秒
+
+我一直是我一个人的问题，原来大家都这样，pom不提示，而且非常卡
+
+对的，很久之前从2019.1换到.2发现maven有bug，然后现在换了.3发现依赖又不提示，太坑了，看来还是要退回.1版本。。。
+
+	
+	
+	
+	
+1.解决卡顿
+这个是重中之重的！！必须解决，否则你每敲一行代码就卡你一下午的滋味真的不好受，首先你要有8G内存，没有8G内存的话，下面的应该也有用。但是我还是建议开发起来上8G好一些。
+(1)File-Settings-Editor-General- 去掉 show quick doc on mouse move
+(2)File-Settings-Perferences->Inspections,点Copy，复制一份，名称任意。然后点击下面工具栏中的Reset to empty。保存。
+(3)去idea安装路径的bin目录下找到 idea.exe.vmoptions，调整IDEA的启动JVM参数，64位的修改idea64.exe.vmoptions，最小512M最大2048M即可。32位的修改idea.exe.vmoptions，最小256M，最大512M即可。
+
+
+
+IDEA配置GIT
+http://www.hachuizi.com/java/528.html
+
+
+IntelliJ IDEA 2019.3这回真的要飞起来了，新特性抢先看！
+https://blog.csdn.net/emprere/article/details/101443809
+
+
+idea maven项目，右键项目，没有maven菜单了,直接选中这个工程的pom.xml文件，一定会有maven菜单，然后点一下重新导入，然后这个工程就会有右键maven菜单了
+https://blog.csdn.net/c6c6c/article/details/84672556
+
+
+idea设置文件的编码格式
+https://www.cnblogs.com/1540340840qls/p/9309903.html
+
+
+idea查看源码没有注释的问题
+https://blog.csdn.net/dataiyangu/article/details/95081787
+
+
+idea关于vue高亮显示配置
+https://blog.csdn.net/weixin_41014370/article/details/79541278
+
+IntelliJ设置鼠标悬浮提示，最新的2020版本，已经没有此设置项，默认就会提示
+https://blog.csdn.net/u012883534/article/details/79801351
+
+设置提示，不区分大小写
+https://jingyan.baidu.com/article/d621e8daca64d96864913f09.html
+
+IDEA 设置泛型检查
+https://blog.csdn.net/codejas/article/details/78657560  不要使用这个，这个是配置检不检查
+2019设置项目的jdk   idea使用的是1.8的JDK版本，使用泛型却报错？
+https://blog.csdn.net/csdn_qiang17/article/details/90607751
+
+————————————————————————————下面的才是配置泛型检查时，提示的颜色的
+我是这样设置的：
+Editor-->Color Scheme-->General->Errors and Warnings->Weak Warning  选择右边的Effects
+将颜色设置为：FF00FF    红色：FF0000（还是不要设置成这个颜色）
+
+IDEA设置方法自动显示参数提示，2020已经自动提示了
+https://blog.csdn.net/zhang_cl_cn/article/details/82984057
+
+
+IDEA展开、折叠方法的快捷键（目前我设置没有效果，比如一个js文件里面方法很多，可以一键折叠所有方法）
+https://blog.csdn.net/correlate/article/details/91391118
+
+
+
+
+
+
+IDEA如何在创建类时生成作者和日期
+https://jingyan.baidu.com/article/a24b33cdd8650f19fe002bea.html
+/**
+ * @author xiechao
+ * @date ${DATE} ${TIME}
+ * @version 1.0.0
+ * @description 
+ */
+ 
+ 
+ 
+IntelliJ IDEA lombok插件的安装和使用
+https://jingyan.baidu.com/article/0a52e3f4e53ca1bf63ed725c.html
+
+
+
+
+
+在IntelliJ中添加MarkDown编辑插件 我目前没装过
+https://blog.csdn.net/weixin_36570478/article/details/82733479
+
+
+重磅！IDEA 推出程序员专用字体！
+	Appearance&Behavior
+		Appearance 我使用的是JetBrains Mono字体 字号16
+	Editor
+		Font  我配置的是 Droid Sans Mono字体 字号16，这里就不要再使用JetBrains Mono了，Droid Sans Mono这种圆一些，好看点
+https://blog.csdn.net/qq_42914528/article/details/105501602?fps=1&locationNum=2
+2019设置字体
+https://blog.csdn.net/zlbdmm/article/details/93748013
+
+
+设置idea的快捷键
+Keymap-->选择eclipse
+搜索 close
+Active Tool Window
+	Close Active Tab 将此快捷键的Ctrl+w移除
+Editor Tabs
+	close 将此快捷键设置为Ctrl+W ，原来默认的快捷键移除掉
+此设置好后，出多出一个eclipse copy的选项出来
+
+
+快捷键：
+	ctrl+shift+enter 不仅仅是另起一行(shift+enter),而且带有自动完成功能
+	
+	直接跳出的
+	shift enter
+	不管现在光标在哪个位置,直接新开一行
+	跳出双引号：shift + "
+	跳出单引号：'
+	跳出括号：shift + )
+	跳出中括号：]
+
+	idea 快速查找各种文件的方法
+	双击shift会弹出一个搜索框，输入关键字搜索即可
+	
+	在接口中定义好一个方法（升级成idea2019.3后，只要不存在的方法，无计是在控制层，还是在接口层，都可以按alt+enter进行方法创建）
+	idea快速生成接口的实现类代码
+	将光标放在接口名上面，使用Alt + Enter键，选择implement Interface即可快速，在实现类中创建此方法,如果此时已经在实现类，则 Alt+Insert，在弹出的界面中选择
+	
+	*****下面的很重要
+	1.alt+enter是一种用途广泛的操作,把光标放在一个没有get和set方法的私有成员变量上,按alt+enter就会弹出一个小窗
+	2.点击这个"create getter and setter for"选项
+	3.生成了该变量的get和set方法 END 1 光标在类里面,按alt+insert。弹出一个小窗,可以用它生成多种代码。
+	
+	Ctrl+Alt+Insert 快捷弹出新建各种文件的菜单，非常方便
+	
+	
+	
+	
+
