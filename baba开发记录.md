@@ -1,5 +1,14 @@
 # 开发记录
 
+技术博客：
+
+http://blog.didispace.com 优秀博客
+
+http://www.itmuch.com 优秀博客
+
+https://www.cnblogs.com/huanzi-qch/p/10249227.html
+
+
 # 0.待开发列表
 
 1.集成PageHelper，不要使用Mybatis Plus支持的xml自定义sql语句分页功能
@@ -10,7 +19,7 @@
 
 ​	客户表（客户id,客户name,表单明细json) 查询的话，全部走搜索引擎来查
 
-3.
+3. sleuth 链路追踪 zipkin 延迟分析
 
 # 1.框架版本
 

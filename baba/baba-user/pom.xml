@@ -34,7 +34,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-        <!-- 自动重试 -->
+        <!-- 自动重试spring:cloud:loadbalancer:retry:enabled: true 再结合ribbon即可实现重试功能 -->
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>

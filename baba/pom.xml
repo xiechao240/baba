@@ -15,11 +15,14 @@
         <module>baba-common</module>
         <module>baba-registry</module>
         <module>baba-gateway</module>
+        <module>baba-search</module>
+        <module>baba-item</module>
+        <module>baba-org</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -28,9 +31,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--此版本匹配的springboot为2.0.x-->
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+<!--        <spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
         <!--此版本匹配的springboot为2.2.x-->
-<!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 
 
         <!--<druid.starter.version>1.1.21</druid.starter.version>  暂未采用druid,目前使用最牛逼的HiKari-->

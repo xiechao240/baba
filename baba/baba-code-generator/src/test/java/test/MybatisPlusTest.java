@@ -1,21 +1,15 @@
 package test;
 
-import com.baba.CodeGeneratorApplication;
-import com.baba.mapper.UserMapper;
-import com.baba.pojo.User;
-import com.baba.service.UserService;
+import com.baba.item.CodeGeneratorApplication;
+import com.baba.item.mapper.UserMapper;
+import com.baba.item.pojo.User;
+import com.baba.item.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import org.apache.tomcat.jni.Local;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 /**
  * @Author xiechao

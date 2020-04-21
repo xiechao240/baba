@@ -6,7 +6,7 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        enabled: true # 开启Spring Cloud的重试功能，使用retry
+        enabled: true # 开启Spring Cloud的重试功能，引入spring-retry
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss #LocalDateTimeFormatConfig类中定义的，只是解决pojo类与数据库的时间类型映射，这里配置的是response返回时的映射，两个都需要存在
 #    default-property-inclusion: non_null #设置在序列化的时候，去掉返回为null的字段，那么有时候就会返回少字段了，注意与下面的mybatis plus中的call-setters-on-nulls: true的区别
@@ -64,7 +64,7 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 1500 #虽然熔断实现了，但是我们的重试机制似乎没有生效，是这样吗？其实这里是因为我们的Ribbon超时时间设置的是1000ms:而Hystix的超时时间默认也是1000ms，因此重试机制没有被触发，而是先触发了熔断。 所以，Ribbon的超时时间一定要小于Hystix的超时时间。
+            timeoutInMilliseconds: 2000 #虽然熔断实现了，但是我们的重试机制似乎没有生效，是这样吗？其实这里是因为我们的Ribbon超时时间设置的是1000ms:而Hystix的超时时间默认也是1000ms，因此重试机制没有被触发，而是先触发了熔断。 所以，Ribbon的超时时间一定要小于Hystix的超时时间。
 feign:
   hystrix:
     enabled: true # 开启Feign的熔断功能,这个需要配置，因为默认是false不开启的
