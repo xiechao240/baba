@@ -1,0 +1,16 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: baba-registry
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:${server.port}/eureka
+#      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka #配上全部地址，以逗号分隔的也行，围成一圈也行
+#      defaultZone: http://127.0.0.1:10087/eureka #如果是集群，则配上另一台机器的ip,多台的话，则围一个圈，相互注册对方即可
+    register-with-eureka: true # 是否注册自己的信息到EurekaServer，默认是true,一般是不用配置的
+    fetch-registry: true # 是否拉取其它服务的信息，默认是true,一般是不用配置的
+  server:
+    enable-self-preservation: false # 关闭自我保护模式（缺省为打开）
+    eviction-interval-timer-in-ms: 1000 # 扫描失效服务的间隔时间（缺省为60*1000ms） 生产环境不要修改。 这个会对我们开发带来极大的不变，你对服务重启，隔了60秒Eureka才反应过来。开发阶段可以适当调整，比如10S

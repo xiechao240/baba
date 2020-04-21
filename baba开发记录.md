@@ -28,6 +28,15 @@
 
 以上为springcloud官方网站提供的springcloud与springboot匹配版本对应表，切记一定严格按照此配对使用
 
+# Eureka使用
+
+**端口号指定不能为6位数**
+
+```xml
+server:
+  port: 10019 #注意此端口号不能指定为6位数，比如100199,否则启动报错
+```
+
 
 
 # 2.Mybatis Plus使用

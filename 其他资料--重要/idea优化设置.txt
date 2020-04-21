@@ -1,5 +1,5 @@
 
-各种历史版本及最新版本列表
+各种历史版本及最新版本列表(我目前使用2019.1.4最稳定，不过2020.1界面，字体确实更舒服一些，2020目前我只遇到pom中写依赖，不能全匹配的自动提醒，只能从左往右自动提醒)
 https://www.jetbrains.com/idea/download/other.html
 
 2020.1问题列表：
@@ -30,7 +30,7 @@ https://www.jetbrains.com/idea/download/other.html
 
 
 
-IDEA配置GIT
+IDEA配置GIT（没多大配置的必要，无法直接提交，还是自己在文件夹里面提交吧）
 http://www.hachuizi.com/java/528.html
 
 
