@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @Configuration
-@MapperScan("com.baba.mapper")
 public class MybatisPlusConfig {
 
     //注册分页插件

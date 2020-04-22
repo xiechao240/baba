@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
+        <version>2.0.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -31,9 +31,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--此版本匹配的springboot为2.0.x-->
-<!--        <spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
+        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <!--此版本匹配的springboot为2.2.x-->
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+<!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
 
 
         <!--<druid.starter.version>1.1.21</druid.starter.version>  暂未采用druid,目前使用最牛逼的HiKari-->
@@ -48,6 +48,10 @@
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+        <!--***注意swagger采用如下的这个版本，spring4all社区开发的,使用起来也很繁琐 -->
+        <swagger-spring-boot-starter.version>1.9.1.RELEASE</swagger-spring-boot-starter.version>
+        <!--***注意swagger采用如下的这个版本，io.github.wilson-he开发的，可以在yml里面书写配置，不用使用SwaggerConfig类了 -->
+        <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
     </properties>
 
     <!--spring-boot-starter-jdbc是springboot提供的，但是如果引入了mybatis-spring-boot-starter，-->
@@ -114,6 +118,18 @@
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox-swagger-ui.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/com.spring4all/swagger-spring-boot-starter 这种方式无法在zuul网关yml中书写配置达到支持多个微服务 -->
+<!--            <dependency>-->
+<!--                <groupId>com.spring4all</groupId>-->
+<!--                <artifactId>swagger-spring-boot-starter</artifactId>-->
+<!--                <version>${swagger-spring-boot-starter.version}</version>-->
+<!--            </dependency>-->
+<!--            https://blog.csdn.net/z28126308/article/details/84187221-->
+            <dependency>
+                <groupId>io.github.wilson-he</groupId>
+                <artifactId>swagger2-spring-boot-starter</artifactId>
+                <version>${swagger2-spring-boot-starter.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
@@ -132,14 +148,15 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
+        <!-- 每个有需要集成swagger的模块，导入swagger-spring-boot-starter -->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>

@@ -1,6 +1,6 @@
 package com.baba.order.mapper;
 
-import com.baba.item.pojo.Order;
+import com.baba.order.pojo.Order;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 

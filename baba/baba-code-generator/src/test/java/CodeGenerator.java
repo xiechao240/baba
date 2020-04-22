@@ -50,7 +50,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-//        System.out.println("当前目录：" + projectPath);
+        System.out.println("当前目录：" + projectPath);
         //        gc.setOutputDir("/src/main/java");
         gc.setOutputDir(projectPath +"/baba-code-generator" + "/src/main/java");
 
@@ -88,7 +88,7 @@ public class CodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        //pc.setModuleName(scanner("模块名"));//父包模块名
+        pc.setModuleName(scanner("模块名"));//父包模块名
         pc.setParent("com.baba");//父包名。// 自定义包路径  如果为空，将下面子包名必须写全部， 否则就只需写子包名
         pc.setEntity("pojo");
 //        pc.setMapper("dao");   //pc.setMapper("mapper");

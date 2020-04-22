@@ -123,6 +123,13 @@ Editor Tabs
 此设置好后，出多出一个eclipse copy的选项出来
 
 
+IntelliJ IDEA怎么设置代码自动提示快捷键,设置快捷键为Alt+/ 自动代码提示，跟eclipse一样的
+File--》Setting--》Keymap--》Main menu--》Code--》Code Completion
+
+先删除Cyclic Expand Word中的Alt+/，再设置 Basic为Alt+/即可
+https://jingyan.baidu.com/article/91f5db1b73d64c1c7f05e3dc.html
+
+
 快捷键：
 	ctrl+shift+enter 不仅仅是另起一行(shift+enter),而且带有自动完成功能
 	
@@ -149,6 +156,7 @@ Editor Tabs
 	Ctrl+Alt+Insert 快捷弹出新建各种文件的菜单，非常方便
 	
 	
-	
-	
+
+关于Idea中新建application.yml文件不能显示绿色叶子的问题（其实就是把文件的打开方式，做一下还原即可，不过你还原了，.vue文件这些可能你再重新设置一下吧，还原打开方式，是最快的）
+https://jingyan.baidu.com/article/ac6a9a5ed6ff9d2b643eac5a.html
 

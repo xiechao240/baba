@@ -1,8 +1,8 @@
 server:
-  port: 10086
+  port: 10010
 spring:
   application:
-    name: baba-registry
+    name: registry-service
 eureka:
   client:
     service-url:

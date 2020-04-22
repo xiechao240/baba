@@ -1,8 +1,8 @@
 package com.baba.order.service.impl;
 
-import com.baba.item.mapper.OrderDetailMapper;
-import com.baba.item.pojo.OrderDetail;
-import com.baba.item.service.OrderDetailService;
+import com.baba.order.mapper.OrderDetailMapper;
+import com.baba.order.pojo.OrderDetail;
+import com.baba.order.service.OrderDetailService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

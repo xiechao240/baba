@@ -1,6 +1,6 @@
 package com.baba.order.service;
 
-import com.baba.item.pojo.OrderDetail;
+import com.baba.order.pojo.OrderDetail;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -8,6 +8,40 @@ http://www.itmuch.com 优秀博客
 
 https://www.cnblogs.com/huanzi-qch/p/10249227.html
 
+# 端口设计：
+
+说明：
+
+​		后面带两个0的，设计容量为100台，如10100，10101，10102，10103为一个集群，此设计足够支撑超大型的并发了，如果还有一个别的大型服务，可以考虑采用20100，以2字打头再命名，先暂时采用如下设计方案
+
+gateway-service网关服务:10100      网关压力比较大，必需规划容量为100台
+
+registry-service服务注册中心:10010    规划10台即可
+
+user-service用户服务：10200
+
+order-service订单服务：10300
+
+item-service商品服务:10400
+
+search-service搜索引擎服务:10500
+
+goods-web-service商品静态页面服务：10600
+
+secskill-service秒杀服务：10700
+
+upload-service文件上传服务：10800
+
+sms-service短信服务：10900
+
+cart-service购物车服务：11100
+
+org-service组织架构服务：11200   
+
+
+
+
+
 
 # 0.待开发列表
 
@@ -170,6 +204,80 @@ PageInfo<ECustomizeMenuListOutVo> pageList = new PageInfo<>(list);
 resultMap实现一对一，一对多，多对多的查询
 
 参考：  https://blog.csdn.net/bll1992/article/details/80456214  
+
+
+
+# Swagger使用经验：
+
+总结：
+
+<groupId>io.github.wilson-he</groupId>
+
+<groupId>com.spring4all</groupId>
+
+从以上的groupId可以看出，这些都是一些个人写的，不过由于只是测试一下接口，对我们的核心业务不会造成影响，倒是可以使用个人写的，其他的主要框架严禁采用个人写的，主要是没质量保证
+
+
+
+https://blog.csdn.net/z28126308/article/details/84187221 此博客介绍了集成zull的使用方式
+
+<dependency>
+		<groupId>io.github.wilson-he</groupId>
+		<artifactId>swagger2-spring-boot-starter</artifactId>
+		<version>1.1.0</version>
+	</dependency>
+io.github.wilson-he 从这个看出，为个人所写，稳定性，或者bug可能存疑，不过在yml中配置支持多模块，确实很不错
+
+
+
+https://blog.csdn.net/weixin_37509652/article/details/80094370
+
+一：swagger是什么？
+1、是一款让你更好的书写API文档的规范且完整框架。
+
+2、提供描述、生产、消费和可视化RESTful Web Service。
+
+3、是由庞大工具集合支撑的形式化规范。这个集合涵盖了从终端用户接口、底层代码库到商业API管理的方方面面。
+
+方法一：使用第三方依赖（最简单的方法）
+1、在pom.xml文件中添加第三方swagger依赖（）
+
+	<dependency>
+		<groupId>com.spring4all</groupId>  注意这是一个社区，目前提供的组件也比较少
+		<artifactId>swagger-spring-boot-starter</artifactId>
+		<version>1.9.1.RELEASE</version>
+	</dependency>
+2、在Spring Boot项目的启动类上添加@EnableSwagger2Doc注解，就可以直接使用啦。
+3、https://github.com/SpringForAll/spring-boot-starter-swagger这是GitHub上这个swagger依赖实现的项目，里面有详细的讲解。
+
+方法二：使用官方依赖
+1、在pom.xml文件中添加swagger相关依赖
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
+第一个是API获取的包，第二是官方给出的一个ui界面。这个界面可以自定义，默认是官方的，对于安全问题，以及ui路由设置需要着重思考。
+
+# Git及GitHub使用经验：
+
+下载github上的单个文件夹：
+
+方法1：使用 http://kinolien.github.io/gitzip/ 访问此网站，注意需要先下载访问token
+
+![preview](baba开发记录.assets/v2-4bd556d7f1edeac3dfa4479d01723b22_r.jpg)
+
+
+
+方法2：借助gitzip-for-github的chrome插件，不过需要谷歌访问助手翻墙，上面那个方式，直接下载，不需要配置翻墙
+
+http://www.cnplugins.com/devtool/gitzip-for-github/
 
 
 
