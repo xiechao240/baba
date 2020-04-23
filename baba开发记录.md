@@ -8,7 +8,7 @@ http://www.itmuch.com 优秀博客
 
 https://www.cnblogs.com/huanzi-qch/p/10249227.html
 
-# 端口设计：
+# 端口及域名设计：
 
 说明：
 
@@ -37,6 +37,19 @@ sms-service短信服务：10900
 cart-service购物车服务：11100
 
 org-service组织架构服务：11200   
+
+
+
+域名设计：
+
+C:\Windows\System32\drivers\etc\hosts 文件中增加如下内容（Linux下的hosts文件所在路径： /etc/hosts ）：
+
+127.0.0.1 localhost
+
+127.0.0.1 www.baba.com	一级域名
+127.0.0.1 manage.baba.com	二级域名，后台管理
+127.0.0.1 api.baba.com	二级域名，api服务
+127.0.0.1 image.leyou.com	二级域名，图片服务
 
 
 
@@ -278,6 +291,40 @@ https://blog.csdn.net/weixin_37509652/article/details/80094370
 方法2：借助gitzip-for-github的chrome插件，不过需要谷歌访问助手翻墙，上面那个方式，直接下载，不需要配置翻墙
 
 http://www.cnplugins.com/devtool/gitzip-for-github/
+
+
+
+
+
+# nginx使用：
+
+> ### 使用
+
+nginx可以通过命令行来启动，操作命令：
+
+- 启动：`start nginx.exe`
+
+- 停止：`nginx.exe -s stop`
+
+- 重新加载：`nginx.exe -s reload`
+
+  
+
+windows无法启动，报80端口占用的问题，找了好久，终于找到原因（本地安装sql server数据库导致）：
+
+https://www.cnblogs.com/caiyt/p/10118481.html
+
+启动nginx.exe之后
+
+nginx: [emerg] bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+
+说明某个进程占用了80端口
+
+查看之后是System占用，这个是系统服务，无法手动终止
+
+原因是 **SQL Server Reporting Services**，停止掉这个服务并设置其为手动启动即可
+
+启动好nginx后，在重新启动SQL Server Reporting Services服务可以启动成功，但是未验证微软的数据库报表设计工具，它集成在微软的商业智能开发工具是否能正常使用。
 
 
 

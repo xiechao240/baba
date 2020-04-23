@@ -1,0 +1,12 @@
+2020/04/23 14:09:52 [emerg] 17776#17648: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/04/23 14:23:40 [emerg] 2904#3316: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/04/23 14:38:36 [emerg] 10864#10888: bind() to 0.0.0.0:80 failed (10013: An attempt was made to access a socket in a way forbidden by its access permissions)
+2020/04/23 15:04:45 [emerg] 11576#12968: unknown directive "ngx_fastdfs_module" in D:\ProgramFiles\nginx-1.17.10/conf/nginx.conf:45
+2020/04/23 15:05:45 [notice] 11296#13300: signal process started
+2020/04/23 15:46:50 [error] 5680#12908: *2 CreateFile() "E:\baba\nginx-1.17.10/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2020/04/23 16:05:38 [emerg] 2576#8576: unknown "l" variable
+2020/04/23 16:09:37 [notice] 132#11408: signal process started
+2020/04/23 16:17:48 [error] 8460#12540: *1 CreateFile() "E:\baba\nginx-1.17.10/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost"
+2020/04/23 16:17:49 [error] 8460#12540: *1 CreateFile() "E:\baba\nginx-1.17.10/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost"
+2020/04/23 16:18:41 [notice] 15100#15104: signal process started
+2020/04/23 17:11:28 [notice] 12676#6932: signal process started

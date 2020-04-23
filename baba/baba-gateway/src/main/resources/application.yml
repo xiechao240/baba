@@ -26,32 +26,25 @@ spring:
 #      max-wait: 1000
 #      test-on-borrow: true
 zuul:
+  prefix: /api # 添加路由前缀
+  retryable: true #是否开启重试
   routes:
-    user-service: # 这里是路由id，随意写
-      path: /user-service/** # 这里是映射路径
-      url: http://127.0.0.1:10200 # 映射路径对应的实际url地址
 #    user-service: # 这里是路由id，随意写
 #      path: /user-service/** # 这里是映射路径
-#      serviceId: user-service # 指定服务名称
-#zuul:
-##  prefix: /api # 添加路由前缀
-##  retryable: true
-#  routes:
-#    user-service: # 这里是路由id，随意写
-#      path: /user-service/** # 这里是映射路径
-#      serviceId: user-service # 指定服务名称
-    #下面这种为常规写法
-    #    user-service: # 这里是路由id，随意写
-    #      path: /user-service/** # 这里是映射路径
-    #      serviceId: user-service # 指定服务名称
-    #      url: http://127.0.0.1:8081 # 映射路径对应的实际url地址
-    #下面这些为简写形式，注意需要结合eureka来自动转发到服务实例才可以
-    #    item-service: /item/**
-    #    search-service: /search/**
-    #user-service: /user-service/**
-  #    auth-service: /auth/**
-#  sensitive-headers:
-#  add-host-header: true
+#      url: http://127.0.0.1:8081 # 映射路径对应的实际url地址  这种指定ip，就不需要通过eureka
+#    下面这种为常规写法
+#        user-service: # 这里是路由id，随意写
+#          path: /user-service/** # 这里是映射路径
+#          serviceId: user-service # 指定服务名称 直接指定服务名，需要通过eureka
+#    下面这些为简写形式，注意需要结合eureka来自动转发到服务实例才可以
+#        item-service: /item/**
+#        search-service: /search/**
+    user-service: /user/**
+#    auth-service: /auth/**
+  add-host-header: true #携带请求本身的head头信息
+  sensitive-headers: #匹配禁止使用的头信息，这里设置为null，否则set-cookie无效
+  ignored-services:
+    - upload-service # 忽略upload-service服务
 mybatis-plus:
   mapper-locations: classpath:mapper/*Mapper.xml # 扫描自定义xml文件路径
   configuration:
@@ -82,13 +75,13 @@ ribbon:
   OkToRetryOnAllOperations: true # 是否对所有操作重试
   MaxAutoRetriesNextServer: 1 # 同一服务不同实例的重试次数
   MaxAutoRetries: 1 # 同一实例的重试次数
-logging:
-  level:
-    com.baba: debug #通过`logging.level.xx=debug`来设置日志级别。然而这个对Fegin客户端而言不会产生效果。因为`@FeignClient`注解修改的客户端在被代理时，都会创建一个新的Fegin.Logger实例。我们需要额外指定这个日志的级别才可以。1）设置com.leyou包下的日志级别都为debug  2)编写配置类，定义日志级别@Configuration public class FeignConfig {
+#logging:
+#  level:
+#    com.baba: debug #通过`logging.level.xx=debug`来设置日志级别。然而这个对Fegin客户端而言不会产生效果。因为`@FeignClient`注解修改的客户端在被代理时，都会创建一个新的Fegin.Logger实例。我们需要额外指定这个日志的级别才可以。1）设置com.leyou包下的日志级别都为debug  2)编写配置类，定义日志级别@Configuration public class FeignConfig {
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 2000 #虽然熔断实现了，但是我们的重试机制似乎没有生效，是这样吗？其实这里是因为我们的Ribbon超时时间设置的是1000ms:而Hystix的超时时间默认也是1000ms，因此重试机制没有被触发，而是先触发了熔断。 所以，Ribbon的超时时间一定要小于Hystix的超时时间。
+            timeoutInMilliseconds: 6000 #虽然熔断实现了，但是我们的重试机制似乎没有生效，是这样吗？其实这里是因为我们的Ribbon超时时间设置的是1000ms:而Hystix的超时时间默认也是1000ms，因此重试机制没有被触发，而是先触发了熔断。 所以，Ribbon的超时时间一定要小于Hystix的超时时间。
