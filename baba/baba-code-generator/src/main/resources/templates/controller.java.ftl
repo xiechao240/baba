@@ -2,6 +2,7 @@ package ${package.Controller};
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import io.swagger.annotations.Api;
 
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,8 @@ import ${superControllerClassPackage};
 @Controller
 </#if>
 @RequestMapping("<#if package.ModuleName??>${package.ModuleName}</#if>")
+<#assign apiName = "${table.comment!}">
+@Api("${apiName?replace("表","")}服务接口")
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
 <#else>

@@ -16,7 +16,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient // 开启EurekaClient功能
 //@EnableHystrix //开启熔断,因为feign里面已经集成熔断器了，所以无需再次引入 feign:hystrix:enabled: true 开启Feign的熔断功能,这个需要配置，因为默认是false不开启的
 @EnableFeignClients //开启feign功能
-@MapperScan("com.baba.user.mapper")
+//@MapperScan("com.baba.user.mapper")
+@MapperScan("com.baba.*")
 public class UserApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);

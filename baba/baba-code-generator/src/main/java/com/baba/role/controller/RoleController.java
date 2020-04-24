@@ -1,4 +1,4 @@
-package com.baba.controller;
+package com.baba.role.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 用户表，所有登录CRM系统的员工账号都存储在此表 前端控制器
+ * 角色表 前端控制器
  * </p>
  *
  * @author xiechao
- * @since 2020-04-22
+ * @since 2020-04-24
  */
 @RestController
-@RequestMapping("user")
-public class UserController {
+@RequestMapping("role")
+public class RoleController {
 
 }

@@ -52,3 +52,5 @@
 127.0.0.1 - - [23/Apr/2020:16:28:57 +0800] "GET /api/item/spu/page?key=&saleable=true&page=1&rows=5 HTTP/1.1" 499 0 "http://manage.baba.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
 127.0.0.1 - - [23/Apr/2020:16:28:57 +0800] "GET /api/item/category/list?pid=0 HTTP/1.1" 499 0 "http://manage.baba.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
 127.0.0.1 - - [23/Apr/2020:16:28:58 +0800] "GET /api/item/category/list?pid=0 HTTP/1.1" 499 0 "http://manage.baba.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+127.0.0.1 - - [23/Apr/2020:17:31:09 +0800] "GET / HTTP/1.1" 502 560 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"
+127.0.0.1 - - [23/Apr/2020:17:31:11 +0800] "GET /favicon.ico HTTP/1.1" 499 0 "http://manage.baba.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36"

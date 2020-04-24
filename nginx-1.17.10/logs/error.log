@@ -10,3 +10,4 @@
 2020/04/23 16:17:49 [error] 8460#12540: *1 CreateFile() "E:\baba\nginx-1.17.10/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost"
 2020/04/23 16:18:41 [notice] 15100#15104: signal process started
 2020/04/23 17:11:28 [notice] 12676#6932: signal process started
+2020/04/23 17:31:09 [error] 8460#12540: *69 connect() failed (10061: No connection could be made because the target machine actively refused it) while connecting to upstream, client: 127.0.0.1, server: manage.baba.com, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:9001/", host: "manage.baba.com"

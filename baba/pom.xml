@@ -125,11 +125,11 @@
 <!--                <version>${swagger-spring-boot-starter.version}</version>-->
 <!--            </dependency>-->
 <!--            https://blog.csdn.net/z28126308/article/details/84187221-->
-            <dependency>
-                <groupId>io.github.wilson-he</groupId>
-                <artifactId>swagger2-spring-boot-starter</artifactId>
-                <version>${swagger2-spring-boot-starter.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.github.wilson-he</groupId>-->
+<!--                <artifactId>swagger2-spring-boot-starter</artifactId>-->
+<!--                <version>${swagger2-spring-boot-starter.version}</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>

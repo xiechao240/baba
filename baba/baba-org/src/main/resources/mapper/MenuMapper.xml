@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baba.menu.mapper.MenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.baba.menu.pojo.Menu">
+        <id column="menu_id" property="menuId" />
+        <result column="parent_id" property="parentId" />
+        <result column="full_path_id" property="fullPathId" />
+        <result column="full_path_name" property="fullPathName" />
+        <result column="name" property="name" />
+        <result column="url" property="url" />
+        <result column="type" property="type" />
+        <result column="permission" property="permission" />
+        <result column="is_show" property="isShow" />
+        <result column="sort_num" property="sortNum" />
+        <result column="icon" property="icon" />
+        <result column="creater_by_id" property="createrById" />
+        <result column="create_date_time" property="createDateTime" />
+        <result column="updater_by_id" property="updaterById" />
+        <result column="update_date_time" property="updateDateTime" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        menu_id, parent_id, full_path_id, full_path_name, name, url, type, permission, is_show, sort_num, icon, creater_by_id, create_date_time, updater_by_id, update_date_time, remark
+    </sql>
+
+    <!-- 通用别名查询结果列 -->
+    <sql id="Alias_Base_Column_List">
+        menu_id as menuId, parent_id as parentId, full_path_id as fullPathId, full_path_name as fullPathName, name as name, url as url, type as type, permission as permission, is_show as isShow, sort_num as sortNum, icon as icon, creater_by_id as createrById, create_date_time as createDateTime, updater_by_id as updaterById, update_date_time as updateDateTime, remark as remark
+    </sql>
+
+    <!-- 通用别名查询结果列(建议复杂关联查询时，使用) -->
+    <sql id="Alias_Param_Base_Column_List">
+        ${alias}.menu_id as menuId, ${alias}.parent_id as parentId, ${alias}.full_path_id as fullPathId, ${alias}.full_path_name as fullPathName, ${alias}.name as name, ${alias}.url as url, ${alias}.type as type, ${alias}.permission as permission, ${alias}.is_show as isShow, ${alias}.sort_num as sortNum, ${alias}.icon as icon, ${alias}.creater_by_id as createrById, ${alias}.create_date_time as createDateTime, ${alias}.updater_by_id as updaterById, ${alias}.update_date_time as updateDateTime, ${alias}.remark as remark
+    </sql>
+</mapper>

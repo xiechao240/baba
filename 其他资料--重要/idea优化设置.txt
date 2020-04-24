@@ -2,6 +2,13 @@
 各种历史版本及最新版本列表(我目前使用2019.1.4最稳定，不过2020.1界面，字体确实更舒服一些，2020目前我只遇到pom中写依赖，不能全匹配的自动提醒，只能从左往右自动提醒)
 https://www.jetbrains.com/idea/download/other.html
 
+
+java 在新建文件后，启动过程中发现java文件左上角出现小叉号
+File->Settings->builde,Excution,Deployment->compiler->excludes
+在右侧的Path中选中文件，删除，即可解决。  即把打小叉的这个文件删除，因为这个文件被忽略了
+https://blog.csdn.net/weixin_36562804/article/details/86743975
+
+
 2020.1问题列表：
 	1.  2020.1 版本修改pom,新增，或删除一些依赖后，不会自动更新依赖，界面上会弹出Load Maven Changes,不知道这种设计的意图，原来的2018，2019版本都有
 	
