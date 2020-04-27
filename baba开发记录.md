@@ -133,6 +133,18 @@ responseBody表示服务器返回的时候以一种什么样的方式进行返�
 @RequestBody
 一般是post请求的时候才会使用这个请求，把参数丢在requestbody里面
 
+
+
+## 参数校验框架：
+
+注意：spring Validated 与hibernate validator的区别
+
+https://blog.csdn.net/aierwa/article/details/94896720
+
+
+
+
+
 # Eureka使用
 
 **端口号指定不能为6位数**
@@ -364,7 +376,116 @@ http://www.cnplugins.com/devtool/gitzip-for-github/
 
 
 
+# 分布式文件系统：
 
+各种文件系统比较：
+
+​	https://www.cnblogs.com/linkenpark/p/10234855.html
+
+常见的分布式文件系统有，GFS、HDFS、Lustre 、Ceph 、GridFS 、mogileFS、TFS、FastDFS等。各自适用于不同的领域。它们都不是系统级的分布式文件系统，而是应用级的分布式文件存储服务。
+
+tfs的官网目前都打不开了，而且网上对接spring的使用教程也好少
+
+fastDFS目前只有2016年最后一个5.0.8的版本，也4年没更新了
+
+官网：https://sourceforge.net/projects/fastdfs/
+
+java客户端：
+
+```xml
+<dependency>
+    <groupId>com.github.tobato</groupId>  可根据此下载最新的客户端，客户端则一直在更新，2020年的都有
+    <artifactId>fastdfs-client</artifactId>
+</dependency>
+```
+
+经过比较，分布式文件系统，只有fastDFS与HDFS是可选的方案
+
+
+
+# ElasticSearch搜索引擎使用：
+
+网上已经有很多收费的7.x的视频了
+
+Elasticsearch也是基于Lucene的全文检索库，本质也是存储数据，很多概念与MySQL类似的。
+
+对比关系：
+
+
+
+索引（indices）--------------------------------Databases 数据库
+
+​	类型（type）-----------------------------Table 数据表
+
+​	     文档（Document）----------------Row 行
+
+​		   字段（Field）-------------------Columns 列 
+
+
+
+solr:
+
+主要功能列表包括：
+
+- 全文搜索
+- 突出
+- 分面搜索
+- 实时索引
+- 动态群集
+- 数据库集成
+- NoSQL功能和丰富的文档处理（例如Word和PDF文件）
+
+ElasticSearch:
+
+主要功能列表包括：
+
+- 分布式搜索
+
+- 多租户
+
+- 分析搜索
+
+- 分组和聚合
+
+  - 分布式，无需人工搭建集群（solr就需要人为配置，使用Zookeeper作为注册中心）
+
+  - Restful风格，一切API都遵循Rest原则，容易上手
+
+  - 近实时搜索，数据更新在Elasticsearch中几乎是完全同步的。
+
+    
+
+安装与使用：
+
+​	官网下载
+
+​			elasticsearch-7.6.2-windows-x86_64.zip 
+
+​			kibana-7.6.2-windows-x86_64.zip
+
+启动文件：
+
+D:\ProgramFiles\elasticsearch-7.6.2-windows-x86_64\elasticsearch-7.6.2\bin\elasticsearch.bat
+
+查看启动是否成功：http://localhost:9200/
+
+Kibana控制台：http://127.0.0.1:5601
+
+
+
+### windows环境下elasticsearch安装教程(超详细)
+
+https://www.cnblogs.com/hualess/p/11540477.html
+
+### 插件安装：
+
+1. head插件，这个是之前的学习教程里面没有的https://www.sojson.com/blog/85.html
+
+   https://github.com/mobz/elasticsearch-head 
+
+   #### 作为Elasticsearch的插件运行（已弃用）我选择的是chrome插件运行，不过要翻墙才能安装好
+
+2. 
 
 # nginx使用：
 

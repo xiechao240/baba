@@ -1,6 +1,7 @@
 package com.baba.org.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.sun.istack.internal.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -40,6 +41,7 @@ public class Org implements Serializable {
     @ApiModelProperty(value = "部门ID全路径名称（可用来做面包屑）")
     private String fullPathName;
 
+    @NotNull
     @ApiModelProperty(value = "机构名称（部门名称）")
     private String name;
 

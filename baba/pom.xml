@@ -52,6 +52,7 @@
         <swagger-spring-boot-starter.version>1.9.1.RELEASE</swagger-spring-boot-starter.version>
         <!--***注意swagger采用如下的这个版本，io.github.wilson-he开发的，可以在yml里面书写配置，不用使用SwaggerConfig类了 -->
         <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
+        <javax.validation.version>2.0.1</javax.validation.version>
     </properties>
 
     <!--spring-boot-starter-jdbc是springboot提供的，但是如果引入了mybatis-spring-boot-starter，-->
@@ -59,6 +60,11 @@
 
     <dependencyManagement>
         <dependencies>
+<!--            <dependency>-->
+<!--                <groupId>javax.validation</groupId>-->
+<!--                <artifactId>validation-api</artifactId>-->
+<!--                <version>${javax.validation.version}</version>-->
+<!--            </dependency>-->
             <!-- springCloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

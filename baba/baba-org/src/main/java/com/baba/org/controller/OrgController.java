@@ -3,11 +3,11 @@ package com.baba.org.controller;
 
 import com.baba.org.pojo.Org;
 import io.swagger.annotations.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -75,7 +75,7 @@ public class OrgController {
             @ApiResponse(code = 404, message = "没有查询到结果"),
             @ApiResponse(code = 500, message = "查询失败"),
     })
-    public ResponseEntity<List<String>> queryNamesByIds(@RequestParam("ids") List<String> ids){
+    public ResponseEntity<List<String>> queryNamesByIds(@RequestParam(value = "ids", required = true) List<String> ids){
 //        List<String> list = this.categoryService.queryNamesByIds(ids);
 //        // 判断是否查询到
 //        if(list == null || list.size() <= 0 ){
@@ -87,44 +87,96 @@ public class OrgController {
         return null;
     }
 
-      删除部门  新增部门
 
-//修改部门
-    @ApiOperation(value = "修改部门名称接口")
-    @ApiJsonObject(name = "updateOrg", value = {
-            @ApiJsonProperty(name = OrgJson.orgId),
-            @ApiJsonProperty(name = OrgJson.orgName),
-            @ApiJsonProperty(name = OrgJson.orderNum)})
-    @ApiImplicitParam(name = "params", required = true, dataType = "updateOrg")
-    @PostMapping("/updateOrg")
-    public Result updateOrg(@RequestBody String params) {
-        try {
-            System.out.println("params参数为：" + params);
-
-            JSONObject jsonObject = JSON.parseObject(params);
-            String orgId = String.valueOf(jsonObject.get("orgId"));
-            String orgName = String.valueOf(jsonObject.get("orgName"));
-            String orderNum = String.valueOf(jsonObject.get("orderNum"));
-
-            StringUtil.validateIsNull(orgId, "部门ID不能为空");
-            StringUtil.validateIsNull(orgId, "部门名称不能为空");
-            StringUtil.validateIsNull(orderNum, "排序值不能为空");
-
-            OrgEntity entity = orgService.getById(orgId);
-            entity.setOrgName(orgName);
-            entity.setOrderNum(Integer.parseInt(orderNum));
-
-            this.orgService.saveOrUpdate(entity);
-
-            return Result.success("修改部门成功！");
-        } catch (BusinessException e) {
-            e.printStackTrace();
-            return Result.error(e.getMessage());
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.error("修改部门失败，失败原因：" + e.getMessage());
-        }
+    /**
+     * 修改部门
+     *
+     * @param orgId 组织机构ID
+     * @param orgName 组织机构名称
+     * @param sortNum 排序号
+     * @return
+     */
+    @PutMapping("update/{orgId}")
+    @ApiOperation(value = "更新组织机构", notes = "更新组织机构")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "orgId", value = "组织机构ID", type = "String"),
+            @ApiImplicitParam(name = "orgName", value = "组织机构名称", type = "String"),
+            @ApiImplicitParam(name = "sortNum", value = "排序号", type = "Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 204, message = "true：修改状态成功；false：修改状态失败"),
+            @ApiResponse(code = 400, message = "请求参数有误"),
+            @ApiResponse(code = 500, message = "查询失败")
+    })
+    public ResponseEntity<Boolean> updateOrg(@PathVariable(value = "orgId",required = true) String orgId,
+                                                @RequestParam(value = "orgName") String orgName,
+                                                @RequestParam(value = "sortNum") Integer sortNum) {
+//        Boolean boo = this.orderService.updateStatus(id, status);
+//        if (boo == null) {
+//            // 返回400
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//        // 返回204
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return null;
     }
+
+
+    /**
+     * 修改部门(此接口不调用，只是展示代码的另一种返回值的写法)
+     *
+     * @param orgId 组织机构ID
+     * @param orgName 组织机构名称
+     * @param sortNum 排序号
+     * @return
+     */
+    @PutMapping("update-org-info/{orgId}")
+    @ApiOperation(value = "更新组织机构", notes = "更新组织机构")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "orgId", value = "组织机构ID", type = "String"),
+            @ApiImplicitParam(name = "orgName", value = "组织机构名称", type = "String"),
+            @ApiImplicitParam(name = "sortNum", value = "排序号", type = "Integer")
+    })
+    @ApiResponses({
+            @ApiResponse(code = 204, message = "true：修改状态成功；false：修改状态失败"),
+            @ApiResponse(code = 400, message = "请求参数有误"),
+            @ApiResponse(code = 500, message = "查询失败")
+    })
+    public ResponseEntity<Void> updateOrgInfo(@PathVariable(value = "orgId",required = true) String orgId,
+                                             @RequestParam(value = "orgName") String orgName,
+                                             @RequestParam(value = "sortNum") Integer sortNum) {
+        return ResponseEntity.ok().build();
+    }
+
+
+    /**
+     * 删除组织机构
+     * @param orgId 组织机构ID
+     * @return
+     */
+    @DeleteMapping("delete/{orgId}")
+    @ApiOperation(value = "删除组织机构", notes = "删除组织机构")
+    @ApiImplicitParam(name = "orgId", dataType = "String", required = true, value = "组织机构ID")
+    public ResponseEntity<Void> deleteOrgById(@PathVariable(value = "orgId", required = true) String orgId){
+        return ResponseEntity.ok().build();
+    }
+
+
+    /**
+     * 新建部门或机构
+     *
+     * @param org 组织机构对象
+     * @return
+     */
+    @PostMapping
+    @ApiOperation(value = "创建机构部门接口，返回订单编号", notes = "创建订单")
+    @ApiImplicitParam(name = "order", required = true, value = "订单的json对象,包含订单条目和物流信息")
+    public ResponseEntity<Long> createOrder(@RequestBody @Valid Org org) {
+        return null;
+//        return ResponseEntity.ok(id);
+//        return new ResponseEntity<>(id, HttpStatus.CREATED);
+    }
+
 
 
 }
