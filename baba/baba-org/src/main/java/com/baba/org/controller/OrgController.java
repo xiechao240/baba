@@ -4,7 +4,6 @@ package com.baba.org.controller;
 import com.baba.org.pojo.Org;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;

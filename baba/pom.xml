@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.2.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -31,9 +31,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--此版本匹配的springboot为2.0.x-->
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+<!--        <spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
         <!--此版本匹配的springboot为2.2.x-->
-<!--        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 
 
         <!--<druid.starter.version>1.1.21</druid.starter.version>  暂未采用druid,目前使用最牛逼的HiKari-->
@@ -53,6 +53,7 @@
         <!--***注意swagger采用如下的这个版本，io.github.wilson-he开发的，可以在yml里面书写配置，不用使用SwaggerConfig类了 -->
         <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
         <javax.validation.version>2.0.1</javax.validation.version>
+<!--        <elasticsearch.version>7.6.2</elasticsearch.version>-->
     </properties>
 
     <!--spring-boot-starter-jdbc是springboot提供的，但是如果引入了mybatis-spring-boot-starter，-->
@@ -176,6 +177,11 @@
 
     <repositories>
         <repository>
+            <id>spring-libs-snapshot</id>
+            <name>Spring Snapshot Repository</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+        </repository>
+        <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
@@ -184,4 +190,5 @@
             </snapshots>
         </repository>
     </repositories>
+
 </project>

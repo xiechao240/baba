@@ -1,6 +1,5 @@
 package com.baba.order.pojo;
 
-import com.baba.order.pojo.OrderDetail;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;

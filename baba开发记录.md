@@ -6,6 +6,8 @@ http://blog.didispace.com 优秀博客
 
 http://www.itmuch.com 优秀博客
 
+https://eelve.com/archives 优秀博客
+
 https://www.cnblogs.com/huanzi-qch/p/10249227.html
 
 # 端口及域名设计：
@@ -405,7 +407,39 @@ java客户端：
 
 # ElasticSearch搜索引擎使用：
 
-网上已经有很多收费的7.x的视频了
+网上已经有很多收费的7.x的视频了（目前spring boot data elasticsearch只有3.x的版本，支持elastic7.x的需要匹配4.x的版本，目前还是预览版，没有正式版）
+
+不能使用spring-boot-starter-data-elasticsearch则不能使用ElasticsearchTemplate，将不是很方便了，不过可以将elasticSearch的版本变为6.x即可使用这个启动器，不过我目前刚开始使用，肯定不能使用过时的产品
+
+https://eelve.com/archives  Elastic Stack实战之Kibana初体验（可以看看）
+
+文档：
+
+elasticsearch7完全开发指南
+
+​	https://wenku.baidu.com/view/8ff2ce94591b6bd97f192279168884868762b8e7.html
+
+SpringBoot集成Elasticsearch7.4 实战（一），下面这个链接有一个系列的
+
+https://www.jianshu.com/p/1fbfde2aefa5
+
+https://www.jianshu.com/p/acc8e86cc772
+
+https://eelve.com/archives/kibana
+
+https://blog.csdn.net/chengyuqiang/article/details/86015411
+
+https://blog.csdn.net/weixin_34190136/article/details/91446546
+
+https://blog.csdn.net/jeffli1993/article/details/102579286
+
+https://blog.csdn.net/pyq666/article/details/99639810
+
+https://www.lizenghai.com/archives/43887.html
+
+https://blog.csdn.net/miaomiao19971215/article/details/105106783
+
+
 
 Elasticsearch也是基于Lucene的全文检索库，本质也是存储数据，很多概念与MySQL类似的。
 
@@ -471,6 +505,12 @@ D:\ProgramFiles\elasticsearch-7.6.2-windows-x86_64\elasticsearch-7.6.2\bin\elast
 
 Kibana控制台：http://127.0.0.1:5601
 
+![image-20200427091824941](baba开发记录.assets/image-20200427091824941.png)
+
+
+
+windows版本启动到  no plugins loaded时会卡住，按enter回车，即可继续运行
+
 
 
 ### windows环境下elasticsearch安装教程(超详细)
@@ -479,13 +519,37 @@ https://www.cnblogs.com/hualess/p/11540477.html
 
 ### 插件安装：
 
-1. head插件，这个是之前的学习教程里面没有的https://www.sojson.com/blog/85.html
+#### 安装分词器：
 
-   https://github.com/mobz/elasticsearch-head 
+参考文档：https://blog.csdn.net/wsms007/article/details/86569285 windows安装
 
-   #### 作为Elasticsearch的插件运行（已弃用）我选择的是chrome插件运行，不过要翻墙才能安装好
+因为我使用的是7.6.2版本，所以需要安装此版本的分词器，注意版本必需完全一致
 
-2. 
+安装命令如下：
+
+elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.6.2/elasticsearch-analysis-ik-7.6.2.zip
+
+安装完成，需要重启，重启可在控制台上看到刚刚安装的插件ikAnalysis分词器
+
+
+
+#### head插件
+
+，这个是之前的学习教程里面没有的https://www.sojson.com/blog/85.html
+
+https://github.com/mobz/elasticsearch-head 
+
+作为Elasticsearch的插件运行（已弃用）我选择的是chrome插件运行，不过要翻墙才能安装好
+
+安装后的界面如下图：
+
+![image-20200427100546705](baba开发记录.assets/image-20200427100546705.png)
+
+
+
+
+
+
 
 # nginx使用：
 
