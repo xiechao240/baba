@@ -67,7 +67,7 @@ public class OrgController {
      * @return
      */
     @GetMapping("names")
-    @ApiOperation(value = "返回整个组织结构树形结果", notes = "获取组织结构")
+    @ApiOperation(value = "返回组织结构名称集合（常用于面包屑功能）", notes = "获取组织结构名称集合（常用于面包屑功能）")
     @ApiImplicitParam(name = "id", dataType = "List<String>", required = false, value = "组织结构编号，不传返回整个树形组织结构，传则返回指定的树形结构")
     @ApiResponses({
             @ApiResponse(code = 200, message = "组织结构名称结果集合"),

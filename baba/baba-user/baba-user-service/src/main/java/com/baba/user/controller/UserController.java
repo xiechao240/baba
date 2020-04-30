@@ -28,6 +28,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //还需要如下的方法：
+//    传入组织机构ID，获取指定机构下的用户列表？？？？？？？？？？？还带有用户名及用户查询参数
+//    传入组织机构ID，获取指定机构及子孙机构下的用户列表？？？？？？？？？？？还带有用户名查询参数
+
     @GetMapping("{id}")
     @ApiOperation(value = "根据用户ID查询用户，返回用户对象", notes = "查询用户")
     @ApiImplicitParam(name = "id", required = true, value = "用户的ID")
