@@ -1,0 +1,53 @@
+
+消息--发送--》交换机--发送给--》消息队列
+
+交换机的主要作用：接收消息，并根据路由键，将消息转发到相应的消息队列里面
+
+rabbitMQ有一个默认的交换机：AMQP default交换机
+有4种不同类型的交换机，就是路由策略不同
+
+topic交换机可以使用通配符，而direct不能使用通配符
+
+下面的一些命令为windows版本的命令，以后不要使用windows版本的，不好用
+windows版本安装，参考下面的链接，要注意安装路径不能有空格
+https://blog.csdn.net/icecoola_/article/details/75514640
+https://blog.csdn.net/qq_41950069/article/details/81346675
+
+注意windwos使用的话，需要通过管理员运行rabbitMQ命令行窗口，默认的目录显示为：
+C:\Windows\system32 此时输入一个盘符D:
+就会直接进入D:\ProgramFiles\RabbitMQ Server\rabbitmq_server-3.7.0\sbin这个目录
+然后输入：
+rabbitmq-service.bat  start     启动rabbitMQ
+rabbitmq-plugins enable rabbitmq_management   安装管理控制台
+rabbitmq-service.bat  stop  停止rabbitMQ
+rabbitmq-service.bat  start     启动rabbitMQ   安装管理控制台后，需要重启
+
+rabbitmq-plugins enable rabbitmq_web_stomp  开启stomp做集群的时候使用，运行这个命令后，要重启，重启后在控制台会看到多出来的61613端口被启用
+
+
+管控台的访问地址：
+http://ip:15672
+
+5672是消息服务的端口，15672是管控台的端口，25672是分布式服务器环境中，消息服务之间通讯的端口
+
+
+以后程序统一安装在D盘，建一个目录ProgramFiles，Program Files (x86)这种x86的目录，一辈子都不要再用了，Program Files这种恶心的带空格的也不要用了，导致我安装了又卸载，重新安装，完全浪费时间
+早上在安装RabbitMQ，老是提示ERLANG_HOME没有正确设置，但检查了是正确的。
+原来安装也没碰到这种问题。
+后来直接set ERLANG_HOME发现问题，Program Files中间的空格居然会导致路径不正常，那就用Progra~1解决吧！
+太坑爹了！
+
+
+rabbitMQ视频
+https://ke.qq.com/course/422865?taid=3628998257439697
+https://ke.qq.com/course/304104?taid=2302888449975272
+
+一个交换机会绑定多个消息队列，交换机会根据路由key，发送到指定的消息队列
+安装rabbitMQ除了要安装erlang环境，还需要安装socat安装包 socat-1.7.3.2.rpm
+安装好其他相关的支持环境及安装包后，就可以安装rabbitMQ了
+
+
+消息是否持久化，消息持久化就是消息交给消息队列，这个消息队列是否会把消息给持久化，比如说你重启了服务或者关掉了服务，下次启动，我们是否还可以拿到未消费的消息
+
+
+
