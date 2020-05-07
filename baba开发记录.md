@@ -1,3 +1,7 @@
+
+
+
+
 # 开发记录
 
 技术博客：
@@ -677,3 +681,22 @@ CREATE TABLE t_user  (
   UNIQUE KEY `username`(`username`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Compact;	
 ```
+
+
+
+## 数据库左连接，右连接，各种连接的区别：
+
+![clipboard.png](baba开发记录.assets/2767807589-5c122586a23c4_articlex.png)
+
+默认使用inner join,即不写inner join 直接select * from a, b where 
+
+
+
+
+
+
+
+
+
+
+

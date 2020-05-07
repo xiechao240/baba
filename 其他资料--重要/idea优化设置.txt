@@ -57,7 +57,7 @@ idea查看源码没有注释的问题
 https://blog.csdn.net/dataiyangu/article/details/95081787
 
 
-idea关于vue高亮显示配置
+idea关于vue高亮显示配置(注意：需要自己添加一个*.vue文件的打开方式为vue插件来打开)
 https://blog.csdn.net/weixin_41014370/article/details/79541278
 
 IntelliJ设置鼠标悬浮提示，最新的2020版本，已经没有此设置项，默认就会提示
