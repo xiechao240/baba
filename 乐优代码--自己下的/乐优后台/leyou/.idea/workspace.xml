@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:maven" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3aa693f8-3a5d-486c-b725-50c0dbf6161c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-api-gateway/src/main/java/com/leyou/config/GlobalCorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-api-gateway/src/main/java/com/leyou/config/GlobalCorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-authentication/leyou-authentication-service/src/main/java/com/leyou/auth/properties/JwtProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-authentication/leyou-authentication-service/src/main/java/com/leyou/auth/properties/JwtProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-goods-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-goods-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/controller/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-item/leyou-item-service/src/main/java/com/leyou/item/controller/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-search/src/main/java/com/leyou/pojo/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-search/src/main/java/com/leyou/pojo/Goods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-search/src/main/java/com/leyou/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-search/src/main/java/com/leyou/service/impl/SearchServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-search/src/test/java/com/leyou/client/ElasticsearchTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-search/src/test/java/com/leyou/client/ElasticsearchTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-secskill/leyou-seckill-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-secskill/leyou-seckill-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-upload/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-upload/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-upload/src/test/java/com/leyou/test/FdfsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-upload/src/test/java/com/leyou/test/FdfsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-user/leyou-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-user/leyou-user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leyou-user/leyou-user-service/src/main/java/com/leyou/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/leyou-user/leyou-user-service/src/main/java/com/leyou/user/controller/UserController.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\apache-maven-3.5.0\respo" />
+        <option name="mavenHome" value="D:/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="1.8" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aevTCF6QpojdV0RBJTBjnIs466" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="loginf&#9;PSI&#9;JAVA://com.leyou.filter.LoginFilter&#10;authcon&#9;FILE&#9;file://E:/code/乐优代码--自己下的/乐优后台/leyou/leyou-authentication/leyou-authentication-service/src/main/java/com/leyou/auth/controller/AuthController.java&#10;coo&#9;FILE&#9;file://E:/code/乐优代码--自己下的/乐优后台/leyou/leyou-common/src/main/java/com/leyou/utils/CookieUtils.java" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586504716051" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.LyUploadService">
+    <configuration name="LyApiGateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyApiGateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyAuthApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-authentication-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.auth.LyAuthApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyCartApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-cart" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.cart.LyCartApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyCommentsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-comments-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.comments.LyCommentsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyConfigApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-config" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.config.LyConfigApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyGoodsWebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-goods-web" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyGoodsWebApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyItemService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-item-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyItemService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyOrderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-order-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.order.LyOrderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyRegistry" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-registry" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyRegistry" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LySearchService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-search" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LySearchService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LySeckillApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-seckill-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.seckill.LySeckillApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LySmsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-sms" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.sms.LySmsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyUploadService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-upload" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyUploadService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LyUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="leyou-user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.user.LyUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.LyUploadService" />
+      <item itemvalue="Spring Boot.LyUserApplication" />
+      <item itemvalue="Spring Boot.LyAuthApplication" />
+      <item itemvalue="Spring Boot.LySearchService" />
+      <item itemvalue="Spring Boot.LySeckillApplication" />
+      <item itemvalue="Spring Boot.LyOrderApplication" />
+      <item itemvalue="Spring Boot.LyItemService" />
+      <item itemvalue="Spring Boot.LyGoodsWebApplication" />
+      <item itemvalue="Spring Boot.LyConfigApplication" />
+      <item itemvalue="Spring Boot.LyCommentsApplication" />
+      <item itemvalue="Spring Boot.LySmsApplication" />
+      <item itemvalue="Spring Boot.LyRegistry" />
+      <item itemvalue="Spring Boot.LyApiGateway" />
+      <item itemvalue="Spring Boot.LyCartApplication" />
+    </list>
+  </component>
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3aa693f8-3a5d-486c-b725-50c0dbf6161c" name="Default Changelist" comment="" />
+      <created>1584601134808</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584601134808</updated>
+      <workItem from="1584601136110" duration="4987000" />
+      <workItem from="1584668920353" duration="5729000" />
+      <workItem from="1584926093306" duration="12676000" />
+      <workItem from="1585192856632" duration="9145000" />
+      <workItem from="1585271253536" duration="9164000" />
+      <workItem from="1585559810269" duration="686000" />
+      <workItem from="1585627095696" duration="3430000" />
+      <workItem from="1585704565119" duration="14557000" />
+      <workItem from="1586415338804" duration="5969000" />
+      <workItem from="1587108881045" duration="1888000" />
+      <workItem from="1587173440269" duration="977000" />
+      <workItem from="1587174868764" duration="487000" />
+      <workItem from="1587175377174" duration="780000" />
+      <workItem from="1587176189698" duration="649000" />
+      <workItem from="1587450676805" duration="6085000" />
+      <workItem from="1587517065091" duration="9755000" />
+      <workItem from="1587535620393" duration="2790000" />
+      <workItem from="1587543625385" duration="1220000" />
+      <workItem from="1587603758923" duration="1277000" />
+      <workItem from="1587628168989" duration="1962000" />
+      <workItem from="1587690145350" duration="3222000" />
+      <workItem from="1587709012848" duration="1800000" />
+      <workItem from="1587714448065" duration="1211000" />
+      <workItem from="1587720114113" duration="197000" />
+      <workItem from="1587720368421" duration="577000" />
+      <workItem from="1587863046647" duration="1947000" />
+      <workItem from="1587866590961" duration="1167000" />
+      <workItem from="1587871766536" duration="620000" />
+      <workItem from="1587872513722" duration="598000" />
+      <workItem from="1587949307110" duration="631000" />
+      <workItem from="1587970862203" duration="367000" />
+      <workItem from="1587971272591" duration="598000" />
+      <workItem from="1587978663778" duration="598000" />
+      <workItem from="1588035813923" duration="1243000" />
+      <workItem from="1588121724615" duration="438000" />
+      <workItem from="1588122253075" duration="1482000" />
+      <workItem from="1588141427399" duration="1939000" />
+      <workItem from="1588208455408" duration="1252000" />
+      <workItem from="1588754187087" duration="1802000" />
+      <workItem from="1588834019770" duration="1350000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="680" y="219" key="FileChooserDialogImpl" timestamp="1587459518615">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="680" y="219" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587459518615" />
+    <state x="385" y="78" key="SettingsEditor" timestamp="1587176252758">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="385" y="78" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1587176252758" />
+    <state x="563" y="305" key="com.intellij.ide.util.TipDialog" timestamp="1587176190038">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="563" y="305" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587176190038" />
+    <state x="579" y="7" width="1008" height="914" key="find.popup" timestamp="1587871962980">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="579" y="7" width="1008" height="914" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587871962980" />
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1587534743396">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587534743396" />
+  </component>
+</project>
