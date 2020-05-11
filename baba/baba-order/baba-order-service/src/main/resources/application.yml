@@ -75,3 +75,7 @@ feign:
       min-request-size: 2048 # 设置触发压缩的大小下限
     response:
       enabled: true # 开启响应压缩
+leyou:
+  worker:
+    workerId: 1
+    datacenterId: 1

@@ -16,6 +16,8 @@ https://www.cnblogs.com/xifengxiaoma/ 优秀博客
 
 https://www.cnblogs.com/huanzi-qch/p/10249227.html 优秀博客
 
+https://blog.csdn.net/lyj2018gyq/article/details/84980103 乐优商城最终篇
+
 # 端口及域名设计：
 
 说明：
@@ -91,6 +93,12 @@ C:\Windows\System32\drivers\etc\hosts 文件中增加如下内容（Linux下的h
 ![image-20200418091736443](baba开发记录.assets/image-20200418091736443.png)
 
 以上为springcloud官方网站提供的springcloud与springboot匹配版本对应表，切记一定严格按照此配对使用
+
+# springcloud使用：
+
+Spring Cloud Gateway VS Zuul 比较，怎么选择？
+
+https://www.cnblogs.com/javastack/p/10844649.html    看来要优先考虑使用SpringCloud Gateway
 
 # springboot使用
 
@@ -290,6 +298,12 @@ resultMap实现一对一，一对多，多对多的查询
 
 
 # Swagger使用经验：
+
+ **knife4j:**
+
+https://doc.xiaominfo.com  推荐使用 knife4j 这个是长期有维护的，适用于微服务架构的框架，也是基于swagger
+
+
 
 总结：
 
@@ -613,6 +627,13 @@ Spring Data Redis 提供了一个工具类：RedisTemplate。里面封装了对�
 
 # 3.数据库设计经验
 
+https://item.taobao.com/item.htm?spm=a21ka.8063459.319593.40.44f55602C0ofx0&id=8720562031
+https://item.jd.com/4155894.html#product-detail
+从以上淘宝，京东的商品详情页的地址可以看出，京东使用提自增的搞法，淘宝使用的是自研的算法id来生成商品的id
+下一次做项目，所有id都采用uuid不要再采用别的了，如果你的项目做了分库分表，数据迁移，使用自增，都玩不转了，**像订单id还是可以采用雪花算法来做**
+
+
+
 ## **一对一的表，比如订单状态表的主键可以直接来自于订单表**
 
 一对一的表，也可以设计成关联表，比如订单表--》订单状态表
@@ -659,7 +680,7 @@ CREATE TABLE `tb_stock`  (
 对于小系统来说，这是一个简单有效的方案，不过也就不符合讨论情形中的高并发的场景。
 首先，数据库自增ID需要锁表
 而且，UUID的生成强依赖于数据库，每次获取UUID都需要经过一次数据库的调用，性能损耗很大。
-其实，在这种大并发的场景中，数据库的主键都不建议使用数据库的自增ID。因为虽然这个简单，但是如果随便业务发展，需要对原有的数据进行重新分库分表的时候，可能会产生主键冲突，这影响了系统的平滑扩容，容易埋下坑。 
+其实，在这种大并发的场景中，数据库的主键都不建议使用数据库的自增ID。因为虽然这个简单，但是如果随着业务发展，需要对原有的数据进行重新分库分表的时候，可能会产生主键冲突，这影响了系统的平滑扩容，容易埋下坑。 
 
 
 
