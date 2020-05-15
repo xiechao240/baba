@@ -3,6 +3,10 @@
 https://www.jetbrains.com/idea/download/other.html
 
 
+idea插件大全（很实用，注意里面有mybatis的插件）
+https://blog.csdn.net/weixin_43570367/article/details/103978005
+
+
 java 在新建文件后，启动过程中发现java文件左上角出现小叉号
 File->Settings->builde,Excution,Deployment->compiler->excludes
 在右侧的Path中选中文件，删除，即可解决。  即把打小叉的这个文件删除，因为这个文件被忽略了
@@ -21,7 +25,7 @@ https://blog.csdn.net/weixin_36562804/article/details/86743975
 ***所以还是使用2019.1.4版本吧
 2019.3.3依然很卡！添加依赖不能自动提示，如果需要提示经常需要输入几次，甚至等待5-10秒
 
-我一直是我一个人的问题，原来大家都这样，pom不提示，而且非常卡
+我一直以为是我一个人的问题，原来大家都这样，pom不提示，而且非常卡
 
 对的，很久之前从2019.1换到.2发现maven有bug，然后现在换了.3发现依赖又不提示，太坑了，看来还是要退回.1版本。。。
 
@@ -67,12 +71,12 @@ https://blog.csdn.net/u012883534/article/details/79801351
 https://jingyan.baidu.com/article/d621e8daca64d96864913f09.html
 
 IDEA 设置泛型检查
-https://blog.csdn.net/codejas/article/details/78657560  不要使用这个，这个是配置检不检查
+https://blog.csdn.net/codejas/article/details/78657560  不要使用这个，这个是配置检不检查，2020版本不需要配置这个，但2019版本需要配置这个，默认颜色是黄色，白色背景根本看不清，直接设置成错误的error，即红色
 2019设置项目的jdk   idea使用的是1.8的JDK版本，使用泛型却报错？
 https://blog.csdn.net/csdn_qiang17/article/details/90607751
 
 ————————————————————————————下面的才是配置泛型检查时，提示的颜色的
-我是这样设置的：
+我是这样设置的（2020版本才使用下面的设置）：
 Editor-->Color Scheme-->General->Errors and Warnings->Weak Warning  选择右边的Effects
 将颜色设置为：FF00FF    红色：FF0000（还是不要设置成这个颜色）
 
@@ -131,7 +135,7 @@ Editor Tabs
 
 
 IntelliJ IDEA怎么设置代码自动提示快捷键,设置快捷键为Alt+/ 自动代码提示，跟eclipse一样的
-File--》Setting--》Keymap--》Main menu--》Code--》Code Completion
+File--》Setting--》Keymap--》Main menu--》Code--》Completion
 
 先删除Cyclic Expand Word中的Alt+/，再设置 Basic为Alt+/即可
 https://jingyan.baidu.com/article/91f5db1b73d64c1c7f05e3dc.html

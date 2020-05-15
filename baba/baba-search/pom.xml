@@ -38,10 +38,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-        </dependency>
+<!--        首先下面的版本现在下不到，而且你要使用elasticsearch7.6.2那么springboot需要2.3.x目前这个版本在rc1阶段20200514查询得知-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>-->
+<!--            <version>4.0.0.RELEASE</version>-->
+<!--        </dependency>-->
 <!--        注意不要使用下面的启动器，不是最新的，使用的elasticsearch是6.x的版本，我目前项目引入的是最新的7.x的版本，有很多多冲突，-->
 <!--        springcloud官网上有spring-boot-starter-data-elasticsearch 4.x的pre版本，等以后稳定了，再升级吧-->
 <!--        <dependency>-->

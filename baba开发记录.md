@@ -18,6 +18,11 @@ https://www.cnblogs.com/huanzi-qch/p/10249227.html 优秀博客
 
 https://blog.csdn.net/lyj2018gyq/article/details/84980103 乐优商城最终篇
 
+# 未解决的问题：
+
+1. 使用页面静态化，当后台改了商品价格，通过消息队列发送商品静态化微服务去变更页面至nginx服务器的html目录下，但是此时用户打开的商品页面未刷新，此时结算是按原来的结算，还是按最新的价格结算呢？
+2. 
+
 # 端口及域名设计：
 
 说明：
@@ -156,6 +161,30 @@ responseBody表示服务器返回的时候以一种什么样的方式进行返�
 注意：spring Validated 与hibernate validator的区别
 
 https://blog.csdn.net/aierwa/article/details/94896720
+
+https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个，其实hibernate validator框架都不用引入，默认在spring-boot-starter-web启动器里面引入了，但是在比如 baba-item-interface工程，这样的只包含实体及接口，就不适合引入web启动器了，还是引入
+
+```
+<dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+</dependency>
+```
+
+![1527247492172](baba开发记录.assets/1527247492172.png)
+
+使用校验框架返回的结果，自己写一个统一的拦截器统一处理一下也可以，不写也可以，因为上面的信息，有规律，都是400，如果是400，就解析这样的json数组即可，还是不要后台来写了吧
+
+## 导包：
+
+当interface工程需要使用httpservletrequest对象，则是servlet对象，此时我们不要再去找什么servlet依赖了，直接导下面的即可
+
+```xml
+<dependency>
+    <groupId>org.apache.tomcat.embed</groupId>
+    <artifactId>tomcat-embed-core</artifactId>
+</dependency>
+```
 
 
 

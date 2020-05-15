@@ -37,6 +37,8 @@ public class UserController {
     @ApiImplicitParam(name = "id", required = true, value = "用户的ID")
     //注意返回User对象，在swagger里面可以直接看到此User模型
     public ResponseEntity<User> queryUserById(@PathVariable("id")String id){
+        List list = new ArrayList();
+
         User user = userService.getById(id);
         if(user == null){
             return ResponseEntity.notFound().build();

@@ -32,8 +32,8 @@ public class CartServiceImpl implements CartService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     @Autowired
     private GoodsClient goodsClient;
