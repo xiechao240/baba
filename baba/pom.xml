@@ -18,6 +18,7 @@
         <module>baba-search</module>
         <module>baba-item</module>
         <module>baba-org</module>
+        <module>baba-auth</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -166,21 +167,22 @@
 <!--        </dependency>-->
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+<!--    注意pom工程里面不能加如下的插件-->
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
     <repositories>
-        <repository>
-            <id>spring-libs-snapshot</id>
-            <name>Spring Snapshot Repository</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-        </repository>
+<!--        <repository>-->
+<!--            <id>spring-libs-snapshot</id>-->
+<!--            <name>Spring Snapshot Repository</name>-->
+<!--            <url>https://repo.spring.io/libs-milestone</url>-->
+<!--        </repository>-->
         <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
@@ -190,5 +192,4 @@
             </snapshots>
         </repository>
     </repositories>
-
 </project>

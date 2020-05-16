@@ -36,4 +36,14 @@
 <!--            <artifactId>swagger2-spring-boot-starter</artifactId>-->
 <!--        </dependency>-->
     </dependencies>
+
+<!--    请注意接口工程，不能使用下面的插件，因为没有springboot的启动类-->
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 </project>
