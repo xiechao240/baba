@@ -1,8 +1,8 @@
-package com.leyou.auth.test;
+package com.baba.auth.test;
 
-import com.leyou.auth.entity.UserInfo;
-import com.leyou.auth.utils.JwtUtils;
-import com.leyou.auth.utils.RsaUtils;
+import com.baba.auth.entity.UserInfo;
+import com.baba.auth.utils.JwtUtils;
+import com.baba.auth.utils.RsaUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,27 +17,33 @@ import java.util.Date;
  */
 public class JwtTest {
 
-    private static final String pubKeyPath = "E:\\temp\\rsa\\rsa.pub";
+    private static final String pubKeyPath = "E:\\baba\\rsa\\rsa.pub";
 
-    private static final String priKeyPath = "E:\\temp\\rsa\\rsa.pri";
+    private static final String priKeyPath = "E:\\baba\\rsa\\rsa.pri";
 
     private PublicKey publicKey;
 
     private PrivateKey privateKey;
 
+
     @Test
     public void testRsa() throws Exception {
+        //生成公钥与私钥
+        //第一次运行，请将下面的@Before方法注掉
         RsaUtils.generateKey(pubKeyPath, priKeyPath, "234");
     }
 
+    //供下面的方法测试的前置条件
     @Before
     public void testGetRsa() throws Exception {
         this.publicKey = RsaUtils.getPublicKey(pubKeyPath);
         this.privateKey = RsaUtils.getPrivateKey(priKeyPath);
     }
 
+    //生成tokean
     @Test
     public void testGenerateToken() throws Exception {
+        System.out.println(privateKey);
         // 生成token
         String token = JwtUtils.generateToken(new UserInfo(20L, "jack"), privateKey, 5);
         System.out.println("token = " + token);

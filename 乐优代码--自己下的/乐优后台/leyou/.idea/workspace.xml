@@ -33,18 +33,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aa693f8-3a5d-486c-b725-50c0dbf6161c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/ObjectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/RsaUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/xuecheng/test/CreateJWTTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/xuecheng/test/ParseJwtTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../第18天代码/leyou/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba/baba-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-common/src/main/java/com/baba/common/utils/JsonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-common/src/main/java/com/baba/common/utils/JsonUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-user/baba-user-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-user/baba-user-interface/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-user/baba-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-user/baba-user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba开发记录.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba开发记录.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -88,46 +97,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leyou-cart/pom.xml">
+        <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/src/test/java/com/leyou/auth/test/JwtTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+            <state relative-caret-position="253">
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leyou-common/pom.xml">
+        <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+            <state relative-caret-position="115">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/leyou-authentication/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6003">
-              <caret line="261" column="21" selection-start-line="257" selection-start-column="8" selection-end-line="261" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leyou-user/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="138">
+              <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leyou-user/leyou-user-service/pom.xml">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="77" selection-start-line="77" selection-end-line="77" />
+            <state relative-caret-position="214">
+              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
             </state>
           </provider>
         </entry>
@@ -139,6 +139,10 @@
       <find>redisTemplate</find>
       <find>redis</find>
       <find>LoginInterceptor</find>
+      <find>jwt.version</find>
+      <find>jackson</find>
+      <find>jwt</find>
+      <find>thymeleaf.version</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,6 +153,7 @@
       <list>
         <option value="$PROJECT_DIR$/leyou-cart/src/main/java/com/leyou/cart/service/impl/CartServiceImpl.java" />
         <option value="$PROJECT_DIR$/leyou-cart/pom.xml" />
+        <option value="$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/src/test/java/com/leyou/auth/test/JwtTest.java" />
       </list>
     </option>
   </component>
@@ -204,18 +209,24 @@
             <path>
               <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
               <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
               <item name="leyou-common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leyou" type="462c0819:PsiDirectoryNode" />
-              <item name="leyou-user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leyou" type="462c0819:PsiDirectoryNode" />
-              <item name="leyou-user" type="462c0819:PsiDirectoryNode" />
-              <item name="leyou-user-service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
@@ -266,7 +277,39 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.LyUploadService">
+  <component name="RunManager" selected="JUnit.JwtTest.testGenerateToken">
+    <configuration name="JwtTest.testGenerateToken" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="leyou-authentication-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.leyou.auth.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.leyou.auth.test" />
+      <option name="MAIN_CLASS_NAME" value="com.leyou.auth.test.JwtTest" />
+      <option name="METHOD_NAME" value="testGenerateToken" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtTest.testRsa" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="leyou-authentication-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.leyou.auth.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.leyou.auth.test" />
+      <option name="MAIN_CLASS_NAME" value="com.leyou.auth.test.JwtTest" />
+      <option name="METHOD_NAME" value="testRsa" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LyApiGateway" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="leyou-api-gateway" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.leyou.LyApiGateway" />
@@ -380,7 +423,15 @@
       <item itemvalue="Spring Boot.LyRegistry" />
       <item itemvalue="Spring Boot.LyApiGateway" />
       <item itemvalue="Spring Boot.LyCartApplication" />
+      <item itemvalue="JUnit.JwtTest.testRsa" />
+      <item itemvalue="JUnit.JwtTest.testGenerateToken" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.JwtTest.testGenerateToken" />
+        <item itemvalue="JUnit.JwtTest.testRsa" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SshConsoleOptionsProvider">
     <option name="myEncoding" value="UTF-8" />
@@ -439,18 +490,30 @@
       <workItem from="1589507559758" duration="596000" />
       <workItem from="1589514183254" duration="2306000" />
       <workItem from="1589608409427" duration="2612000" />
-      <workItem from="1589618059632" duration="1082000" />
+      <workItem from="1589618059632" duration="3484000" />
+      <workItem from="1589794491457" duration="2087000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="JwtTest_testRsa - 2020.05.18 at 17h 35m 26s.xml">
+      <configuration name="JwtTest.testRsa" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JwtTest_testRsa - 2020.05.18 at 17h 36m 11s.xml">
+      <configuration name="JwtTest.testRsa" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JwtTest_testGenerateToken - 2020.05.18 at 17h 36m 22s.xml">
+      <configuration name="JwtTest.testGenerateToken" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9119000" />
+    <option name="totallyTimeSpent" value="13608000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2719486" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4159529" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -458,25 +521,26 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run Dashboard" order="14" />
+      <window_info anchor="bottom" id="Messages" order="0" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.055309735" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.2633833" />
+      <window_info anchor="right" id="Maven" order="3" visible="true" weight="0.062633835" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -588,20 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leyou-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6003">
-          <caret line="261" column="21" selection-start-line="257" selection-start-column="8" selection-end-line="261" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leyou-user/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -611,8 +661,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leyou-user/leyou-user-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="77" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="1748">
+          <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="61" column="47" selection-start-line="61" selection-start-column="47" selection-end-line="61" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/src/test/java/com/leyou/auth/test/JwtTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
         </state>
       </provider>
     </entry>

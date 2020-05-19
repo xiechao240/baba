@@ -40,7 +40,7 @@ zuul:
 #        item-service: /item/**
 #        search-service: /search/**
     user-service: /user/**
-#    auth-service: /auth/**
+    auth-service: /auth/**
   add-host-header: true #携带请求本身的head头信息
   sensitive-headers: #匹配禁止使用的头信息，这里设置为null，否则set-cookie无效
   ignored-services:

@@ -186,7 +186,29 @@ https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个�
 </dependency>
 ```
 
+## 部署：
 
+打成jar包，目前在公司电脑上使用：java -jar  xxx.jar启动报错，报什么log4j2.yml初始化失败，
+
+```xml
+<exclusions>
+	<!-- 切换log4j2日志读取，排除springboot默认的logback -->
+	<exclusion>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-logging</artifactId>
+	</exclusion>
+    <exclusion>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-log4j2</artifactId>
+	</exclusion>
+</exclusions>
+```
+
+当你把以上的两个都屏蔽，启动就停在如下的页面：
+
+![image-20200516172355687](baba开发记录.assets/image-20200516172355687.png)
+
+搞了1个小时，是我电脑上别人乱安装jdk导致目前调都调不好的原因，把jar包打好，在别人电脑上一点问题都没有，根本就不用去排除什么log4j的包之类的，也不用添加log4j2.yml文件
 
 # JDK
 
@@ -471,6 +493,8 @@ http://www.cnplugins.com/devtool/gitzip-for-github/
 ​						baba-user-service
 
 则此时打包方式为，使用baba-user打包，而不是单独去打baba-user-interface或者baba-user-service，单独打会报错，由此类推，可以对顶级聚合工程baba打包，这样，所有的子模块，可以一次性打包完成
+
+
 
 # 分布式文件系统：
 
