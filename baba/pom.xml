@@ -43,7 +43,7 @@
 
         <!--<druid.starter.version>1.1.21</druid.starter.version>  暂未采用druid,目前使用最牛逼的HiKari-->
         <mysql.version>5.1.48</mysql.version><!-- 使用最新版本，避免再出现与MyBatis Plus3.3.1以上版本出现的不兼容LocalDateTime的问题 -->
-        <jackson.version>2.9.7</jackson.version>
+        <jackson.version>2.11.0</jackson.version>
         <jwt.version>0.9.1</jwt.version>
         <mybatis-plus-boot-starter.version>3.3.1.tmp</mybatis-plus-boot-starter.version>
         <mybatis-plus-generator.version>3.3.1.tmp</mybatis-plus-generator.version>
