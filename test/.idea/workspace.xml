@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c9b643a3-cf45-42fa-8a6c-ba40f91910ad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../baba/baba-common/src/main/java/com/baba/common/utils/DateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/PropertiesApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/entity/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/CookieUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtConstans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/ObjectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/RsaUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-properties/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/.idea/libraries/Maven__org_jetbrains_annotations_19_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../baba.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba.pdm" beforeDir="false" afterPath="$PROJECT_DIR$/../baba.pdm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-auth/baba-auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/baba-common/src/main/java/com/baba/common/utils/UUIDGeneratorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/baba-common/src/main/java/com/baba/common/utils/UUIDGeneratorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../baba/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../baba/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/乐优后台/leyou/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/乐优后台/leyou/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-center/ly-auth-center.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-center/ly-auth-center.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/entity/JwtConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/entity/UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/JwtUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/ObjectUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/RsaUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-cart/ly-cart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-cart/ly-cart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/ly-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/ly-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/target/classes/com/leyou/common/pojo/PageResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/CookieUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/IdWorker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/JsonUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/NumberUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/ly-gateway.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/ly-gateway.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/target/classes/com/leyou/LyGateway.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/FilterProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/GlobalCorsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/JwtProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-gateway/target/classes/com/leyou/filter/LoginFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-item/ly-item-interface/ly-item-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-item/ly-item-interface/ly-item-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-item/ly-item-service/ly-item-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-item/ly-item-service/ly-item-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-order/ly-order.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-order/ly-order.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-search/ly-search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-search/ly-search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/ly-user-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/ly-user-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/src/main/java/com/leyou/user/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-interface/src/main/java/com/leyou/user/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-service/ly-user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-service/ly-user-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../乐优代码--自己下的/第18天代码/leyou/ly-user/ly-user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../其他资料--重要/idea优化设置.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../其他资料--重要/idea优化设置.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../其他资料--重要/技术记录.md" beforeDir="false" afterPath="$PROJECT_DIR$/../其他资料--重要/技术记录.md" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/test-properties/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/PropertiesApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#334#335#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/controller/AuthController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="805">
+              <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/CookieUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/impl/AuthServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/config/JwtProperties.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtConstans.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1794">
+              <caret line="86" column="27" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/entity/UserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>prop</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/PropertiesApplication.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/entity/UserInfo.java" />
+        <option value="$PROJECT_DIR$/test-properties/pom.xml" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtUtils.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/config/JwtProperties.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/AuthService.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/impl/AuthServiceImpl.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/CookieUtils.java" />
+        <option value="$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/controller/AuthController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-4" />
+    <option name="y" value="-4" />
+    <option name="width" value="1368" />
+    <option name="height" value="732" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="test-properties" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="D:/BaiduNetdiskDownload/学成在线系统/18-用户授权/代码/xcEduService01" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.baba.test.utils" />
+      <recent name="com.baba.test.service.impl" />
+      <recent name="com.baba.test.service" />
+      <recent name="com.baba.test.controller" />
+      <recent name="com.baba.test.entity" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\baba\test\test-properties\src\main\java\com\baba\test\utils" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="PropertiesApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="test-properties" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baba.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.baba.test.PropertiesApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.PropertiesApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c9b643a3-cf45-42fa-8a6c-ba40f91910ad" name="Default Changelist" comment="" />
+      <created>1589858992162</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589858992162</updated>
+      <workItem from="1589858993685" duration="2801000" />
+      <workItem from="1589939315785" duration="597000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3398000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17719486" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28871682" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/test.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4232">
+          <caret line="184" column="18" selection-start-line="184" selection-start-column="18" selection-end-line="184" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="42" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/RsaUtils.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/ObjectUtils.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils.java" />
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/AuthService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="58" lean-forward="true" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/PropertiesApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#334#335#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/controller/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="47" column="54" selection-start-line="47" selection-start-column="54" selection-end-line="47" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/CookieUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/service/impl/AuthServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="25" column="18" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtConstans.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/utils/JwtUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1794">
+          <caret line="86" column="27" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/entity/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-properties/src/main/java/com/baba/test/config/JwtProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

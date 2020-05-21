@@ -2,6 +2,7 @@ package com.leyou.user.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
+import org.intellij.lang.annotations.Pattern;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

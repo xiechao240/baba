@@ -1,12 +1,14 @@
 package com.baba.auth.utils;
 
 import com.baba.auth.entity.UserInfo;
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.joda.time.DateTime;
 
+import javax.crypto.SecretKey;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
@@ -28,7 +30,8 @@ public class JwtUtils {
         return Jwts.builder()
                 .claim(JwtConstans.JWT_KEY_ID, userInfo.getId())
                 .claim(JwtConstans.JWT_KEY_USER_NAME, userInfo.getUsername())
-                .setExpiration(DateTime.now().plusDays(expireMinutes).toDate())
+//                .setExpiration(DateTime.now().plusDays(expireMinutes).toDate()) //设置过期时间按天指定
+                .setExpiration(DateTime.now().plusMinutes(expireMinutes).toDate())//设置过期时间按分钟指定
                 .signWith(SignatureAlgorithm.RS256, privateKey)
                 .compact();
     }
@@ -76,6 +79,8 @@ public class JwtUtils {
                 .parseClaimsJws(token);
     }
 
+
+
     /**
      * 获取token中的用户信息
      *
@@ -89,7 +94,8 @@ public class JwtUtils {
         Claims body = claimsJws.getBody();
         return new UserInfo(
                 ObjectUtils.toLong(body.get(JwtConstans.JWT_KEY_ID)),
-                ObjectUtils.toString(body.get(JwtConstans.JWT_KEY_USER_NAME))
+                ObjectUtils.toString(body.get(JwtConstans.JWT_KEY_USER_NAME)),
+                ObjectUtils.toInt(body.get(JwtConstans.JWT_EXP))
         );
     }
 

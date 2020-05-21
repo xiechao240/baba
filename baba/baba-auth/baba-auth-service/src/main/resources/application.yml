@@ -6,7 +6,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:10100/eureka
+      defaultZone: http://127.0.0.1:10010/eureka
     registry-fetch-interval-seconds: 10
   instance:
     lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
@@ -14,3 +14,10 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
+baba:
+  jwt:
+    secret: ly@Login(Auth}*^31)&baba% # 登录校验的密钥
+    pubKeyPath: E:/baba/rsa/rsa.pub # 公钥地址
+    priKeyPath: E:/baba/rsa/rsa.pri # 私钥地址
+    expire: 1 # 过期时间,单位分钟
+    cookieName: BABA_TOKEN

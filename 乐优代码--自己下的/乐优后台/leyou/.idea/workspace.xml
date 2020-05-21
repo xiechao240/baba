@@ -33,28 +33,75 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3aa693f8-3a5d-486c-b725-50c0dbf6161c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/ObjectUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/RsaUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/xuecheng/test/CreateJWTTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/xuecheng/test/ParseJwtTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../第18天代码/leyou/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../baba/baba-common/src/main/java/com/baba/common/utils/DateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/PropertiesApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/config/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/entity/UserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/utils/CookieUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/utils/JwtConstans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/utils/JwtUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/utils/ObjectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/java/com/baba/test/utils/RsaUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test-properties/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../test/test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../第18天代码/leyou/.idea/libraries/Maven__org_jetbrains_annotations_19_0_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba.pdm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba.pdm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/entity/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtConstans.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/main/java/com/baba/auth/utils/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-common/src/test/java/com/baba/auth/test/JwtTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/AuthApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-interface/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/baba-item-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba/baba-item/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-item/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/java/com/baba/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-auth/baba-auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../baba/baba-common/src/main/java/com/baba/common/utils/UUIDGeneratorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/baba-common/src/main/java/com/baba/common/utils/UUIDGeneratorUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../baba/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../baba开发记录.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../baba开发记录.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-center/ly-auth-center.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-center/ly-auth-center.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/entity/JwtConstants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/entity/UserInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/JwtUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/ObjectUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-auth/ly-auth-common/target/classes/com/leyou/auth/utlis/RsaUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-cart/ly-cart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-cart/ly-cart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/ly-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/ly-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/target/classes/com/leyou/common/pojo/PageResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/CookieUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/IdWorker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/JsonUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-common/target/classes/com/leyou/common/utils/NumberUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/ly-gateway.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/ly-gateway.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/target/classes/com/leyou/LyGateway.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/FilterProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/GlobalCorsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/target/classes/com/leyou/config/JwtProperties.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-gateway/target/classes/com/leyou/filter/LoginFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-item/ly-item-interface/ly-item-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-item/ly-item-interface/ly-item-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-item/ly-item-service/ly-item-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-item/ly-item-service/ly-item-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-order/ly-order.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-order/ly-order.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-search/ly-search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-search/ly-search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/ly-user-interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/ly-user-interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/src/main/java/com/leyou/user/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-interface/src/main/java/com/leyou/user/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-service/ly-user-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-service/ly-user-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../第18天代码/leyou/ly-user/ly-user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../其他资料--重要/idea优化设置.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../其他资料--重要/idea优化设置.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../其他资料--重要/技术记录.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../其他资料--重要/技术记录.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/leyou-user/leyou-user-interface/target/" />
@@ -118,16 +165,34 @@
         <entry file="file://$PROJECT_DIR$/leyou-authentication/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+              <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1656">
+              <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-service/src/main/java/com/leyou/auth/controller/AuthController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1265">
+              <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/src/main/java/com/leyou/auth/utils/JwtUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+            <state relative-caret-position="182">
+              <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -143,6 +208,8 @@
       <find>jackson</find>
       <find>jwt</find>
       <find>thymeleaf.version</find>
+      <find>validatio</find>
+      <find>servlet</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,10 +252,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="-4" />
+    <option name="y" value="-4" />
+    <option name="width" value="1368" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectId" id="1aevTCF6QpojdV0RBJTBjnIs466" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -197,8 +264,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -221,7 +286,108 @@
               <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
               <item name="leyou" type="462c0819:PsiDirectoryNode" />
               <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-common" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
               <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leyou" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication" type="462c0819:PsiDirectoryNode" />
+              <item name="leyou-authentication-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leyou" type="b2602c69:ProjectViewProjectNode" />
@@ -236,6 +402,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -251,7 +419,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1586504716051" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../baba" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/leyou" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -409,6 +577,8 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.JwtTest.testRsa" />
+      <item itemvalue="JUnit.JwtTest.testGenerateToken" />
       <item itemvalue="Spring Boot.LyUploadService" />
       <item itemvalue="Spring Boot.LyUserApplication" />
       <item itemvalue="Spring Boot.LyAuthApplication" />
@@ -423,8 +593,6 @@
       <item itemvalue="Spring Boot.LyRegistry" />
       <item itemvalue="Spring Boot.LyApiGateway" />
       <item itemvalue="Spring Boot.LyCartApplication" />
-      <item itemvalue="JUnit.JwtTest.testRsa" />
-      <item itemvalue="JUnit.JwtTest.testGenerateToken" />
     </list>
     <recent_temporary>
       <list>
@@ -492,6 +660,8 @@
       <workItem from="1589608409427" duration="2612000" />
       <workItem from="1589618059632" duration="3484000" />
       <workItem from="1589794491457" duration="2087000" />
+      <workItem from="1589857132232" duration="1749000" />
+      <workItem from="1589939319523" duration="597000" />
     </task>
     <servers />
   </component>
@@ -507,13 +677,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13608000" />
+    <option name="totallyTimeSpent" value="15954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4159529" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34528908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -697,14 +867,28 @@
     <entry file="file://$PROJECT_DIR$/leyou-authentication/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="6" column="40" lean-forward="true" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
+          <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
+        <state relative-caret-position="1656">
+          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-service/src/main/java/com/leyou/auth/controller/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1265">
+          <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leyou-authentication/leyou-authentication-common/src/main/java/com/leyou/auth/utils/JwtUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
         </state>
       </provider>
     </entry>

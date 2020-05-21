@@ -9,12 +9,20 @@ public class UserInfo {
 
     private String username;
 
+    private Integer exp;
+
     public UserInfo() {
     }
 
     public UserInfo(Long id, String username) {
         this.id = id;
         this.username = username;
+    }
+
+    public UserInfo(Long id, String username, Integer exp) {
+        this.id = id;
+        this.username = username;
+        this.exp = exp;
     }
 
     public Long getId() {
@@ -31,5 +39,14 @@ public class UserInfo {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+
+    public Integer getExp() {
+        return exp;
+    }
+
+    public void setExp(Integer exp) {
+        this.exp = exp;
     }
 }

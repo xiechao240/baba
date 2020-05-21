@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.baba.test</groupId>
+    <artifactId>test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>test-properties</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+        <!--        <version>2.0.6.RELEASE</version>-->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding><!--设置maven编译编码-->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!--此版本匹配的springboot为2.0.x-->
+        <!--        <spring-cloud.version>Finchley.SR2</spring-cloud.version>-->
+        <!--此版本匹配的springboot为2.2.x-->
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+
+
+        <!--<druid.starter.version>1.1.21</druid.starter.version>  暂未采用druid,目前使用最牛逼的HiKari-->
+        <mysql.version>5.1.48</mysql.version><!-- 使用最新版本，避免再出现与MyBatis Plus3.3.1以上版本出现的不兼容LocalDateTime的问题 -->
+        <jackson.version>2.9.7</jackson.version>
+        <jwt.version>0.9.1</jwt.version>
+        <mybatis-plus-boot-starter.version>3.3.1.tmp</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.3.1.tmp</mybatis-plus-generator.version>
+        <!--<mybatis.starter.version>1.3.2</mybatis.starter.version>-->
+        <!--<mapper.starter.version>2.0.2</mapper.starter.version>-->
+        <!--<pageHelper.starter.version>1.2.3</pageHelper.starter.version>-->
+        <baba.latest.version>1.0.0-SNAPSHOT</baba.latest.version><!--所有子项目使用此版本号，引入版本时，都默认导入最新的版本-->
+        <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+        <!--***注意swagger采用如下的这个版本，spring4all社区开发的,使用起来也很繁琐 -->
+        <swagger-spring-boot-starter.version>1.9.1.RELEASE</swagger-spring-boot-starter.version>
+        <!--***注意swagger采用如下的这个版本，io.github.wilson-he开发的，可以在yml里面书写配置，不用使用SwaggerConfig类了 -->
+        <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
+        <javax.validation.version>2.0.1</javax.validation.version>
+        <!--        <elasticsearch.version>7.6.2</elasticsearch.version>-->
+    </properties>
+
+    <!--spring-boot-starter-jdbc是springboot提供的，但是如果引入了mybatis-spring-boot-starter，-->
+    <!--就不再需要单独引入spring-boot-starter-jdbc了，这是由于mybatis已经包含了此依赖,目前我采用的是mybatis-plus的启动器，注意HiKari-->
+
+    <dependencyManagement>
+        <dependencies>
+            <!--            <dependency>-->
+            <!--                <groupId>javax.validation</groupId>-->
+            <!--                <artifactId>validation-api</artifactId>-->
+            <!--                <version>${javax.validation.version}</version>-->
+            <!--            </dependency>-->
+            <!-- springCloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--mybatis plus启动器-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${mybatis-plus-generator.version}</version>
+            </dependency>
+            <!-- mybatis启动器
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.starter.version}</version>
+            </dependency>-->
+            <!-- 通用Mapper启动器
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.starter.version}</version>
+            </dependency>-->
+            <!-- 分页助手启动器
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pageHelper.starter.version}</version>
+            </dependency>-->
+            <!-- mysql驱动,因有些工程不需要连接mysql数据库，所以不配置到最下面的dependencies中，只在此控制版本即可 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--FastDFS客户端-->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastDFS.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger-ui.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.spring4all/swagger-spring-boot-starter 这种方式无法在zuul网关yml中书写配置达到支持多个微服务 -->
+            <!--            <dependency>-->
+            <!--                <groupId>com.spring4all</groupId>-->
+            <!--                <artifactId>swagger-spring-boot-starter</artifactId>-->
+            <!--                <version>${swagger-spring-boot-starter.version}</version>-->
+            <!--            </dependency>-->
+            <!--            https://blog.csdn.net/z28126308/article/details/84187221-->
+            <!--            <dependency>-->
+            <!--                <groupId>io.github.wilson-he</groupId>-->
+            <!--                <artifactId>swagger2-spring-boot-starter</artifactId>-->
+            <!--                <version>${swagger2-spring-boot-starter.version}</version>-->
+            <!--            </dependency>-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 几乎所有工程都会使用，直接从顶组工程引入 -->
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- 每个有需要集成swagger的模块，导入swagger-spring-boot-starter -->
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-swagger2</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.springfox</groupId>-->
+        <!--            <artifactId>springfox-swagger-ui</artifactId>-->
+        <!--        </dependency>-->
+    </dependencies>
+
+    <!--    注意pom工程里面不能加如下的插件-->
+    <!--    <build>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+    <repositories>
+        <!--        <repository>-->
+        <!--            <id>spring-libs-snapshot</id>-->
+        <!--            <name>Spring Snapshot Repository</name>-->
+        <!--            <url>https://repo.spring.io/libs-milestone</url>-->
+        <!--        </repository>-->
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>

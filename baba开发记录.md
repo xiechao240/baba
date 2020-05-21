@@ -175,6 +175,10 @@ https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个�
 
 使用校验框架返回的结果，自己写一个统一的拦截器统一处理一下也可以，不写也可以，因为上面的信息，有规律，都是400，如果是400，就解析这样的json数组即可，还是不要后台来写了吧
 
+## @RequestParam@PathVariable
+
+`@RequestParam` 和 `@PathVariable` 注解是用于从request中接收请求的，两个都可以接收参数，关键点不同的是`@RequestParam` 是从request里面拿取值，而 `@PathVariable` 是从一个URI模板里面来填充
+
 ## 导包：
 
 当interface工程需要使用httpservletrequest对象，则是servlet对象，此时我们不要再去找什么servlet依赖了，直接导下面的即可
@@ -810,6 +814,27 @@ CREATE TABLE t_user  (
 默认使用inner join,即不写inner join 直接select * from a, b where 
 
 
+
+## 为空字段设计：
+
+如果想设计比如某一个字段没有值就不属于分校，比如branchOrgId为""则不属于任何分校，以后还是不要这样设计了，因为为空的话，在数据库里面有很多种，比如"" null 等，
+以后还是使用为0来代替吧，0也是没有的意思，因为设计为0的话，在写查询条件的时候，也好写一些，与前台进行接口对接也好对接一些，你的接口还可以设计默认值为0
+
+# MyCat:
+
+Mycat就是一个解决数据库分库分表等问题的数据库中间件，也可以理解为是数据库代理。在架构体系中是位于数据库和应用层之间的一个组件，Mycat 实现了 Mysql 的原生协议，对于应用它感知不到连接了 Mycat，因为从协议来讲，两者是一样的。而Mycat将应用的请求转发给它后面的数据库，对应用屏蔽了分库分表的细节。Mycat的三大功能：**分表、读写分离、主从切换**。
+
+下图通过 Mycat schema 配置和实际 DB 部署来简要说明 Mycat 分库分表功能的实现：
+
+![img](baba开发记录.assets/640.webp)
+
+例如表 A，配置中它有两个数据节点，分别是  datanode1 和 datanode2，含义是逻辑表 A实际对应了两个物理存储，分别是 db1 和 db2。对于应用而言，应用连接 Mycat 感知到的时候逻辑表 A，而在底层 A 被拆分，存储在两个 db 中。
+
+## 主从同步延迟解决方案：
+
+https://www.cnblogs.com/A121/p/10471895.html    [MySQL主从复制延迟解决方案](https://www.cnblogs.com/A121/p/10471895.html)
+
+https://blog.51cto.com/szk5043/1762981  Mysql主从同步延迟问题及解决方案
 
 
 

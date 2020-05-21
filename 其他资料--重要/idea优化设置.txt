@@ -88,8 +88,23 @@ IDEA展开、折叠方法的快捷键（目前我设置没有效果，比如一�
 https://blog.csdn.net/correlate/article/details/91391118
 
 
+当书写如下代码：
+@ConfigurationProperties(prefix = "baba.jwt")  引入这个注解提示报错时，不用处理，程序可以正常运行
+public class JwtProperties {}
 
+spring boot configuration annotation processor not found in classpath问题解决
+网上的解决方案是加入如下的包，此时提示条为绿色
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+下面为去掉提示条的方案：其实没多大必要
+http://www.bubuko.com/infodetail-3101812.html?__cf_chl_jschl_tk__=646c083e73aa70622f4a6af49195e03c29429cd5-1589855085-0-AcWXPULaxY4la84YtpSjjGs3Vg9_AUd5HR2ZJTGyeRw899ZNfe2ObFgv88zTtqWd3Pcp6irWYAUfq-6VPorDh4rpGalbR6j4F_YPQoOyXNXUiyO7iLD_7T2ON0ifMvgKo4K4Nwdi_uwIDDyL-ckq92t35F8XramUjQxjMRgjmD3DrW2hdqRtgbO6U45vda9pNxFLtLSq_wCIR8hqlRZbFlcYeMlOp6WTV--oLnUwlljgSi9eQUgmeNPStNYnatn4wCxvVmTtaCgd8xVauGTnJ24IK6z088djtw8zkXTvQO3oFksu9QOh_4V_SsjWWsHEyg
+Setting--》Languages&Frameworks-->Spring --》Spring Boot -->Show notification panel 去掉此勾
 
+下面也是暴力取消：
+https://blog.csdn.net/sinat_38885949/article/details/100667672?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase
 
 
 IDEA如何在创建类时生成作者和日期
@@ -160,9 +175,10 @@ https://jingyan.baidu.com/article/91f5db1b73d64c1c7f05e3dc.html
 	将光标放在接口名上面，使用Alt + Enter键，选择implement Interface即可快速，在实现类中创建此方法,如果此时已经在实现类，则 Alt+Insert，在弹出的界面中选择
 	
 	*****下面的很重要
-	1.alt+enter是一种用途广泛的操作,把光标放在一个没有get和set方法的私有成员变量上,按alt+enter就会弹出一个小窗
-	2.点击这个"create getter and setter for"选项
-	3.生成了该变量的get和set方法 END 1 光标在类里面,按alt+insert。弹出一个小窗,可以用它生成多种代码。
+	1.alt + Insert 弹出一个界面，可用来生成get 和 set方法，或者构造方法，或者toString方法
+	2.alt+enter是一种用途广泛的操作,把光标放在一个没有get和set方法的私有成员变量上,按alt+enter就会弹出一个小窗
+	3.点击这个"create getter and setter for"选项
+	4.生成了该变量的get和set方法 END 1 光标在类里面,按alt+insert。弹出一个小窗,可以用它生成多种代码。
 	
 	Ctrl+Alt+Insert 快捷弹出新建各种文件的菜单，非常方便
 	

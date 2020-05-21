@@ -3,6 +3,7 @@ package com.baba.auth.test;
 import com.baba.auth.entity.UserInfo;
 import com.baba.auth.utils.JwtUtils;
 import com.baba.auth.utils.RsaUtils;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +26,15 @@ public class JwtTest {
 
     private PrivateKey privateKey;
 
+    @Test
+    public void testDate() {
+        System.out.println(System.currentTimeMillis());;
+        System.out.println(DateTime.now().plusMinutes(1).toDate().getTime());
+        System.out.println(DateTime.now().plusMinutes(1).toDate());
+
+        ;
+    }
+
 
     @Test
     public void testRsa() throws Exception {
@@ -43,7 +53,6 @@ public class JwtTest {
     //生成tokean
     @Test
     public void testGenerateToken() throws Exception {
-        System.out.println(privateKey);
         // 生成token
         String token = JwtUtils.generateToken(new UserInfo(20L, "jack"), privateKey, 5);
         System.out.println("token = " + token);
@@ -51,8 +60,8 @@ public class JwtTest {
 
     @Test
     public void testParseToken() throws Exception {
-        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTU0MDMwMjU4MX0.KFGDe8V8TwLl5xGqM1brPV50JXf3Z6G4cXPIeYxsqaeeol06BnXNNsyLAbUSrFxloUf-hQqO41O1OrtERllU-JfZXs6MA6rTBSfpar2MJRSZyDGKqfBpPoRED3yZv8oFuzI_94GONqsipmGyQFqWUkhTf9k0tZ5LPRvvGl9tkvc";
-
+//        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTU0MDMwMjU4MX0.KFGDe8V8TwLl5xGqM1brPV50JXf3Z6G4cXPIeYxsqaeeol06BnXNNsyLAbUSrFxloUf-hQqO41O1OrtERllU-JfZXs6MA6rTBSfpar2MJRSZyDGKqfBpPoRED3yZv8oFuzI_94GONqsipmGyQFqWUkhTf9k0tZ5LPRvvGl9tkvc";
+        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTU5MDI4NTc5OX0.KsEiP_PX5cvrIoA2szm1PdhjMJdWH6jdHmlSE5KP2J1icjqPlTRGxjQsQJFxM_8iIjSL_f2piYslcDKt9G4yT5aa28FFstCsH_pEqOIx1kqT2eYmIASWS5kvfmrGmBOcYF8CKw-gFmOQ9myWXQ_T4jFP4OLYAP6RM0uLXMpYCOk";
         // 解析token
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
         System.out.println("id: " + user.getId());

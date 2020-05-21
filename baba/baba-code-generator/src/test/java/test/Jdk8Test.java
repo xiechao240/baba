@@ -21,33 +21,38 @@ public class Jdk8Test {
 //                - 代码块如果只是一行代码，大括号也可以省略
 //                - 如果代码块是一行，且是有结果的表达式，`return`可以省略
 
-        List<Integer> list1 = Arrays.asList(10,5,25,-15,20);
-        // Jdk1.8写法，参数列表的数据类型可省略：
-        list1.sort((i1, i2) -> {return i1 - i2;});
-//        如果代码块是一行，且是有结果的表达式，`return`可以省略
-        list1.sort((i1, i2) -> i1 - i2);
-        // 因为代码块是一个有返回值的表达式，可以省略大括号以及return
-        list1.sort((i1, i2) ->  i1 - i2);
-        System.out.println(list1);
+//        List<Integer> list1 = Arrays.asList(10,5,25,-15,20);
+//        // Jdk1.8写法，参数列表的数据类型可省略：
+//        list1.sort((i1, i2) -> {return i1 - i2;});
+////        如果代码块是一行，且是有结果的表达式，`return`可以省略
+//        list1.sort((i1, i2) -> i1 - i2);
+//        // 因为代码块是一个有返回值的表达式，可以省略大括号以及return
+//        list1.sort((i1, i2) ->  i1 - i2);
+//        System.out.println(list1);
 
         // JDK1.8遍历并打印集合，因为只有一个参数，所以我们可以省略小括号:
-        list1.forEach(i -> System.out.println(i));
-        // 这里遍历元素后需要打印，因此直接把println作为方法引用传递了
-        list1.forEach(System.out::println);
+//        list1.forEach(i -> System.out.println(i));
+//        // 这里遍历元素后需要打印，因此直接把println作为方法引用传递了
+//        list1.forEach(System.out::println);
 
-//        List<Teacher> list = new ArrayList<>();
+        List<Teacher> list = new ArrayList<>();
+        list.add(new Teacher(28,"李四"));
+        list.add(new Teacher(27,"张三"));
+        list.add(new Teacher(29,"王五"));
 //        list.add(Teacher.builder().age(28).name("李四").build());
 //        list.add(Teacher.builder().age(27).name("张三").build());
 //        list.add(Teacher.builder().age(29).name("王五").build());
 
-//        //适合只对原数据读操作
-//        list.stream().forEach(teacher -> {
-//            if ("王五".equals(teacher.getName())) {
+//        //适合只对原数据读操作，集合还是原来的这个集合，但可以更改集合中的数据
+
+        list.stream().forEach(teacher -> {
+            if ("王五".equals(teacher.getName())) {
+                teacher.setAddress("南京");
 //                Address address = Address.builder().address("南京").build();
 //                teacher.setAddress(address);
-//            }
-//        });
-//        System.out.println("还是老的List：" + list);
+            }
+        });
+        System.out.println("还是老的List：" + list);
 //
 //        //不影响原数据，生成新数据
 //        List<Teacher> listCopy = list.stream().map(teacher -> {
