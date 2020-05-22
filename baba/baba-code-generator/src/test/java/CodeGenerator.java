@@ -69,6 +69,7 @@ public class CodeGenerator {
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(true);// XML columList  *************
 
+
         gc.setSwagger2(true); //实体属性 Swagger2 注解
         gc.setIdType(IdType.ASSIGN_UUID);//这个是3.3.1才开始有的，而且IdType.UUID即将过时
 //        gc.setIdType(IdType.UUID);

@@ -498,6 +498,147 @@ http://www.cnplugins.com/devtool/gitzip-for-github/
 
 则此时打包方式为，使用baba-user打包，而不是单独去打baba-user-interface或者baba-user-service，单独打会报错，由此类推，可以对顶级聚合工程baba打包，这样，所有的子模块，可以一次性打包完成
 
+## 3.标签说明
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <optional>true</optional> 注意这里的区分
+</dependency>
+```
+
+# [maven optional可选依赖](https://www.cnblogs.com/chenweichu/p/6349478.html)
+
+应用场景：projectA 依赖projectB,  projectB 依赖projectC时
+
+```xml
+<dependency>
+  <groupId>com.itear.projectC</groupId>
+  <artifactId>projectC</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <optional>true</optional>
+</dependency>
+```
+
+当projectB的<optional>true</optional>时, projectA中如果没有显式的引入projectC, 则projectA不依赖projectC, 即projectA可以自己选择是否依赖projectC
+
+默认<optional>的值为false, 及子项目必须依赖, **我的理解就是切断引用的作用**
+
+## 4.仓库地址配置
+
+```xml
+<mirrors>
+	 <mirror>
+        <id>aliyun</id>
+        <name>aliyun Maven</name>
+        <mirrorOf>*</mirrorOf>
+        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    </mirror>
+  </mirrors>
+```
+
+<!-- <mirrorOf>*</mirrorOf> *代表，无论你在项目中引入什么jar包,都会使用你配置的这个mirror仓库去下载，如果你使用一些第三方的jar包，那么就会下载不下来，这就是为什么我之前无法将快照版本的elaticsearch-data 4.0RC版本下载下来的原因 -->
+
+其实应该把<mirror></mirror>节点全部注掉，应该通过<profiles>节点来配置，如下：
+
+```xml
+<profiles>
+    <profile>
+       <id>nexus-aliyun</id>
+       <repositories>
+			<repository>
+                 <id>nexus-aliyun</id>
+                 <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                 <releases>
+                    <enabled>true</enabled>
+                 </releases>
+                 <snapshots>
+                    <enabled>true</enabled>
+                 </snapshots>
+            </repository>
+       </repositories>           
+       <pluginRepositories>
+			<pluginRepository>
+				<id>nexus-aliyun</id>
+				<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</pluginRepository>
+        </pluginRepositories>
+    </profile>
+    <profile>
+       <id>bintray</id>
+       <repositories>
+			<repository>
+                 <id>bintray</id>
+                 <url>http://dl.bintray.com/andimarek/graphql-java</url>
+                 <releases>
+                    <enabled>true</enabled>
+                 </releases>
+                 <snapshots>
+                    <enabled>false</enabled>
+                 </snapshots>
+            </repository>
+       </repositories>           
+       <pluginRepositories>
+			<pluginRepository>
+				<id>bintray</id>
+				<url>http://dl.bintray.com/andimarek/graphql-java</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</pluginRepository>
+        </pluginRepositories>
+    </profile>
+	<profile>
+       <id>dev-daliedu</id>
+       <repositories>
+			<repository>
+            <!--central,3rd party,apache-snapshots,release,daliedu-dev-release,daliedu-dev-snapshots -->
+                 <id>daliedu-dev-group</id>
+                 <url>http://192.168.10.145:8081/nexus/content/groups/daliedu-dev-group/</url>
+                 <releases>
+                    <enabled>true</enabled>
+                 </releases>
+                 <snapshots>
+                    <enabled>true</enabled>
+                 </snapshots>
+            </repository>
+       </repositories>           
+       <pluginRepositories>
+			<pluginRepository>
+				<id>daliedu-dev-group</id>
+				<url>http://192.168.10.145:8081/nexus/content/groups/daliedu-dev-group/</url>
+				<releases>
+					<enabled>true</enabled>
+				</releases>
+				<snapshots>
+					<enabled>true</enabled>
+				</snapshots>
+			</pluginRepository>
+        </pluginRepositories>
+    </profile>
+  </profiles>
+
+<activeProfiles>
+        <activeProfile>nexus-aliyun</activeProfile>
+		<activeProfile>bintray</activeProfile>
+		<activeProfile>dev-daliedu</activeProfile>
+</activeProfiles>
+```
+
+<!-- 上面profiles是配置仓库列表，activeProfiles是配置激活， -->
+
+比如上面的graphql-java，就是一个第三方的对graphql的实现，如果不这样配仓库，将无法下载到这个java实现
+
 
 
 # 分布式文件系统：
@@ -524,6 +665,38 @@ java客户端：
 ```
 
 经过比较，分布式文件系统，只有fastDFS与HDFS是可选的方案
+
+
+
+### [FastDFS和集中存储方式对比](https://www.cnblogs.com/fanblogs/p/11086744.html)
+
+ 
+
+| 指标                   | FastDFS | NFS    | 集中存储设备 如NetApp、NAS |
+| ---------------------- | ------- | ------ | -------------------------- |
+| 线性扩容性             | 高      | 差     | 差                         |
+| 文件高并发访问性能     | 高      | 差     | 一般                       |
+| 文件访问方式           | 专有API | POSIX  | 支持POSIX                  |
+| 硬件成本               | 较低    | 中等   | 高                         |
+| 相同内容文件只保存一份 | 支持    | 不支持 | 不支持                     |
+
+分布式存储与传统的SAN、NAS相比，优势如下：
+
+1、性能
+
+在分布式存储达到一定规模是，性能会超过传统的SAN、NAS。大量磁盘和节点，结合适当的数据分布策略，可以达到非常高的聚合带宽。传统的SAN、NAS都会有性能瓶颈，一旦达到最大扩展能力，性能不会改变甚至降低。
+
+2、价格: 传统的SAN、NAS，价格比较高。特别是SAN网络设备，光纤网络成本比较高。而且，以后扩展还需要增加扩展柜。成本太高。分布式存储只需要IP网络，几台X86服务器加内置硬盘就可以组建起来，初期成本比较低。扩展也非常方便，加服务器就行。
+
+3、可持续性: 传统的SAN、NAS扩展能力受限，一个机头最多可以带几百个磁盘。如果想要个PB以上的共享存储，分布式存储只最好的选择。不用担心扩展能力问题。
+
+缺点：
+
+1、需要比较强的技术能力和运维能力，甚至有开发能力的用户。传统存储开箱即用，硬件由厂家提供，也有完善的文档和服务。而分布式很多是开源或者是有公司基于开源系统提供支持服务，版本迭代比较快，出问题后有可能需要自己解决。
+
+2、数据一致性问题。对于ORACLE RAC这一类对数据一致性要求比较高的应用场景，分布式存储的性能可能就稍弱了，因为分布式的结构，数据同步是一个大问题，虽然现在技术一致在进步，但是也不如传统存储设备数据存储方式可靠。
+
+3、稳定性问题，分布式存储非常依赖网络环境和带宽，如果网络发生抖动或者故障，都可能会影响分布式存储系统运行。例如，一旦发生IP冲突，那么整体分布式存储可能都无法访问。传统存储一般使用专用SAN或IP网络，稳定性方面，更可靠一些。
 
 
 
@@ -705,6 +878,18 @@ nginx: [emerg] bind() to 0.0.0.0:80 failed (10013: An attempt was made to access
 
 
 
+## 使用本地目录做图片服务器：
+
+![image-20200522172330660](baba开发记录.assets/image-20200522172330660.png)
+
+访问路径如下：
+
+http://image.haoke.com/images/2018/11/12/20181112xxxx.jpg   而此文件存储在
+
+F:\code\itcast-haoke\haoke-upload\
+
+
+
 # redis使用经验：
 
 Spring Data Redis 提供了一个工具类：RedisTemplate。里面封装了对于Redis的五种数据结构的各种操作，包括：
@@ -835,6 +1020,26 @@ Mycat就是一个解决数据库分库分表等问题的数据库中间件，也
 https://www.cnblogs.com/A121/p/10471895.html    [MySQL主从复制延迟解决方案](https://www.cnblogs.com/A121/p/10471895.html)
 
 https://blog.51cto.com/szk5043/1762981  Mysql主从同步延迟问题及解决方案
+
+
+
+# MySQL:
+
+## 枚举类型：
+
+mysql数据库里面的枚举类型，使用逆向工程生成java实体类，java里面对应的是String与之匹配，而
+
+enum('0','1','2','3')     对应java   String
+
+tinyint(1)                     对应java  Boolean
+
+**注意：**站在 mysql的角度，尽量多用集合！
+
+但是站在php操作mysql的角度，尽量少用！（兼容性差）
+
+`type` enum('0','1','2','3') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '活动类型，目前可选的有：0没有促销，1满减，2满额送抵扣券，3秒杀',
+
+还是不要使用这种类型，如果换库的话，应该不麻烦，oracle与之对应使用varchar即可，但是关键就在于扩充，比如这个字段，我现在添加一个4，代表抢购，是需要alter 表结构中的这个字段的，那可是相当的麻烦，你直接使用int,你想使用哪个数字代表啥就代表啥，**枚举就限定死了，一定好，就只能存储指定的值**
 
 
 
