@@ -950,6 +950,63 @@ https://item.jd.com/4155894.html#product-detail
 
 
 
+## 一对多数据返回
+
+像一对多的数据返回，应该使用json结构一对多的返回方式，切记不要使用 select * from a, b where a.id=b.id这种搞法，同时将多表的数据混合在一起给组装成json返回了
+
+应该是如下的结构：
+
+```json
+{
+  "code": 0,
+  "msg": "OK",
+  "data": [
+    {
+      "customerTagTypeId": 1,
+      "customerTagGroupDetailList": [
+        {
+          "customerTagId": 1,
+          "customerTagTypeId": 1,
+          "customerTagName": "个人客户",
+          "remark": null,
+          "orderNum": 1,
+          "createBy": "2",
+          "updateBy": "2",
+          "createTime": "2019-10-25 13:58:15",
+          "updateTime": null
+        },
+        {
+          "customerTagId": 2,
+          "customerTagTypeId": 1,
+          "customerTagName": "团购客户",
+          "remark": null,
+          "orderNum": 2,
+          "createBy": "2",
+          "updateBy": "2",
+          "createTime": "2019-10-30 16:04:55",
+          "updateTime": null
+        }
+      ],
+      "branchOrgId": "",
+      "customerTagTypeName": "客户类型",
+      "remark": null,
+      "orderNum": 0,
+      "createBy": "1",
+      "updateBy": "1",
+      "createTime": "2019-10-28 15:44:58",
+      "updateTime": null,
+      "isInit": true
+    }
+  ]
+}
+Response headers
+ access-control-allow-cred
+```
+
+
+
+
+
 ## **一对一的表，比如订单状态表的主键可以直接来自于订单表**
 
 一对一的表，也可以设计成关联表，比如订单表--》订单状态表
