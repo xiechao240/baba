@@ -2,7 +2,9 @@ package com.baba.org.controller;
 
 
 import com.baba.org.pojo.Org;
+import com.baba.org.service.OrgService;
 import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,9 @@ import java.util.List;
 @RequestMapping("org")
 @Api("组织机构服务接口")
 public class OrgController {
+
+    @Autowired
+    OrgService orgService;
 
     /**
      * 根据父节点，查询子节点的组织机构
@@ -54,9 +59,12 @@ public class OrgController {
             @ApiResponse(code = 404, message = "没有查询到结果"),
             @ApiResponse(code = 500, message = "查询失败"),
     })
-    public ResponseEntity<List<Org>> queryOrgListTreeByOrgId(@RequestParam(defaultValue = "0") String orgId, @RequestParam(defaultValue = "") String orgName){
+    public ResponseEntity<List<Org>> queryOrgListTreeByOrgId(@RequestParam(defaultValue = "0") String orgId){
         System.out.println(orgId);
-        System.out.println(orgName);
+//        System.out.println(orgName);
+
+        List<Org> list = orgService.queryOrgListTreeByOrgId(orgId);
+
 
         return null;
     }

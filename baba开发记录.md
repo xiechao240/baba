@@ -21,7 +21,20 @@ https://blog.csdn.net/lyj2018gyq/article/details/84980103 乐优商城最终篇
 # 未解决的问题：
 
 1. 使用页面静态化，当后台改了商品价格，通过消息队列发送商品静态化微服务去变更页面至nginx服务器的html目录下，但是此时用户打开的商品页面未刷新，此时结算是按原来的结算，还是按最新的价格结算呢？
-2. 
+
+2. 权限设计：
+
+   1.如果一个人同时属于多个组织节点？
+
+   **（举一个现实中的案例来解释互斥性：张三是软件部的负责人但因为工作的特殊性也同样隶属于业务部的普通员工）**
+
+     可以换一种方式实现，如果一个人同时属于多个组织节点这种需求，实现思路为：一个人只能属于一个组织节点，即：如果有这种需求，就创建一个岗位，拥有需要的角色即可
+
+   2.要不要设计拥有本组织的数据查看权限，或者查看下级，下下级的数据？
+
+   ​	如果要做可以这样实现，比如客户数据表中增加一列为org_id，则上面就可以设计如果查看本级，则根据用户所在的org_id进行查询即可，如果可以查看下下级，则将所有的org_id加载出来，再来查询，这样更灵活
+
+   用户数据访问权限, -1:系统所有数据; 1:自己的数据; 2:仅所属部门数据; 3:所属部门及其以下所有数据;   这个-1肯定只有超级管理员才可以**，这个属性应该设计在用户表里面，不应该设计在岗位表里面**
 
 # 端口及域名设计：
 
@@ -107,7 +120,13 @@ https://www.cnblogs.com/javastack/p/10844649.html    看来要优先考虑使用
 
 # springboot使用
 
-@RequestParam，@PathParam，@PathVariable等注解区别
+## 1.优雅停机
+
+![](baba开发记录.assets/微信图片_20200601093806.jpg)
+
+此功能需要springboot2.3.0以上版本支持，访问如下：https://mp.weixin.qq.com/s/vr5eztZQ5T7Tq7MhsP5bxQ
+
+## 2.@RequestParam@PathParam@PathVariable
 
 @RequestParam 和 @PathVariable 注解是用于从request中接收请求的，两个都可以接收参数，关键点不同的是@RequestParam 是从request里面拿取值，而 @PathVariable 是从一个URI模板里面来填充
 
@@ -156,7 +175,13 @@ responseBody表示服务器返回的时候以一种什么样的方式进行返�
 
 
 
-## 参数校验框架：
+`@RequestParam` 和 `@PathVariable` 注解是用于从request中接收请求的，两个都可以接收参数，关键点不同的是`@RequestParam` 是从request里面拿取值，而 `@PathVariable` 是从一个URI模板里面来填充
+
+`@RequestParam` 和 `@PathVariable` 注解是用于从request中接收请求的，两个都可以接收参数，关键点不同的是`@RequestParam` 是从request里面拿取值，而 `@PathVariable` 是从一个URI模板里面来填充
+
+
+
+## 3.参数校验框架：
 
 注意：spring Validated 与hibernate validator的区别
 
@@ -175,11 +200,9 @@ https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个�
 
 使用校验框架返回的结果，自己写一个统一的拦截器统一处理一下也可以，不写也可以，因为上面的信息，有规律，都是400，如果是400，就解析这样的json数组即可，还是不要后台来写了吧
 
-## @RequestParam@PathVariable
 
-`@RequestParam` 和 `@PathVariable` 注解是用于从request中接收请求的，两个都可以接收参数，关键点不同的是`@RequestParam` 是从request里面拿取值，而 `@PathVariable` 是从一个URI模板里面来填充
 
-## 导包：
+## 4.导包：
 
 当interface工程需要使用httpservletrequest对象，则是servlet对象，此时我们不要再去找什么servlet依赖了，直接导下面的即可
 
@@ -190,7 +213,7 @@ https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个�
 </dependency>
 ```
 
-## 部署：
+## 5.部署：
 
 打成jar包，目前在公司电脑上使用：java -jar  xxx.jar启动报错，报什么log4j2.yml初始化失败，
 
@@ -921,6 +944,12 @@ https://item.jd.com/4155894.html#product-detail
 
 
 
+## 强烈建议不要使用自增
+
+**使用主键自增，在本地开发环境上频繁测试新增，删除，对于已经上线的系统，升级很容易导致主键冲突**
+
+
+
 ## **一对一的表，比如订单状态表的主键可以直接来自于订单表**
 
 一对一的表，也可以设计成关联表，比如订单表--》订单状态表
@@ -992,11 +1021,38 @@ CREATE TABLE t_user  (
 
 
 
-## 数据库左连接，右连接，各种连接的区别：
+## 左连接，右连接，各种连接的区别：
 
 ![clipboard.png](baba开发记录.assets/2767807589-5c122586a23c4_articlex.png)
 
 默认使用inner join,即不写inner join 直接select * from a, b where 
+
+以后写sql都使用左连接吧
+```xml
+<select id="searchUsers" resultMap="BaseResultMap">
+        SELECT a.id as id ,a.create_time as create_time, a.create_by as create_by,a.update_time as update_time,a.update_by as update_by
+        ,a.user_id as user_id,a.password as password,a.realname as realname,a.type as type,a.mobile as mobile
+        ,a.email as email,a.remarks as remarks ,a.status as status,a.avatar as avatar,a.sex as sex
+        ,c.name as role_name,c.role_id as role_role_id ,e.org_id as org_id,e.simple_name as simple_name,g.code as code,g.url as url
+        from sys_user a
+        LEFT JOIN  sys_user_role b on a.user_id=b.user_id
+        LEFT JOIN  sys_role c on b.role_id=c.role_id
+        LEFT JOIN sys_user_org d on a.user_id=d.user_id
+        left JOIN sys_org e on d.org_id =e.org_id
+        left join sys_role_menu f on f.role_id=c.role_id
+        left join sys_menu g on g.code=f.menu_code
+        <where>
+            <if test="userId != null and userId!='' ">
+                a.user_id = #{userId}
+            </if>
+            <if test="realname != null and realname!='' ">
+                AND a.realname = #{realname}
+            </if>
+        </where>
+    </select>
+```
+
+
 
 
 
@@ -1004,6 +1060,16 @@ CREATE TABLE t_user  (
 
 如果想设计比如某一个字段没有值就不属于分校，比如branchOrgId为""则不属于任何分校，以后还是不要这样设计了，因为为空的话，在数据库里面有很多种，比如"" null 等，
 以后还是使用为0来代替吧，0也是没有的意思，因为设计为0的话，在写查询条件的时候，也好写一些，与前台进行接口对接也好对接一些，你的接口还可以设计默认值为0
+
+## 组织节点设计：
+
+![image-20200603092529607](baba开发记录.assets/image-20200603092529607.png)
+
+如上图，可以只显示节点，而不用勾选下面的权限
+
+![image-20200603100922579](baba开发记录.assets/image-20200603100922579.png)
+
+貌似比较麻烦，还是设计一个查看节点吧，比如系统设置，这个下层就不用增加一个查看节点了，这种查看节点，只添加在最下层即可，比如系统设置下面的，你一个二级节点都没选，那么没有系统设置也是应该的
 
 # MyCat:
 
