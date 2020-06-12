@@ -14,6 +14,12 @@ import java.util.List;
  */
 public class Jdk8Test {
     public static void main(String[] args) {
+
+        //遍历一个集合，产生一个新的集合
+//        List<String> selfIds = customerSelfList.stream().map(c ->{
+//            return c.getId();
+//        }).collect(Collectors.toList());
+
 //        lambda表达式，需要注意：
 //          (参数列表) -> {代码块}
 //                - 参数类型可省略，编译器可以自己推断

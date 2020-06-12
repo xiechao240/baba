@@ -466,6 +466,103 @@ required = false,可不写，默认就是false
 
 dataType与type都是指定数据类型，统一使用 Integer String Long这些代替吧
 
+
+
+## 单文件上传：
+
+参考文档：
+
+http://zhoulizhi6.gitee.io/blog/2019/11/20/1/  此文比较好
+
+https://gitee.com/xiaoym/swagger-bootstrap-ui-demo/blob/master/swagger-bootstrap-ui-demo/src/main/java/com/swagger/bootstrap/ui/demo/controller/UploadController.java    此文较详细
+
+```java
+@ApiOperation(value = "单独保存客户通话录音文件，给移动端app使用")
+//	@ApiImplicitParams({
+//			@ApiImplicitParam(paramType = "query", dataType = "String", name = "userCustomerCallId", value = "用户客户通话唯一ID", required = true),
+//			@ApiImplicitParam(paramType = "query", dataType = "__file", name = "file", value = "需要导入的客户数据的excel文件", required = true)
+//			})
+//	@RequiresPermissions("sys:role:list")
+	@PostMapping(value = "/saveCallRecordingFile", headers = "content-type=multipart/form-data") 
+	//@PostMapping(value = "/saveCallRecordingFile", consumes = "multipart/*", headers = "content-type=multipart/form-data")//注意consumes = "multipart/*"这个我没加，也可以在swagger上上传成功
+	public Result saveCallRecordingFile(
+			@ApiParam(value="用户客户通话唯一ID",required=true)@RequestParam(required=true) String userCustomerCallId, 
+			@ApiParam(value="上传的文件",required=true)@RequestParam(required=true, value = "file") MultipartFile file) {
+        
+    }
+```
+
+注意，使用了文件上传，参数的声明就只能使用@ApiParam来声明，这样在swagger接口测试页面上才可以选择文件进行测试成功
+
+上面的@ApiImplicitParams 这些就不能用了，因为无论声明dataType = "__file"，还是 dataType = "file"我都没成功
+
+如下图：
+
+![image-20200611180141033](baba开发记录.assets/image-20200611180141033.png)
+
+
+
+## 多文件上传：
+
+knife4j 以及swagger-bootstrap-ui   使用这个swagger-bootstrap-ui  应该是支持的
+
+https://gitee.com/xiaoym/swagger-bootstrap-ui-demo/blob/master/swagger-bootstrap-ui-demo/src/main/java/com/swagger/bootstrap/ui/demo/controller/UploadController.java  
+
+
+
+以下的方法都不支持，后续考虑使用knife4j 框架应该是支持多文件的
+
+```java
+@ApiOperation(value = "测试多文件上传【经测试，多文件上传，无论怎么调整files在swagger页面上，都是传递为空值】")
+	@PostMapping(value = "/testSaveCallRecordingFile", consumes = "multipart/*", headers = "content-type=multipart/form-data")//注意consumes = "multipart/*"这个我没加，也可以在swagger上上传成功
+	public Result testSaveCallRecordingFile(
+			@ApiParam(value="用户客户通话唯一ID",required=true)@RequestParam(required=true) String userCustomerCallId, 
+			@ApiParam(value="上传的文件",required=true)@RequestPart(required=true, value = "files") MultipartFile[] files) {
+		try{
+			for(MultipartFile file : files){
+				System.out.println(file.getName());
+			}
+			return Result.success("保存成功");
+		}catch (Exception e) {
+			e.printStackTrace();
+			return Result.error("上传录音文件失败，失败原因：" + e.getMessage());
+		}
+	}
+```
+
+![image-20200612101523628](baba开发记录.assets/image-20200612101523628.png)
+
+无论使用 @RequestPart还是 @RequestParam，后端接收swagger页面上传过来的files都是空值，网上这个文章
+
+https://www.cnblogs.com/dzcWeb/p/7842993.html  这个说可以，但我是没调成功
+
+**注意**：下面 consumes = "multipart/form-data"，上面是写成 consumes = "multipart/*"
+
+
+
+```java
+// 在@RequestMapping中添加consumes = "multipart/form-data"可以支持多文件数组上传，否则Swagger将自动将Content-Type设置
+	// 为application/json，但设置之后Swagger还是无法选择多个文件进行接口测试的，只是显示可以传递文件数组，这时可以采用Postman
+	// 或RestClient等接口测试工具进行接口测试，多文件上传建议使用@ApiParam注解
+	@ApiOperation(value = "更新用户信息3")
+	@RequestMapping(value = "/updateUser3", method = RequestMethod.POST, consumes = "multipart/form-data")
+	@ResponseBody
+	public ResponseEntity<String> updateUser3(
+			@ApiParam(value = "用户头像列表", name = "userLogos", required = true) MultipartFile[] userLogos) {
+		for (MultipartFile userLogo : userLogos) {
+			String userLogoName = userLogo.getOriginalFilename();
+			System.out.println(userLogoName);
+		}
+		return ResponseEntity.ok("OK");
+	}
+```
+
+
+
+
+
+
+
 # Git及GitHub使用经验：
 
 下载github上的单个文件夹：

@@ -34,7 +34,7 @@ public class UserController {
 
     @GetMapping("{id}")
     @ApiOperation(value = "根据用户ID查询用户，返回用户对象", notes = "查询用户")
-    @ApiImplicitParam(name = "id", required = true, value = "用户的ID")
+    @ApiImplicitParam(name = "id", dataType ="String", required = true, value = "用户的ID")
     //注意返回User对象，在swagger里面可以直接看到此User模型
     public ResponseEntity<User> queryUserById(@PathVariable("id")String id){
         List list = new ArrayList();
@@ -50,7 +50,7 @@ public class UserController {
 
     @GetMapping("base-result-map/{id}")
     @ApiOperation(value = "从xml文件中加载sql语句，根据用户ID查询用户，返回用户对象", notes = "查询用户")
-    @ApiImplicitParam(name = "id", required = true, value = "用户的ID")
+    @ApiImplicitParam(name = "id", dataType ="String", required = true, value = "用户的ID")
     //注意返回User对象，在swagger里面可以直接看到此User模型
     public ResponseEntity<User> queryUserByIdFromXmlReturnBaseResultMap(@PathVariable("id")String id){
         User user = userService.queryUserByIdFromXmlReturnBaseResultMap(id);
