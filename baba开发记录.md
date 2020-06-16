@@ -22,7 +22,11 @@ https://blog.csdn.net/lyj2018gyq/article/details/84980103 乐优商城最终篇
 
 1. 使用页面静态化，当后台改了商品价格，通过消息队列发送商品静态化微服务去变更页面至nginx服务器的html目录下，但是此时用户打开的商品页面未刷新，此时结算是按原来的结算，还是按最新的价格结算呢？
 
-2. 权限设计：
+2. 像保存客户这种，直接将新增客户与修改客户的整个json由后端拼装完成，给前端发过去，新增或修改完成，再传给后端来解释，这种怎么做呢？
+
+3. swagger同时传递多参数与文件，未解决，其实就是定义接口：@RequestParam与@RequestBody这两个不能同时存在，网上也没找到好的方案，除非把定义的Model类拆成全部一样的@RequestParam
+
+4. 权限设计：
 
    1.如果一个人同时属于多个组织节点？
 
@@ -35,6 +39,10 @@ https://blog.csdn.net/lyj2018gyq/article/details/84980103 乐优商城最终篇
    ​	如果要做可以这样实现，比如客户数据表中增加一列为org_id，则上面就可以设计如果查看本级，则根据用户所在的org_id进行查询即可，如果可以查看下下级，则将所有的org_id加载出来，再来查询，这样更灵活
 
    用户数据访问权限, -1:系统所有数据; 1:自己的数据; 2:仅所属部门数据; 3:所属部门及其以下所有数据;   这个-1肯定只有超级管理员才可以**，这个属性应该设计在用户表里面，不应该设计在岗位表里面**
+
+   
+
+   
 
 # 端口及域名设计：
 
@@ -381,9 +389,89 @@ resultMap实现一对一，一对多，多对多的查询
 
 
 
+## 空值更新问题
+
+```java
+if(customerMapper.insert(customerEntity)>0){
+			//保存客户后先保存客户头像
+			if(file!=null){
+				String photoUrl = HttpClientUtil.uploadCustomerRecordingFile(file, customerEntity.getId());
+				System.out.println("客户头像上传后地址：" + photoUrl);
+//				CustomerEntity entity = new CustomerEntity();
+//				entity.setId(customerEntity.getId());
+//				entity.setPhotoUrl(photoUrl);
+//				customerMapper.updateById(entity);//只修改一个参数即可，提升程序速度,mybatis plus此版本有个bug，空值更新的问题
+				customerEntity.setPhotoUrl(photoUrl);
+				customerMapper.updateById(customerEntity);
+			}
+    
+    自动生成的sql语句为：
+        UPDATE crm_customer SET delete_user_id=null, delete_date_time=null, sea_type=null, state=null, photo_url='http://files.daliedu.cn//daliedu/crm/call/20a7423374d1d9f3099c11ddad9cd9f1/20200615/20200615389481a9e8c049f683b2d122f0075cbe.jpg' WHERE id='20a7423374d1d9f3099c11ddad9cd9f1'
+        很明显有问题，自动更新为null了，而原来我把sea_type,state都是设置为""的，为了避免此问题，以后升级mybatis plus版本，数据库设计没有值的情况，使用0代替，不再使用""空字符串
+        
+mybatis-plus:  
+  # 扫描自定义xml文件路径
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration: 
+#    map-underscore-to-camel-case: true #不是通过此配置来解决自动过滤null值属性的问题
+    call-setters-on-nulls: true #解决自定义sql返回Map结果，Mybatis plus自动过滤null值属性的问题，我目前集成的sping boot直接返回对象的话，没有null值自动过滤的问题
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+      field-strategy: not-null #解决更新时，空值更新的问题 customerMapper.update(entity, updateWrapper)   entity此对象没设值的属性即为null，如果不配置field-strategy，则会将数据库里面都更新为null
+      即使以上配置，也不能解决空值问题
+```
+
+
+
 # Swagger使用经验：
 
- **knife4j:**
+同时传递多参数与文件，目前未解决,采用转换一下的方式解决
+
+```java
+@ApiOperation(value = "新增客户")
+	@PostMapping(value = "/save-customer", consumes = "multipart/*", headers = "content-type=multipart/form-data")
+	public Result saveCustomer(@ApiParam(value="客户json参数模型",required=true)@RequestParam(required=true) String model, 
+			@ApiParam(value="上传的文件",required=true)@RequestParam(required=true, value = "file") MultipartFile file) {
+		try{
+			Object object = SecurityUtils.getSubject().getPrincipal();
+			if (object instanceof UserEntity) {
+				UserEntity bean = (UserEntity) object;
+				UserEntity user = userService.getById(bean.getId());
+				CustomerModel customerModel = null;
+				try{
+					customerModel = JsonUtil.getJsonToBean(model, CustomerModel.class);//这里转一下解决
+				}catch(Exception e){
+					return Result.error("app应用端，请求参数出错", model);
+				}
+				
+				
+				boolean flag = customerService.saveCustomer(customerModel, file, user);
+				if(flag){
+					return Result.success("新增客户成功");
+				}
+				return Result.error("新增客户失败，请联系管理员");
+			}
+			return Result.error("非法请求");
+		}catch (UnauthorizedException e){
+			return Result.error(ResultCodeEnum.USER_NOT_AUTH);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return Result.error("新增客户失败，失败原因：" + e.getMessage());
+		}
+	}
+```
+
+传递model参数为(直接复制到swagger接口里面去测就可以了)：
+
+```json
+{"customerGroupTypeId":"22","customerIntentionLevel":"*****","customerName":"卡罗拉","customerQuality":"优质","customerSourceNameValue":"湖南在线咨询","customerSourceType":"非代理商","selfDefineItemConfigList":[],"sex":"1"}
+```
+
+
+
+##  **knife4j:**
 
 https://doc.xiaominfo.com  推荐使用 knife4j 这个是长期有维护的，适用于微服务架构的框架，也是基于swagger
 
@@ -469,6 +557,32 @@ dataType与type都是指定数据类型，统一使用 Integer String Long这些
 
 
 ## 单文件上传：
+
+注意下面的单文件上传，无法传递非常多的参数，只能一个一个去定义参数，无法像下面这样,Customer这个是无法直接传进去的
+
+```java
+public Result saveCustomer(@ApiParam(value="客户json参数模型",required=true)@RequestBody(required=true) Customer model, 
+			@ApiParam(value="上传的文件",required=true)@RequestParam(required=false, value = "file") MultipartFile file) 
+```
+
+目前想了一种解决办法：这个model对应一整个字符串，如下：
+
+```json
+{"customerGroupTypeId":"22","customerIntentionLevel":"*****","customerName":"卡罗拉","customerQuality":"优质","customerSourceNameValue":"湖南在线咨询","customerSourceType":"非代理商","selfDefineItemConfigList":[],"sex":"1"}
+```
+
+```java
+public Result saveCustomer(@ApiParam(value="客户json参数模型",required=true)@RequestParam(required=true) String model, 
+			@ApiParam(value="上传的文件",required=true)@RequestParam(required=false, value = "file") MultipartFile file) 
+```
+
+对于接收的参数使用如下转换：
+
+```java
+CustomerModel customerModel = JsonUtil.getJsonToBean(model, CustomerModel.class);
+```
+
+
 
 参考文档：
 
@@ -557,11 +671,30 @@ https://www.cnblogs.com/dzcWeb/p/7842993.html  这个说可以，但我是没调
 	}
 ```
 
+下面的为支持多文件的写法，不支持swagger上测试
+
+```java
+@ApiOperation(value = "添加跟进记录,支持多文件上传(只支持上传*.jpg,*.bmp,*.png格式文件)，注：多文件上传，不支持swagger页面上测试", notes="注：多文件上传，不支持swagger页面上测试")
+	@ApiImplicitParams({
+	        @ApiImplicitParam(name = "files",value = "多个文件，",paramType = "formData",allowMultiple=true,required = false,dataType = "file"),
+	        @ApiImplicitParam(paramType = "query", dataType = "String", name = "dynamicContent", value = "用户填写的跟进日志,动态内容", required = true),
+	        @ApiImplicitParam(paramType = "query", dataType = "String", name = "customerId", value = "客户ID", required = true)})
+	@PostMapping(value = "/insertFollowLogFile", headers = "content-type=multipart/form-data")
+	public Result insertFollowLogFile(HttpServletRequest request, @RequestParam(required = true) String dynamicContent, @RequestParam(required = true) String customerId,
+			@RequestParam(value = "files", required = false) MultipartFile[] files) {
+			
+			}
+```
 
 
 
 
 
+# Json相关
+
+1. 不要使用fastjson，漏洞太多，速度也不见得比jackJson快多少，最主要是jackjson是springboot的默认集成中间件，一切还是以spring为准，spring集成的是哪个，哪个肯定是比较优秀的
+2. 默认无值的话，比如CustomerEntity中，很多属性没值的情况下，传给前端还是设置为null,  比如这个客户里面还有customerTagList这种集合，或者数组的对象，如果没有内容的话，也统统为null吧，做到统一
+3. 
 
 # Git及GitHub使用经验：
 
@@ -1146,6 +1279,12 @@ CREATE TABLE `tb_stock`  (
 
 ## 如何在高并发的分布式系统中产生UUID
 
+## 分布式系统ID的几种生成办法
+
+https://www.cnblogs.com/huchong/p/11400888.html  此文非常详细
+
+
+
 每一次都请求数据库，通过数据库的自增ID来获取全局唯一ID
 对于小系统来说，这是一个简单有效的方案，不过也就不符合讨论情形中的高并发的场景。
 首先，数据库自增ID需要锁表
@@ -1155,6 +1294,21 @@ CREATE TABLE `tb_stock`  (
 
 
 注意，原来的蓝凌没解决主键问题，是因为没采用雪花算法，使用的是随机数算法，即使是10位也会容易出现重复的
+
+
+
+### UUID是否适合做分布式id：
+
+如果需求是只保证唯一性，那么UUID也是可以使用的，但是按照上面的分布式id的要求， UUID其实是不能做成分布式id的，原因如下：
+
+> 1. 首先分布式id一般都会作为主键，但是安装mysql官方推荐主键要尽量越短越好，UUID每一个都很长，所以不是很推荐
+> 2. 既然分布式id是主键，然后主键是包含索引的，然后mysql的索引是通过b+树来实现的，每一次新的UUID数据的插入，为了查询的优化，都会对索引底层的b+树进行修改，因为UUID数据是无序的，所以每一次UUID数据的插入都会对主键地城的b+树进行很大的修改，这一点很不好
+> 3. 信息不安全：基于MAC地址生成UUID的算法可能会造成MAC地址泄露，这个漏洞曾被用于寻找梅丽莎病毒的制作者位置。
+
+### 那么UUID可以用到哪些方面呢
+
+比如阿里云每一条短信发送的唯一id，这个是可以的，比如从阿里云官网截图所示：
+![img](baba开发记录.assets/1755193-20190808114910866-345826679.jpg)
 
 
 
@@ -1231,7 +1385,7 @@ CREATE TABLE t_user  (
 
 像这种设计简直就是失败，根本就不需要设置什么值，什么名称值就是什么，如果是这样设计，那么怎么跟下面这种挂起来呢？千万不能什么名称，存到客户表就存什么名称，万一数据字典名称改了，你怎么去同步将客户表中的这个数据字典名称给改掉？
 
-![image-20200612115411774](baba开发记录.assets/image-20200612115411774.png)
+![image-20200613135235777](baba开发记录.assets/image-20200613135235777.png)
 
 遇到的问题就是：比如客户表只存储数据字典里面参数明细ID,那么当向前端返回结果集的时候，是需要翻译给前端去展现的？？？ 怎么办？
 
@@ -1239,6 +1393,40 @@ CREATE TABLE t_user  (
 
 @TableField(exist = false)
 private String customerTagName;
+
+
+
+## 千万级数据库分页优化
+
+今天接到一个五千万的数据库文件，需要洗一遍数据，洗数据的时候遇到两个问题
+
+原始数据没有主键 需要手动添加
+ALTER TABLE `tablename` ADD COLUMN `id`  int(11) NOT NULL AUTO_INCREMENT FIRST ,ADD PRIMARY KEY (`id`);
+
+5000万数据大概执行了十五分钟左右
+
+limit 查询数据变慢
+优化查询语句由
+
+select * from `tablename` limit 10000, 1000
+
+改为
+
+select * from `tablename` where id >10000000  limit 0, 1000
+
+这样修改后查询效率由原来的8s左右变为1s以内
+
+分析 ： mysql分页查询是先把分页之前数据都查询出来了，然后截取后把不是分页的数据给扔掉后得到的结果。所以数据量太越大分页越慢。
+但是我们可以先把需要分页的id查询出来，因为id是主键id主键索引，查询起来还是快很多的，然后根据id连接查询对应的分页数据
+
+**上述问题，也只能应付一下面试，你有这种数据去分段查询的思路就行了，真正的千万级数据，肯定不是这么简单的，要么搜索引擎，要么分库分表在做了**
+
+
+
+## 字段设计为""的问题
+
+以后再也不要把数据库的某一列设置为空值，即"",来代表没有，或者不属于的意思了，出现了太多空值转换的问题，如果要有这种需求，直接设计为
+varchar(2)  里面存储0即可，像这种最好还是使用int来存储
 
 # MyCat:
 
