@@ -21,14 +21,14 @@ import ${superControllerClassPackage};
  * @author ${author}
  * @since ${date}
  */
+<#assign apiName = "${table.comment!}">
+@Api("${apiName?replace("表","")}服务接口")
 <#if restControllerStyle>
 @RestController
 <#else>
 @Controller
 </#if>
 @RequestMapping("<#if package.ModuleName??>${package.ModuleName}</#if>")
-<#assign apiName = "${table.comment!}">
-@Api("${apiName?replace("表","")}服务接口")
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
 <#else>

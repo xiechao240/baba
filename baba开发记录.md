@@ -423,11 +423,88 @@ mybatis-plus:
       即使以上配置，也不能解决空值问题
 ```
 
+# MyBatis
+
+<select id="findSmsList" resultType="java.util.LinkedHashMap" parameterType="String">  建议还是使用LinkedHashMap，因为不仅可以跟数据库表结构一致，还有如下优点：
+LinkedHashMap
+LinkedHashMap适合于读少写多的场景,因为它的内部是带头结点的单向循环链表,既(有head和tail指针,插入非常块),读的话因为要从头到尾遍历因而缓慢
+HashMap适合于读多写少的场景,push的时候无论是RBTree还是list都要设计到部分遍历,因而会导致写的效率一般
+    LinkedHashMap适合于读少写多的场景LinkedHashMap适合于读少写多的场景
+
+```
+<select id="findSmsList" resultType="java.util.HashMap" parameterType="String">
+    	select 
+    		<include refid="Alias_Param_Base_Column_List"><property name="alias" value="a"/></include>,
+    		b.customer_name as customerName
+    	from crm_customer_sms as a left join crm_customer as b on a.customer_id=b.id and a.user_id=#{userId}
+    </select>
+```
+
 
 
 # Swagger使用经验：
 
-同时传递多参数与文件，目前未解决,采用转换一下的方式解决
+## 使用model封装参数
+
+```java
+@ApiOperation(value = "保存客户选择的客户标签及客户标签明细")
+	@PostMapping("/save-customer-tag-by-customer-id")
+	public Result saveCustomerTagByCustomerId(@ApiParam(value="客户标签json参数模型",required=true)@RequestBody(required=true) CustomerTagGroupModel model) {
+		try{
+			
+			if(model!=null && model.getCustomerTagGroupEntity().size()>0){
+				customerTagGroupService.saveCustomerTagByCustomerId(model.getCustomerTagGroupEntity(), model.getCustomerId());
+				
+	            return Result.success("保存成功");
+			}
+			return Result.error("请求参数错误");
+		}catch (UnauthorizedException e){
+			return Result.error(ResultCodeEnum.USER_NOT_AUTH);
+		}catch (Exception e) {
+			e.printStackTrace();
+			return Result.error("保存失败，失败原因：" + e.getMessage());
+		}
+	}
+对应model:
+@ApiModel(value="客户标签",description="客户标签所有属性")
+@Data
+@EqualsAndHashCode(callSuper = false)
+@Accessors(chain = true)
+public class CustomerTagGroupModel{
+	@ApiModelProperty(value="客户ID")
+	private String customerId;
+	
+	@ApiModelProperty(value="客户标签集合")
+	private List<CustomerTagGroupEntity> customerTagGroupEntity; //注意这里别定义成CustomerTagGroupEntity[]数组形式了，直接集合就行了
+}
+```
+
+像上面这种复合参数，可以新建一个model给前端
+
+
+
+## @PathVariable @RequestBody同时使用
+
+```
+@PathVariable String roleId, @RequestBody @ApiParam(required=true)String[] idList
+```
+
+解决@RequestBody  @RequestParam 无法同时使用的问题
+
+@RequestBody与@PathVariable同时存在，但是这样移动端的人，不愿意调用这种拼接url的接口
+
+```java
+@ApiOperation(value = "保存客户选择的客户标签及客户标签明细")
+	@PostMapping("/save-customer-tag-by-customer-id/{customerId}")
+	public Result saveCustomerTagByCustomerId(@ApiParam(value="客户标签json参数模型",required=true)@RequestBody(required=true) CustomerTagGroupEntity[]  model,
+			@ApiParam(value="客户ID",required=true)@PathVariable(value = "customerId", required = true) String customerId) {}
+```
+
+这种同时使用，就可以直接使用数据库的表作为model，省得去新建model了
+
+## 同时传递多参数与文件
+
+目前未解决,采用转换一下的方式解决
 
 ```java
 @ApiOperation(value = "新增客户")
@@ -468,6 +545,8 @@ mybatis-plus:
 ```json
 {"customerGroupTypeId":"22","customerIntentionLevel":"*****","customerName":"卡罗拉","customerQuality":"优质","customerSourceNameValue":"湖南在线咨询","customerSourceType":"非代理商","selfDefineItemConfigList":[],"sex":"1"}
 ```
+
+
 
 
 
@@ -684,6 +763,13 @@ https://www.cnblogs.com/dzcWeb/p/7842993.html  这个说可以，但我是没调
 			@RequestParam(value = "files", required = false) MultipartFile[] files) {
 			
 			}
+```
+
+```java
+//即使只声明一个参数，swagger页面上也是不支持多文件上传的
+public Result testSaveCallRecordingFile(
+			//@ApiParam(value="用户客户通话唯一ID",required=true)@RequestParam(required=true) String userCustomerCallId, 
+			@ApiParam(value="上传的文件",required=true)@RequestParam(required=true, value = "files") MultipartFile[] files) {｝
 ```
 
 
@@ -1428,6 +1514,14 @@ select * from `tablename` where id >10000000  limit 0, 1000
 以后再也不要把数据库的某一列设置为空值，即"",来代表没有，或者不属于的意思了，出现了太多空值转换的问题，如果要有这种需求，直接设计为
 varchar(2)  里面存储0即可，像这种最好还是使用int来存储
 
+
+
+## 大表拆分小表
+
+比如一个客户表，一个订单表，是可以将大字段单独设计到一张表里面去，使用客户ID关联，使用订单ID关联即可，这样可以增加查询效率
+
+
+
 # MyCat:
 
 Mycat就是一个解决数据库分库分表等问题的数据库中间件，也可以理解为是数据库代理。在架构体系中是位于数据库和应用层之间的一个组件，Mycat 实现了 Mysql 的原生协议，对于应用它感知不到连接了 Mycat，因为从协议来讲，两者是一样的。而Mycat将应用的请求转发给它后面的数据库，对应用屏蔽了分库分表的细节。Mycat的三大功能：**分表、读写分离、主从切换**。
@@ -1465,6 +1559,43 @@ tinyint(1)                     对应java  Boolean
 还是不要使用这种类型，如果换库的话，应该不麻烦，oracle与之对应使用varchar即可，但是关键就在于扩充，比如这个字段，我现在添加一个4，代表抢购，是需要alter 表结构中的这个字段的，那可是相当的麻烦，你直接使用int,你想使用哪个数字代表啥就代表啥，**枚举就限定死了，一定好，就只能存储指定的值**
 
 
+
+## 伪列，创建ID序列问题
+
+如下的 (@i:=@i+1) as num 创建伪列，虽然可实现一个序列，但是如果使用分页的话，计数还是从1开始，前台拿到这样的数据，如果需要连接的话，就会有问题，不过这种小功能，可以前台去解决
+
+```xml
+select (@i:=@i+1) as num, vip_id, coalesce(vip_type,"") as vip_type, coalesce(push_money_count,0) as push_money_count from (  
+
+		select  vip_id, vip_type, sum(push_money_count) as push_money_count from  (
+		<!--查询我的提成-->
+			select 
+				a.vip_id as vip_id,c.vip_type as vip_type,
+				round(sum(transaction_amount*(push_money_ratio/100)),2) as  push_money_count
+			from crm_customer_vip a,crm_project_vip b,crm_vip c 
+				where a.id=b.customer_id and a.vip_id=c.id and b.state='7'  and a.deleted='0' and b.deleted='0' group by vip_id
+		
+		union all
+		<!--查询我的下线给我创造的提成-->
+			select 
+				c.parent_id as vip_id,c.vip_type as vip_type,
+					round(sum(transaction_amount*
+						(select cast(value as SIGNED INTEGER)  from crm_sys_dict where type='push_ratio')/100),2) as push_money_count
+			from crm_customer_vip a,crm_project_vip b,crm_vip c 
+				where a.id=b.customer_id and a.vip_id=c.id and b.state='7'  and a.deleted='0' and b.deleted='0'   and a.vip_id in 
+					(select id from crm_vip   where parent_id!=0)  group by vip_id
+		<!--查询人工维护的代理商会员的提成-->
+		union all
+			select vip_id,vip_type,push_money_count from crm_vip_top100_temp
+					)  as t  group by vip_id order by push_money_count desc 
+					
+		) as tt, (select  @i:=0) as num
+		<if test="orderbyParam !=null and orderbyParam !='null' and orderbyParam !=''">
+			order by ${orderbyParam}  ${sortType}
+		</if>
+			limit #{startRow}, #{pageSize}
+	</select>
+```
 
 
 

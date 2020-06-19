@@ -58,7 +58,8 @@
         select * from tb_user where user_id=#{userId}
     </select>
 
-    <select id="queryUserByIdFromXmlReturnHashMap" resultType="java.util.HashMap">
+<!--    使用LinkedHashMap将数据库的结果写入，速度要快些，而且返回的结构有序-->
+    <select id="queryUserByIdFromXmlReturnHashMap" resultType="java.util.LinkedHashMap">
         select
             <include refid="Alias_Param_Base_Column_List"><property name="alias" value="a"/></include>
         from
