@@ -4,3 +4,5 @@ springcloud全家桶
 
 GraphQL
 mycat 等
+
+分布式事务等

@@ -89,7 +89,13 @@ C:\Windows\System32\drivers\etc\hosts 文件中增加如下内容（Linux下的h
 
 
 
+# 接口设计：
 
+1.接口需要采用无状态设计
+
+​	比如：与当前登录的用户相关的所有接口，就不应该再需要别人传userId进行调用，别人只需要传token你就能操作当前用户的所有，后台设置里面去操作其他的用户除外
+
+2.
 
 
 # 0.待开发列表
@@ -245,11 +251,71 @@ https://blog.csdn.net/steven2xupt/article/details/87452664  应该看这一个�
 
 搞了1个小时，是我电脑上别人乱安装jdk导致目前调都调不好的原因，把jar包打好，在别人电脑上一点问题都没有，根本就不用去排除什么log4j的包之类的，也不用添加log4j2.yml文件
 
+## 6.@RequestMapping produces consumes
+
+**为什么我平常不用关注这两个值？**
+
+**因为我定义接口加了@RestController 标这个接口的类，里面定义的方法默认返回都是@ResponseBody，而@ResponseBody的话就是返回json数据**
+
+五、问题
+
+消费的数据，如JSON数据、XML数据都是由我们读取请求的InputStream并根据需要自己转换为相应的模型数据，比较麻烦；
+
+生产的数据，如JSON数据、XML数据都是由我们自己先把模型数据转换为json/xml等数据，然后输出响应流，也是比较麻烦的。
+
+Spring提供了一组注解（@RequestBody、@ResponseBody）和一组转换类（HttpMessageConverter）来完成我们遇到的问题
+—————————————
+原文链接：https://blog.csdn.net/lzwglory/java/article/details/17252099
+
+
+
+![image-20200620144102661](baba开发记录.assets/image-20200620144102661.png)
+原文链接：https://blog.csdn.net/hbiao68/java/article/details/87366694
+
+
+
+
+
+1.他的作用是指定返回值类型和返回值编码
+
+2.consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;
+
+一、produces的例子
+
+produces第一种使用，返回json数据，下边的代码可以省略produces属性，因为我们已经使用了注解@responseBody就是返回值是json数据：
+
+@Controller  
+@RequestMapping(value = "/pets/{petId}", method = RequestMethod.GET, produces="application/json")  
+@ResponseBody  
+produces第二种使用，返回json数据的字符编码为utf-8.：
+
+
+@Controller  
+@RequestMapping(value = "/pets/{petId}", produces="MediaType.APPLICATION_JSON_VALUE"+";charset=utf-8")  
+@ResponseBody  
+二、consumes的例子（方法仅处理request Content-Type为“application/json”类型的请求。）
+
+@Controller  
+@RequestMapping(value = "/pets", method = RequestMethod.POST, consumes="application/json")
+
 # JDK
 
 经过实验，jdk以后还是不要再使用绿色版本了，安装的比较好，因为安装的jdk有控制面板，可以调很多参数，如下图：
 
 ![image-20200516162500702](baba开发记录.assets/image-20200516162500702.png)
+
+# JAVA
+
+StringUtils里的isEmpty方法和isBlank方法的区别
+
+### **结论**
+
+通过以上代码对比我们可以看出：
+
+  1.isEmpty 没有忽略空格参数，是以是否为空和是否存在为判断依据。
+
+
+  2.isBlank 是在 isEmpty 的基础上进行了为空（字符串都为空格、制表符、tab 的情况）的判断。（一般更为常用）
 
 
 
@@ -444,6 +510,61 @@ HashMap适合于读多写少的场景,push的时候无论是RBTree还是list都�
 
 # Swagger使用经验：
 
+## 重大发现：
+
+swagger原生自带参数样例，原来在百度上找一个文章，说没有参数样例，还改继承重写swagger底层代码实现参数样例，真的是误人子弟
+
+```java
+    @ApiModelProperty(value = "当前页码", example = "1")
+    private Integer pageNum = 1;
+    
+    @ApiModelProperty(value = "每页显示记录数", example = "10")
+    private Integer pageSize = 10;
+```
+
+如上：example就是参数样例
+
+![image-20200623172120203](baba开发记录.assets/image-20200623172120203.png)
+
+测试时直接有赋予默认值
+
+
+
+## 精简使用：
+
+```java
+@ApiOperation(value = "修改用户信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userName", value = "姓名", dataType="String"),
+        @ApiImplicitParam(name = "mobile", value = "手机", dataType="int"),
+        @ApiImplicitParam(name = "email", value = "邮箱", dataType="String"),
+        @ApiImplicitParam(name = "password", value = "密码", dataType="String"),
+        @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", dataType = "MultipartFile",allowMultiple = true)})
+	@PostMapping(value = "/update-user-info")
+	public Result updateUserInfo(@RequestParam(required=false) String userName, @RequestParam(required=false) Integer mobile, 
+			@RequestParam(required=false) String email, @RequestParam(required=false) String password) {}
+```
+
+注意只需要声明name,value,dataType就行了，像paramType = "query",可以省略，因为默认就是这个类型，如果你dataType省略，那默认就是String了，这显然不符合我们的要求，注意这个dataType只能写int，而不能写Integer，不知道knife4j里面可不可以写这个，感觉swager还是有很多问题，但貌似knife4j解决了
+
+**还是写全量吧**，可以大面积的copy,省得漏了一个required还得到处找
+
+```java
+@ApiOperation(value = "修改用户信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userName", value = "姓名", dataType="String", required=false),
+        @ApiImplicitParam(name = "mobile", value = "手机", dataType="int", required=false),
+        @ApiImplicitParam(name = "email", value = "邮箱", dataType="String", required=false),
+        @ApiImplicitParam(name = "password", value = "密码", dataType="String", required=false),
+        @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", dataType = "__File", required=false),})
+	@PostMapping(value = "/update-user-info")
+	public Result updateUserInfo(@RequestParam(required=false) String userName, @RequestParam(required=false) Integer mobile, 
+			@RequestParam(required=false) String email, @RequestParam(required=false) String password,
+			@RequestParam(required=false, value = "file") MultipartFile file) {}
+```
+
+
+
 ## 使用model封装参数
 
 ```java
@@ -552,6 +673,24 @@ public class CustomerTagGroupModel{
 
 ##  **knife4j:**
 
+从学习knife4j原来下面还可以这么简单的写：
+
+```java
+@ApiOperation(value = "修改用户信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userName", value = "姓名", dataType="String"),
+        @ApiImplicitParam(name = "mobile", value = "手机", dataType="int"),
+        @ApiImplicitParam(name = "email", value = "邮箱", dataType="String"),
+        @ApiImplicitParam(name = "password", value = "密码", dataType="String"),
+        @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", dataType = "MultipartFile",allowMultiple = true)})
+	@PostMapping(value = "/update-user-info")
+	public Result updateUserInfo(@RequestParam(required=false) String userName, @RequestParam(required=false) Integer mobile, 
+			@RequestParam(required=false) String email, @RequestParam(required=false) String password,
+			@RequestParam(required=false, value = "file") MultipartFile file) {}
+```
+
+
+
 https://doc.xiaominfo.com  推荐使用 knife4j 这个是长期有维护的，适用于微服务架构的框架，也是基于swagger
 
 
@@ -635,7 +774,7 @@ dataType与type都是指定数据类型，统一使用 Integer String Long这些
 
 
 
-## 单文件上传：
+## 单文件上传model传参：
 
 注意下面的单文件上传，无法传递非常多的参数，只能一个一个去定义参数，无法像下面这样,Customer这个是无法直接传进去的
 
@@ -660,6 +799,28 @@ public Result saveCustomer(@ApiParam(value="客户json参数模型",required=tru
 ```java
 CustomerModel customerModel = JsonUtil.getJsonToBean(model, CustomerModel.class);
 ```
+
+
+
+## 单文件上传：
+
+单文件上传简写(**推荐使用这种，已经测试过**)：
+
+```java
+@ApiOperation(value = "修改用户信息")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name = "userName", value = "姓名", dataType="String", required=false),
+        @ApiImplicitParam(name = "mobile", value = "手机", dataType="int", required=false),
+        @ApiImplicitParam(name = "email", value = "邮箱", dataType="String", required=false),
+        @ApiImplicitParam(name = "password", value = "密码", dataType="String", required=false),
+        @ApiImplicitParam(name = "file", value = "文件流对象,接收数组格式", dataType = "__File", required=false),})
+	@PostMapping(value = "/update-user-info")
+	public Result updateUserInfo(@RequestParam(required=false) String userName, @RequestParam(required=false) Integer mobile, 
+			@RequestParam(required=false) String email, @RequestParam(required=false) String password,
+			@RequestParam(required=false, value = "file") MultipartFile file) {}
+```
+
+
 
 
 
@@ -1229,6 +1390,12 @@ F:\code\itcast-haoke\haoke-upload\
 
 
 
+## 如何在NGINX中部署多个前端项目
+
+https://blog.csdn.net/kielin/article/details/94459660
+
+
+
 # redis使用经验：
 
 Spring Data Redis 提供了一个工具类：RedisTemplate。里面封装了对于Redis的五种数据结构的各种操作，包括：
@@ -1522,6 +1689,35 @@ varchar(2)  里面存储0即可，像这种最好还是使用int来存储
 
 
 
+# 事务：
+
+## springboot全局事务
+
+```java
+@Override
+	public boolean saveCustomerFlowOperationConfig(CustomerFlowOperationConfigJson[] arrList) throws Exception{
+		// 逻辑为： 先删除已经存在的所有配置数据，再新增
+		customerFlowOperationConfigMapper.deleteAllData();
+		
+		for(CustomerFlowOperationConfigJson json : arrList){
+			for(String operationType : json.getOperationType()){
+				CustomerFlowOperationConfigEntity entity = new CustomerFlowOperationConfigEntity();
+				entity.setOperationCause(json.getOperationCause());
+				entity.setOperationCauseId(json.getOperationCauseId());
+				entity.setOperationType(operationType);
+				
+				customerFlowOperationConfigMapper.insert(entity);
+			}
+		}
+		
+		return true;
+	}
+```
+
+注意，如果此方法没有声明： throws Exception，那么即使，下面的.insert(entity);代码报错，则上面已经删除的数据，将不会回滚，TransactionAdviceConfig.java这种声明式全局事务处理，还是不太好用
+
+
+
 # MyCat:
 
 Mycat就是一个解决数据库分库分表等问题的数据库中间件，也可以理解为是数据库代理。在架构体系中是位于数据库和应用层之间的一个组件，Mycat 实现了 Mysql 的原生协议，对于应用它感知不到连接了 Mycat，因为从协议来讲，两者是一样的。而Mycat将应用的请求转发给它后面的数据库，对应用屏蔽了分库分表的细节。Mycat的三大功能：**分表、读写分离、主从切换**。
@@ -1596,6 +1792,18 @@ select (@i:=@i+1) as num, vip_id, coalesce(vip_type,"") as vip_type, coalesce(pu
 			limit #{startRow}, #{pageSize}
 	</select>
 ```
+
+
+
+# WebSocket分布式：
+
+![image-20200628155336990](baba开发记录.assets/image-20200628155336990.png)
+
+把图中的websocket对象放入redis中，而不是放到像现在的Map集合中，来做分布式，这种方案听起来好像是行得通的，但实际做下来，是行不通的，因为：这个websocket这个对象，是一个保持在线的对象，是无法序列化的
+
+解决方案：通过消息系统来解决
+
+![image-20200628155703027](baba开发记录.assets/image-20200628155703027.png)
 
 
 

@@ -5,6 +5,7 @@ import com.baba.org.pojo.Org;
 import com.baba.org.service.OrgService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -123,9 +124,8 @@ public class OrgController {
 //            // 返回400
 //            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 //        }
-//        // 返回204
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        return null;
+        // 返回204
+        return ResponseEntity.ok(true);
     }
 
 
